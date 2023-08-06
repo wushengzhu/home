@@ -7,7 +7,7 @@ import Background from "@/components/Background/index.vue";
 </script>
 
 <template>
-  <div>
+  <div class="app-container">
     <Header />
     <Background bgc="/images/bg.webp" />
     <Home />
@@ -16,4 +16,9 @@ import Background from "@/components/Background/index.vue";
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.app-container {
+  width: 100%;
+  height: 100%;
+}
+</style>
