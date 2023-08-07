@@ -2,7 +2,7 @@
   "name": "wszhu-home",
   "private": true,
   "author": "wushengzhu",
-  "github":"https://github.com/wushengzhu/wszhu-home",
+  "github": "https://github.com/wushengzhu/wszhu-home",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -24,6 +24,8 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "sass": "^1.64.2",
     "typescript": "^5.0.2",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-vue-components": "^0.25.1",
     "vite": "^4.4.5",
     "vite-plugin-html": "^3.2.0",
     "vue-tsc": "^1.8.5"
