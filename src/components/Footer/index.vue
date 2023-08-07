@@ -1,8 +1,10 @@
 <script setup lang="ts">
-//   import { ref } from "vue";
-//   import { MusicOne } from "@icon-park/vue-next";
+import { ref } from "vue";
+import { MusicOne } from "@icon-park/vue-next";
 import config from "@/../package.json";
+import { mainStore } from "@/store";
 
+const store = mainStore();
 const fullYear = new Date().getFullYear();
 
 //   // 加载配置数据
@@ -14,7 +16,7 @@ const fullYear = new Date().getFullYear();
 
 <template>
   <footer>
-    <div class="power">
+    <div class="power" v-show="!store.playerState">
       <span>
         Copyright&nbsp;&copy;
         <!-- <span v-if="siteStartDate?.length >= 4" class="site-start">
@@ -35,6 +37,13 @@ const fullYear = new Date().getFullYear();
       <!-- <a href="https://beian.miit.gov.cn" target="_blank">
                 &amp;
             </a> -->
+    </div>
+    <div class="lrc" v-show="store.playerState">
+      <music-one theme="filled" size="18" fill="#efefef" />
+      <span class="lrc-text">
+        {{ store.getPlayerLrc ? store.getPlayerLrc : "这句没有歌词" }}
+      </span>
+      <music-one theme="filled" size="18" fill="#efefef" />
     </div>
   </footer>
 </template>
