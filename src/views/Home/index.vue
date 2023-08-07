@@ -43,12 +43,40 @@ const penName = ref(import.meta.env.VITE_HOME_PEN_NAME)
     align-items: center;
 
     .person-title {
-      font-size: 3rem;
       font-family: "qtbf";
-      width: 100%;
       text-align: center;
       margin-bottom: 30px;
       color: #fff;
+      // border-right: .15em solid #fff; //右边框
+      white-space: nowrap; //禁止换行
+      overflow: hidden; //隐藏多余的部分
+      font-size: 3rem; //字体大小
+      letter-spacing: .15em; //字母间距
+      animation:
+        typing 3.5s steps(30, end) infinite,
+        blink-caret .5s step-end infinite; //光标闪烁
+    }
+
+    @keyframes typing {
+      from {
+        width: 0
+      }
+
+      to {
+        width: calc(100% + .15em)
+      }
+    }
+
+    @keyframes blink-caret {
+
+      from,
+      to {
+        border-color: transparent
+      }
+
+      50% {
+        border-color: #fff
+      }
     }
   }
 

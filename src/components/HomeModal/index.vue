@@ -58,4 +58,12 @@ defineExpose({
     hideLoading
 })
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+body {
+    width: 100% !important;
+}
+
+:deep(.el-popup-parent--hidden) {
+    width: 100% !important;
+}
+</style>

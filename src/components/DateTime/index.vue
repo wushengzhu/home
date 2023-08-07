@@ -16,23 +16,23 @@
     </div>
 </template>
 <script setup lang="ts">
-import { ref, reactive, onMounted, onBeforeUnmount } from "vue"
-import { getCurrentTime } from "@/utils/getTime";
+import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
+import { getCurrentTime } from '@/utils/getTime'
 import Weather from '@/components/Weather/index.vue'
 
 // 当前时间
-const currentTime = ref<any>({});
-const timeInterval = ref();
+const currentTime = ref<any>({})
+const timeInterval = ref()
 
 onMounted(() => {
     timeInterval.value = setInterval(() => {
-        currentTime.value = getCurrentTime();
-    }, 1000);
-});
+        currentTime.value = getCurrentTime()
+    }, 1000)
+})
 
 onBeforeUnmount(() => {
-    clearInterval(timeInterval.value);
-});
+    clearInterval(timeInterval.value)
+})
 </script>
 <style lang="scss" scoped>
 .time-container {
@@ -59,6 +59,6 @@ onBeforeUnmount(() => {
     line-height: 36px;
     margin-left: 5px;
     font-size: 3rem;
-    font-family: "UnidreamLED";
+    font-family: 'UnidreamLED';
 }
 </style>

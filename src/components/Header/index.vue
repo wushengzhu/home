@@ -1,14 +1,20 @@
 <template>
   <header class="header-container">
     <DateTime />
-    <hamburger-button class="hg-btn" theme="outline" size="32" fill="#fff" />
+    <hamburger-button class="hg-btn" theme="outline" size="32" fill="#fff" @click="showSetting()" />
   </header>
-  <LibModal />
+  <!-- <HomeModal ref="modalRef" /> -->
 </template>
 <script setup lang="ts">
 import { HamburgerButton } from "@icon-park/vue-next";
-import LibModal from '@/components/LibModal/index.vue'
+import HomeModal from '@/components/HomeModal/index.vue'
 import DateTime from '@/components/DateTime/index.vue'
+import { ref } from "vue";
+
+const modalRef = ref();
+const showSetting = () => {
+  modalRef.value.open();
+}
 </script>
 <style lang="scss" scoped>
 .header-container {

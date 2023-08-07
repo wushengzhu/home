@@ -1,18 +1,21 @@
 <template>
     <div class="music-container fixed-card" @mouseenter="volumeShow = true" @mouseleave="volumeShow = false">
-        <div class="music-list">
-            <music-menu theme="outline" size="24" fill="#fff" class="cursor" />
+        <div class="music-area">
+            <music-menu theme="outline" size="24" fill="#fff" class="cursor" @click="openMusicList()" />
         </div>
         <div class="music-play">
-            <go-start theme="outline" size="36" fill="#fff" class="cursor" />
-            <play-one theme="outline" size="36" fill="#fff" class="cursor" />
-            <go-end theme="outline" size="36" fill="#fff" class="cursor" />
+            <go-start theme="outline" size="36" fill="#fff" class="cursor" @click="changeMusicIndex(0)" />
+            <play-one theme="filled" size="36" fill="#fff" class="cursor" v-show="!store.playerState"
+                @click="changePlayState" />
+            <pause theme="filled" size="36" fill="#fff" class="cursor" v-show="store.playerState"
+                @click="changePlayState" />
+            <go-end theme="outline" size="36" fill="#fff" class="cursor" @click="changeMusicIndex(1)" />
         </div>
         <div class="music-name" v-show="!volumeShow">
             <span>{{
-                // store.getPlayerData.name
-                // ? store.getPlayerData.name + " - " + store.getPlayerData.artist
-                // :
+                store.getPlayerData.name
+                ? store.getPlayerData.name + " - " + store.getPlayerData.artist
+                :
                 "未播放音乐"
             }}</span>
         </div>
@@ -25,8 +28,21 @@
             <el-slider v-model="volumeNum" :show-tooltip="false" :min="0" :max="1" :step="0.01" />
         </div>
     </div>
+    <!-- 音乐列表弹窗 -->
+    <Transition name="fade">
+        <div class="music-list" v-show="musicListShow" @click="musicListShow = false">
+            <Transition name="zoom">
+                <div class="list" v-show="musicListShow" @click.stop>
+                    <close-one class="close" theme="filled" size="28" fill="#ffffff60" @click="musicListShow = false" />
+                    <Player :songServer="playerData.server" :songType="playerData.type" :songId="playerData.id"
+                        :volume="volumeNum" :shuffle="true" ref="playerRef" />
+                </div>
+            </Transition>
+        </div>
+    </Transition>
 </template>
 <script setup lang="ts">
+import { getPlayerList } from '@/api';
 import {
     PlayOne,
     GoStart,
@@ -36,11 +52,62 @@ import {
     VolumeMute,
     VolumeSmall,
     VolumeNotice,
+    CloseOne,
 } from '@icon-park/vue-next'
-import { ref } from 'vue'
+import Player from "@/components/Player/index.vue"
+import { onMounted, reactive, ref, watch } from 'vue'
+import { mainStore } from "@/store";
+const store = mainStore();
 
-const volumeShow = ref(false)
-const volumeNum = ref(0.7)
+// 音量条数据
+const volumeShow = ref(false);
+const volumeNum = ref(store.musicVolume ? store.musicVolume : 0.7);
+// 播放列表数据
+const musicListShow = ref(false);
+const playerRef = ref();
+const playerData = reactive({
+    server: import.meta.env.VITE_MUSIC_SERVER,
+    type: import.meta.env.VITE_MUSIC_TYPE,
+    id: import.meta.env.VITE_MUSIC_ID,
+});
+
+getPlayerList(playerData.server, playerData.type, playerData.id).then((item) => {
+    console.log(item)
+})
+// 开启播放列表
+const openMusicList = () => {
+    musicListShow.value = true;
+};
+
+// 音乐播放暂停
+const changePlayState = () => {
+    playerRef.value.playToggle();
+};
+
+// 音乐上下曲
+const changeMusicIndex = (type: number) => {
+    playerRef.value.changeMUSIC(type);
+};
+
+onMounted(() => {
+    // 空格键事件
+    window.addEventListener("keydown", (e) => {
+        if (e.code == "Space") {
+            changePlayState();
+        }
+    });
+    // 挂载方法至 window
+    window.$openList = openMusicList;
+});
+
+// 监听音量变化
+watch(
+    () => volumeNum.value,
+    (value: any) => {
+        // store.musicVolume = value;
+        // playerRef.value.changeVolume(store.musicVolume);
+    }
+);
 </script>
 <style lang="scss" scoped>
 .music-container {
@@ -52,7 +119,7 @@ const volumeNum = ref(0.7)
     font-weight: bold;
     padding: 10px;
 
-    .music-list {
+    .music-area {
         display: flex;
         justify-content: flex-end;
     }
@@ -105,34 +172,82 @@ const volumeNum = ref(0.7)
     .cursor {
         cursor: pointer;
     }
+}
 
-    // 弹窗动画
-    .fade-enter-active {
-        animation: fade 0.3s ease-in-out;
-    }
+.music-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: #00000080;
+    backdrop-filter: blur(20px);
+    z-index: 1;
 
-    .fade-leave-active {
-        animation: fade 0.3s ease-in-out reverse;
-    }
+    .list {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: calc(50% - 300px);
+        left: calc(50% - 320px);
+        width: 640px;
+        height: 600px;
+        background-color: #ffffff66;
+        border-radius: 6px;
+        z-index: 999;
 
-    .zoom-enter-active {
-        animation: zoom 0.4s ease-in-out;
-    }
-
-    .zoom-leave-active {
-        animation: zoom 0.3s ease-in-out reverse;
-    }
-
-    @keyframes zoom {
-        0% {
-            opacity: 0;
-            transform: scale(0) translateY(-600px);
+        @media (max-width: 720px) {
+            left: calc(50% - 45%);
+            width: 90%;
         }
 
-        100% {
-            opacity: 1;
-            transform: scale(1) translateY(0);
+        .close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            display: block;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
         }
+    }
+}
+
+// 弹窗动画
+.fade-enter-active {
+    animation: fade 0.3s ease-in-out;
+}
+
+.fade-leave-active {
+    animation: fade 0.3s ease-in-out reverse;
+}
+
+.zoom-enter-active {
+    animation: zoom 0.4s ease-in-out;
+}
+
+.zoom-leave-active {
+    animation: zoom 0.3s ease-in-out reverse;
+}
+
+@keyframes zoom {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateY(-600px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
     }
 }
 </style>
