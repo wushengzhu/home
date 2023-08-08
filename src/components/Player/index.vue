@@ -51,7 +51,7 @@ const props = defineProps({
   volume: {
     type: Number,
     default: 0.7,
-    validator: (value) => {
+    validator: (value: any) => {
       return value >= 0 && value <= 1;
     },
   },
@@ -143,7 +143,7 @@ const onPlay = () => {
     grouping: true,
     icon: h(MusicOne, {
       theme: "filled",
-      fill: "#efefef",
+      fill: '#efefef',
     }),
   });
 };

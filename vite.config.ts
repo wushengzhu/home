@@ -39,4 +39,12 @@ export default ({ mode }) =>
         },
       ],
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          charset: false,
+          additionalData: `@import "./src/styles/global.scss";`,
+        },
+      },
+    },
   })

@@ -18,7 +18,6 @@ import { h, onMounted, reactive } from "vue";
 import { getHitokoto } from "@/api";
 import debounce from "@/utils/debounce.ts";
 import { Error } from "@icon-park/vue-next";
-import { ElMessage } from "element-plus";
 
 // 一言数据
 const hitokotoData = reactive({

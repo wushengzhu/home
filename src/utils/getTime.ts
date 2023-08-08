@@ -1,6 +1,5 @@
 import { h } from 'vue'
 import { SpaCandle } from '@icon-park/vue-next'
-import { ElMessage } from 'element-plus'
 
 // 时钟
 export const getCurrentTime = () => {

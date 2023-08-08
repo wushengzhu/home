@@ -1,69 +1,103 @@
 <template>
-    <el-dialog v-model="dialogVisible" :title="title" :width="width" :close-on-click-modal="false"
-        :destroy-on-close="destroyOnClose">
-        <template #header>
-            <slot name="header"></slot>
-        </template>
-        <slot></slot>
-        <template #footer>
-            <slot name="footer">
-                <el-button @click="close">{{ closeText }}</el-button>
-                <el-button class="ml-2" type="primary" @click="confirm" :loading="loading">
-                    {{ confirmText }}
-                </el-button>
-            </slot>
-        </template>
-    </el-dialog>
+    <Transition name="fade" v-if="isShow">
+        <div class="modal" @click="close">
+            <Transition name="zoom">
+                <div class="list" @click.stop>
+                    <close-one class="close" theme="filled" size="28" fill="#ffffff60" @click="close" />
+                    <slot></slot>
+                </div>
+            </Transition>
+        </div>
+    </Transition>
 </template>
-<script lang="ts" setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { CloseOne } from '@icon-park/vue-next';
+import { ref } from 'vue';
 
-const props = defineProps({
-    title: String,
-    width: {
-        type: String,
-        default: '45%'
-    },
-    destroyOnClose: {
-        type: Boolean,
-        default: false
-    },
-    confirmText: {
-        type: String,
-        default: '确定'
-    },
-    closeText: {
-        type: String,
-        default: '关闭'
-    }
-})
+const isShow = ref(false)
 
-const loading = ref(false)
-const showLoading = () => (loading.value = true)
-const hideLoading = () => (loading.value = false)
-
-const dialogVisible = ref(false)
-const open = () => (dialogVisible.value = true)
-const close = () => (dialogVisible.value = false)
-
-const emit = defineEmits(['confirm'])
-const confirm = () => emit('confirm')
-
-// 向父组件暴露一下方法
+const open = () => isShow.value = true;
+const close = () => isShow.value = false;
 defineExpose({
-    dialogVisible,
     open,
-    close,
-    showLoading,
-    hideLoading
+    close
 })
 </script>
 <style lang="scss" scoped>
-body {
-    width: 100% !important;
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: #00000080;
+    backdrop-filter: blur(20px);
+    z-index: 1;
+
+    .list {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: calc(50% - 300px);
+        left: calc(50% - 320px);
+        width: 640px;
+        height: 600px;
+        background-color: #ffffff66;
+        border-radius: 6px;
+        z-index: 999;
+
+        @media (max-width: 720px) {
+            left: calc(50% - 45%);
+            width: 90%;
+        }
+
+        .close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            display: block;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+        }
+    }
 }
 
-:deep(.el-popup-parent--hidden) {
-    width: 100% !important;
+// 弹窗动画
+.fade-enter-active {
+    animation: fade 0.3s ease-in-out;
+}
+
+.fade-leave-active {
+    animation: fade 0.3s ease-in-out reverse;
+}
+
+.zoom-enter-active {
+    animation: zoom 0.4s ease-in-out;
+}
+
+.zoom-leave-active {
+    animation: zoom 0.3s ease-in-out reverse;
+}
+
+@keyframes zoom {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateY(-600px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 </style>

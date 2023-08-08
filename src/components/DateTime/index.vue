@@ -1,6 +1,5 @@
 <template>
     <div class="time-container">
-        <Weather />
         <div class="date cards">
             <span>{{ currentTime?.year }}&nbsp;年&nbsp;</span>
             <span>{{ currentTime?.month }}&nbsp;月&nbsp;</span>
@@ -51,14 +50,15 @@ onBeforeUnmount(() => {
 
 .time {
     height: 36px;
-    min-width: 130px;
+    // min-width: 130px;
     padding: 5px;
     color: #fff;
     text-align: center;
     font-weight: bold;
     line-height: 36px;
     margin-left: 5px;
-    font-size: 3rem;
-    font-family: 'UnidreamLED';
+    font-size: 1.25rem;
+    // font-size: 3rem;
+    // font-family: 'UnidreamLED';
 }
 </style>

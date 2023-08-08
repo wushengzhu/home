@@ -42,7 +42,6 @@
     </Transition>
 </template>
 <script setup lang="ts">
-import { getPlayerList } from '@/api';
 import {
     PlayOne,
     GoStart,
@@ -71,9 +70,6 @@ const playerData = reactive({
     id: import.meta.env.VITE_MUSIC_ID,
 });
 
-getPlayerList(playerData.server, playerData.type, playerData.id).then((item) => {
-    console.log(item)
-})
 // 开启播放列表
 const openMusicList = () => {
     musicListShow.value = true;

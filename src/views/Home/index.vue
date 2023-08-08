@@ -7,7 +7,7 @@
       <div class="person-web">
         <CircleItem :component="Tool" tipContent="个人工具" />
         <CircleItem :component="Notes" tipContent="个人博客" />
-        <CircleItem :component="ElAvatar" :imgSrc="'/images/logo.jpg'" tipContent="个人简历" />
+        <CircleItem :imgSrc="'/images/logo.jpg'" tipContent="个人简历" />
         <CircleItem :component="PictureAlbum" tipContent="个人相册" />
         <CircleItem :component="Bookshelf" tipContent="个人书籍" />
       </div>
@@ -24,7 +24,6 @@ import MusicTool from '@/components/MusicTool/index.vue'
 import CircleItem from '@/components/CircleItem/index.vue'
 import { Tool, GithubOne, PictureAlbum, Bookshelf, Log, Notes } from '@icon-park/vue-next';
 import { ref } from 'vue';
-import { ElAvatar } from 'element-plus';
 
 const penName = ref(import.meta.env.VITE_HOME_PEN_NAME)
 </script>
