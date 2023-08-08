@@ -12,10 +12,10 @@ import Footer from "@/components/Footer/index.vue";
 
 <template>
   <div class="app-container">
+    <Fog />
     <Header />
     <!-- <Snow /> -->
-    <FallLeave />
-    <!-- <Fog /> -->
+    <!-- <FallLeave /> -->
     <main>
       <Background bgc="/images/bg1-1.webp" />
       <Home />

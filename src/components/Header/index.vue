@@ -31,7 +31,7 @@ const showSetting = () => {
 </script>
 <style lang="scss" scoped>
 .header-container {
-  height: 42px;
+  // height: 42px;
   display: flex;
   justify-content: space-between;
   align-items: center;

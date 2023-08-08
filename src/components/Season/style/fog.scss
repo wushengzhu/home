@@ -44,13 +44,13 @@ figure {
     overflow: hidden;
 }
 
-.fog__img {
+.fog-img {
     position: absolute;
     height: 100vh;
     width: 300vw;
 }
 
-.fog__img--first {
+.fog-img-first {
     background: url("/images/fog-1.png") repeat-x;
     background-size: contain;
     background-position: center;
@@ -58,7 +58,7 @@ figure {
     animation: marquee 60s linear infinite;
 }
 
-.fog__img--second {
+.fog-img-second {
     background: url("/images/fog-2.png") repeat-x;
     background-size: contain;
     background-position: center;
