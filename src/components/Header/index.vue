@@ -1,25 +1,33 @@
 <template>
   <header class="header-container">
-    <div style="display: flex;">
+    <div style="display: flex">
       <Weather />
       <DateTime />
     </div>
-    <hamburger-button class="hg-btn" theme="outline" size="32" fill="#fff" @click="showSetting" />
+    <!-- <Lantern /> -->
+    <hamburger-button
+      class="hg-btn"
+      theme="outline"
+      size="32"
+      fill="#fff"
+      @click="showSetting"
+    />
   </header>
   <HomeModal ref="modalRef" />
 </template>
 <script setup lang="ts">
 import { HamburgerButton } from "@icon-park/vue-next";
-import HomeModal from '@/components/HomeModal/index.vue'
-import DateTime from '@/components/DateTime/index.vue'
+import Lantern from "@/components/Lantern/index.vue";
+import HomeModal from "@/components/HomeModal/index.vue";
+import DateTime from "@/components/DateTime/index.vue";
 import { ref } from "vue";
 
-const modalRef = ref()
+const modalRef = ref();
 const showSetting = () => {
   if (modalRef.value) {
-    modalRef.value.open()
+    modalRef.value.open();
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .header-container {
