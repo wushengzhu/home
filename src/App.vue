@@ -8,6 +8,48 @@ import Fog from "@/components/Season/Fog.vue";
 import Rain from "@/components/Season/Rain.vue";
 import FabsBtn from "@/components/FabsBtn/index.vue";
 import Footer from "@/components/Footer/index.vue";
+import { onBeforeUnmount, onMounted } from "vue";
+import { checkDays, helloInit } from "@/utils/getTime";
+import { mainStore } from "./store";
+
+const store = mainStore();
+// 页面宽度
+const getWidth = () => {
+  store.setInnerWidth(window.innerWidth);
+};
+
+onMounted(() => {
+  // 加载完成事件
+  window.addEventListener("load", () => {
+    console.log("加载完成");
+    // 去除加载标记
+    document.getElementsByTagName("body")[0].className = "";
+    // 给加载动画添加结束标记
+    // const loadingBox = document.getElementById("loading-box") as HTMLElement;
+    // loadingBox.classList.add("loaded");
+    // 欢迎提示
+    helloInit();
+    // 默哀模式
+    checkDays();
+  });
+  // 屏蔽右键
+  // document.oncontextmenu = () => {
+  //   ElMessage({
+  //     message: "为了浏览体验，本站禁用右键",
+  //     grouping: true,
+  //     duration: 2000
+  //   });
+  //   return false;
+  // };
+});
+
+// 监听当前页面宽度
+getWidth();
+window.addEventListener("resize", getWidth);
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", getWidth);
+});
 </script>
 
 <template>
