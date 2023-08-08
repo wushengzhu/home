@@ -13,6 +13,13 @@ import { checkDays, helloInit } from "@/utils/getTime";
 import { mainStore } from "./store";
 
 const store = mainStore();
+const { seasonMode } = store.getSystemSetting;
+const season = {
+  rain: Rain,
+  fog: Fog,
+  snow: Snow,
+  leaves: FallLeave
+};
 // 页面宽度
 const getWidth = () => {
   store.setInnerWidth(window.innerWidth);
@@ -54,12 +61,10 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="app-container">
-    <!-- <Fog /> -->
-    <Rain />
     <Header />
-    <!-- <Snow /> -->
-    <!-- <FallLeave /> -->
     <main>
+      <!-- 季节模式 -->
+      <component :is="season[seasonMode]" />
       <Background bgc="/images/bg1-1.webp" />
       <Home />
       <FabsBtn />

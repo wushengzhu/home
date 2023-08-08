@@ -11,6 +11,8 @@
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  top: 0;
+  left: 0;
 }
 
 .fog-img {

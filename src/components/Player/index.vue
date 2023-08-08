@@ -1,7 +1,22 @@
 <template>
-  <aplayer showLrc ref="player" v-if="playList[0]" :music="playList[playIndex]" :list="playList" :autoplay="autoplay"
-    :theme="theme" :repeat="repeat" :shuffle="shuffle" :listMaxHeight="listMaxHeight" :listFolded="listFolded"
-    :volume="volume" @play="onPlay" @pause="onPause" @timeupdate="onTimeUp" @onSelectSong="onSelectSong" />
+  <aplayer
+    showLrc
+    ref="player"
+    v-if="playList[0]"
+    :music="playList[playIndex]"
+    :list="playList"
+    :autoplay="autoplay"
+    :theme="theme"
+    :repeat="repeat"
+    :shuffle="shuffle"
+    :listMaxHeight="listMaxHeight"
+    :listFolded="listFolded"
+    :volume="volume"
+    @play="onPlay"
+    @pause="onPause"
+    @timeupdate="onTimeUp"
+    @onSelectSong="onSelectSong"
+  />
 </template>
 
 <script setup lang="ts">
@@ -30,22 +45,22 @@ const props = defineProps({
   // 音频自动播放
   autoplay: {
     type: Boolean,
-    default: false,
+    default: false
   },
   // 主题色
   theme: {
     type: String,
-    default: "#efefef",
+    default: "#efefef"
   },
   // 音频循环播放
   repeat: {
     type: String,
-    default: "list", //'list' | 'music' | 'none'
+    default: "list" //'list' | 'music' | 'none'
   },
   // 随机播放
   shuffle: {
     type: Boolean,
-    default: false,
+    default: false
   },
   // 默认音量
   volume: {
@@ -53,33 +68,33 @@ const props = defineProps({
     default: 0.7,
     validator: (value: any) => {
       return value >= 0 && value <= 1;
-    },
+    }
   },
   // 歌曲服务器 ( netease-网易云, tencent-qq音乐, kugou-酷狗, xiami-小米音乐, baidu-百度音乐 )
   songServer: {
     type: String,
-    default: "netease", //'netease' | 'tencent' | 'kugou' | 'xiami' | 'baidu'
+    default: "netease" //'netease' | 'tencent' | 'kugou' | 'xiami' | 'baidu'
   },
   // 播放类型 ( song-歌曲, playlist-播放列表, album-专辑, search-搜索, artist-艺术家 )
   songType: {
     type: String,
-    default: "playlist",
+    default: "playlist"
   },
   // id
   songId: {
     type: String,
-    default: "7452421335",
+    default: "7452421335"
   },
   // 列表是否默认折叠
   listFolded: {
     type: Boolean,
-    default: false,
+    default: false
   },
   // 列表最大高度
   listMaxHeight: {
     type: String,
-    default: "420px",
-  },
+    default: "420px"
+  }
 });
 
 // 初始化播放器
@@ -95,13 +110,13 @@ onMounted(() => {
           // 更改播放器加载状态
           store.musicIsOk = true;
           // 生成歌单
-          res.forEach((v) => {
+          res.forEach((v: any) => {
             playList.value.push({
               title: v.name || v.title,
               artist: v.artist || v.author,
               src: v.url || v.src,
               pic: v.pic,
-              lrc: v.lrc,
+              lrc: v.lrc
             });
           });
           console.log(
@@ -121,8 +136,8 @@ onMounted(() => {
         grouping: true,
         icon: h(PlayWrong, {
           theme: "filled",
-          fill: "#efefef",
-        }),
+          fill: "#efefef"
+        })
       });
     }
   });
@@ -143,8 +158,8 @@ const onPlay = () => {
     grouping: true,
     icon: h(MusicOne, {
       theme: "filled",
-      fill: '#efefef',
-    }),
+      fill: "#efefef"
+    })
   });
 };
 const onPause = () => {
@@ -232,14 +247,18 @@ defineExpose({ playToggle, changeVolume, changeSong });
         text-align: left;
         margin: 4px 0 6px 6px;
         height: 100%;
-        mask: linear-gradient(#fff 15%,
-            #fff 85%,
-            hsla(0deg, 0%, 100%, 0.6) 90%,
-            hsla(0deg, 0%, 100%, 0));
-        -webkit-mask: linear-gradient(#fff 15%,
-            #fff 85%,
-            hsla(0deg, 0%, 100%, 0.6) 90%,
-            hsla(0deg, 0%, 100%, 0));
+        mask: linear-gradient(
+          #fff 15%,
+          #fff 85%,
+          hsla(0deg, 0%, 100%, 0.6) 90%,
+          hsla(0deg, 0%, 100%, 0)
+        );
+        -webkit-mask: linear-gradient(
+          #fff 15%,
+          #fff 85%,
+          hsla(0deg, 0%, 100%, 0.6) 90%,
+          hsla(0deg, 0%, 100%, 0)
+        );
 
         &::before,
         &::after {

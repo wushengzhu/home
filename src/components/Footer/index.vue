@@ -16,7 +16,7 @@ const fullYear = new Date().getFullYear();
 
 <template>
   <footer>
-    <div class="power" v-show="!store.playerState">
+    <div class="power" v-show="!store.musicOpenState">
       <span>
         Copyright&nbsp;&copy;
         <!-- <span v-if="siteStartDate?.length >= 4" class="site-start">
@@ -38,10 +38,10 @@ const fullYear = new Date().getFullYear();
                 &amp;
             </a> -->
     </div>
-    <div class="lrc" v-show="store.playerState">
+    <div class="lrc" v-show="store.musicOpenState">
       <music-one theme="filled" size="18" fill="#efefef" />
       <span class="lrc-text">
-        {{ store.getPlayerLrc ? store.getPlayerLrc : "这句没有歌词" }}
+        {{ store.getMusicLrc ? store.getMusicLrc : "这句没有歌词" }}
       </span>
       <music-one theme="filled" size="18" fill="#efefef" />
     </div>
@@ -51,7 +51,7 @@ const fullYear = new Date().getFullYear();
 <style lang="scss" scoped>
 footer {
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   height: 46px;
