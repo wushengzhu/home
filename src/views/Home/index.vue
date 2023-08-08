@@ -34,6 +34,10 @@ const penName = ref(import.meta.env.VITE_HOME_PEN_NAME)
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
 
   .person-container {
     display: flex;

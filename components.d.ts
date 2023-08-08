@@ -14,6 +14,8 @@ declare module 'vue' {
     ElSlider: typeof import('element-plus/es')['ElSlider']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     FabsBtn: typeof import('./src/components/FabsBtn/index.vue')['default']
+    FallLeave: typeof import('./src/components/Season/FallLeave.vue')['default']
+    Fog: typeof import('./src/components/Season/Fog.vue')['default']
     Footer: typeof import('./src/components/Footer/index.vue')['default']
     Header: typeof import('./src/components/Header/index.vue')['default']
     Hitokoto: typeof import('./src/components/Hitokoto/index.vue')['default']
@@ -21,6 +23,8 @@ declare module 'vue' {
     MusicTool: typeof import('./src/components/MusicTool/index.vue')['default']
     OceanWave: typeof import('./src/components/OceanWave/index.vue')['default']
     Player: typeof import('./src/components/Player/index.vue')['default']
+    Rain: typeof import('./src/components/Season/Rain.vue')['default']
+    Snow: typeof import('./src/components/Season/Snow.vue')['default']
     Weather: typeof import('./src/components/Weather/index.vue')['default']
   }
 }

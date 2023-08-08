@@ -2,6 +2,10 @@
 import Header from "@/components/Header/index.vue";
 import Home from "@/views/Home/index.vue";
 import Background from "@/components/Background/index.vue";
+import Snow from "@/components/Season/Snow.vue";
+import Rain from "@/components/Season/Rain.vue";
+import FallLeave from "@/components/Season/FallLeave.vue";
+import Fog from "@/components/Season/Fog.vue";
 import FabsBtn from "@/components/FabsBtn/index.vue";
 import Footer from "@/components/Footer/index.vue";
 </script>
@@ -9,6 +13,9 @@ import Footer from "@/components/Footer/index.vue";
 <template>
   <div class="app-container">
     <Header />
+    <Snow />
+    <!-- <FallLeave /> -->
+    <!-- <Fog /> -->
     <main>
       <Background bgc="/images/bg1-1.webp" />
       <Home />
