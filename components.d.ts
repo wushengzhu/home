@@ -26,6 +26,7 @@ declare module 'vue' {
     Player: typeof import('./src/components/Player/index.vue')['default']
     Rain: typeof import('./src/components/Season/Rain.vue')['default']
     Rain1: typeof import('./src/components/Season/Rain1.vue')['default']
+    SettingButton: typeof import('./src/components/SettingButton/index.vue')['default']
     Snow: typeof import('./src/components/Season/Snow.vue')['default']
     Weather: typeof import('./src/components/Weather/index.vue')['default']
   }

@@ -6,15 +6,20 @@
     </div>
     <hamburger-button class="hg-btn" theme="outline" size="32" fill="#fff" @click="showSetting()" />
   </header>
-  <HomeModal ref="modalRef" />
+  <HomeModal ref="modalRef">
+    <template v-for="item of settings">
+      <SettingButton :btnText="item.text" :isChecked="item.value" />
+    </template>
+  </HomeModal>
   <Lantern v-show="showLantern" />
 </template>
 <script setup lang="ts">
 import { HamburgerButton } from "@icon-park/vue-next";
 import Lantern from "@/components/Lantern/index.vue";
+import SettingButton from "@/components/SettingButton/index.vue";
 import HomeModal from "@/components/HomeModal/index.vue";
 import DateTime from "@/components/DateTime/index.vue";
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import { mainStore } from "@/store";
 
 const store = mainStore();
@@ -25,6 +30,11 @@ const showSetting = () => {
     modalRef.value.open();
   }
 };
+const settings = reactive([
+  { text: '暗黑模式', value: false },
+  { text: '显示灯笼', value: false },
+  { text: '季节模式', value: false },
+])
 </script>
 <style lang="scss" scoped>
 .header-container {

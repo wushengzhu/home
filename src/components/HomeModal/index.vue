@@ -1,10 +1,12 @@
 <template>
     <Transition name="fade" v-if="isShow">
-        <div class="modal" @click="close">
+        <div class="modal-container" @click="close">
             <Transition name="zoom">
                 <div class="list" @click.stop>
                     <close-one class="close" theme="filled" size="28" fill="#ffffff60" @click="close" />
-                    <slot></slot>
+                    <div class="modal-content">
+                        <slot></slot>
+                    </div>
                 </div>
             </Transition>
         </div>
@@ -24,7 +26,7 @@ defineExpose({
 })
 </script>
 <style lang="scss" scoped>
-.modal {
+.modal-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -37,9 +39,9 @@ defineExpose({
 
     .list {
         position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
         top: calc(50% - 300px);
         left: calc(50% - 320px);
         width: 640px;
@@ -68,6 +70,16 @@ defineExpose({
             &:active {
                 transform: scale(0.95);
             }
+        }
+
+        .modal-content {
+            position: absolute;
+            width: 100%;
+            top: 50px;
+            padding: 20px 30px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-sizing: border-box;
         }
     }
 }
