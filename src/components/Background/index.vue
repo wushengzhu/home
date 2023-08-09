@@ -1,15 +1,21 @@
 <template>
   <div class="bg-container">
-    <!-- <img class="light-bg" :src="props.bgc" /> -->
-    <div class="dark-bg" ref="bgRef">
-      <div class="star comet"></div>
-    </div>
+    <template v-if="store.getIsDark">
+      <div class="dark-bg">
+        <div class="star comet"></div>
+        <template v-for="(item, i) in 150">
+          <div :class="{ 'star': true, 'star--big': i % 20 == 0, 'star--medium': i % 9 == 0 }" :style="setStarStyle()">
+          </div>
+        </template>
+      </div>
+    </template>
+    <img class="light-bg" :src="props.bgc" v-else />
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted } from "vue";
-import { ref } from "vue";
+import { mainStore } from "@/store";
 
+const store = mainStore();
 interface Props {
   bgc?: string;
 }
@@ -17,33 +23,14 @@ const props = defineProps<Props>();
 
 const wH = window.innerHeight;
 const wW = window.innerWidth;
-const bgRef = ref();
-const generateStars = (n: number) => {
-  for (let i = 0; i < n; i++) {
-    const div = document.createElement("div");
-    div.className =
-      i % 20 == 0
-        ? "star star--big"
-        : i % 9 == 0
-        ? "star star--medium"
-        : "star";
-    // random everywhere!
-    div.setAttribute(
-      "style",
-      `top:${Math.round(Math.random() * wH)}px;left:${Math.round(
-        Math.random() * wW
-      )}px;animation-duration:${
-        Math.round(Math.random() * 3000) + 3000
-      }ms;animation-delay:${Math.round(Math.random() * 3000)}ms;`
-    );
-    bgRef.value.appendChild(div);
-    // document.body.appendChild(div);
-  }
-};
+const setStarStyle = () =>
+({
+  top: Math.round(Math.random() * wH) + 'px',
+  left: Math.round(Math.random() * wW) + 'px',
+  animationDuration: Math.round(Math.random() * 3000) + 3000 + 'ms',
+  animationDelay: Math.round(Math.random() * 3000) + 'ms'
+})
 
-onMounted(() => {
-  generateStars(150);
-});
 </script>
 <style lang="scss" scoped>
 .bg-container,
@@ -75,10 +62,6 @@ onMounted(() => {
 
 .dark-bg {
   background-color: #03061a;
-  // position: relative;
-  position: absolute;
-  left: 0;
-  top: 0;
   overflow: hidden;
 }
 
@@ -91,15 +74,15 @@ onMounted(() => {
   box-shadow: 0 0 40px 0 rgba(237, 205, 163, 0.8), 0 0 20px 0 #ffffff;
   animation: glow 5s infinite;
 }
+
 .star--medium {
   width: 6px;
   height: 6px;
-  position: absolute;
 }
+
 .star--big {
   width: 9px;
   height: 9px;
-  position: absolute;
   box-shadow: 0 0 40px 0 #edcda3, 0 0 20px 0 #ffffff, inset 0 0 4px #ffffff;
 }
 
@@ -115,6 +98,7 @@ onMounted(() => {
   transform: rotate(-45deg) translate(0, -50px);
   animation: comet 6s infinite;
 }
+
 .comet:after {
   content: "";
   width: 20vw;
@@ -131,25 +115,31 @@ onMounted(() => {
   0% {
     opacity: 0.9;
   }
+
   50% {
     opacity: 0.2;
   }
+
   100% {
     opacity: 0.9;
   }
 }
+
 @keyframes comet {
   0% {
     transform: rotate(-45deg) translateX(0);
     opacity: 0.3;
   }
+
   10% {
     opacity: 1;
   }
+
   20% {
     transform: rotate(-45deg) translateX(-100vw);
     opacity: 0;
   }
+
   100% {
     transform: rotate(-45deg) translateX(-100vw);
     opacity: 0;

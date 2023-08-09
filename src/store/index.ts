@@ -6,11 +6,12 @@ export const mainStore = defineStore(storeKey, {
   state: () => {
     return {
       innerWidth: null, // 当前窗口宽度
-      pcBackGround:'',// pc端背景
-      mobileBgc:'',// 移动端背景
-      isShowLantern:false,// 春节模式，灯笼是否显示
-      seasonMode:'snow' as SeasonMode,// 季节模式
-      themeMode: 'light' as ThemeType, // 主题模式：白天、黑夜
+      pcBackGround: '', // pc端背景
+      mobileBgc: '', // 移动端背景
+      isShowLantern: false, // 春节模式，灯笼是否显示
+      seasonMode: 'snow' as SeasonMode, // 季节模式
+      // themeMode: 'light' as ThemeType, // 主题模式：白天、黑夜
+      isDark: false, // 主题模式：白天、黑夜,默认白天
       themeTextColor: '#fff',
       siteStartShow: true, // 建站日期显示
       musicIsOk: false, // 音乐是否加载完成
@@ -37,11 +38,15 @@ export const mainStore = defineStore(storeKey, {
         artist: state.musicArtist,
       }
     },
-    getSystemSetting(state){
-       return {
-         showLantern:state.isShowLantern,
-         seasonMode:state.seasonMode,
-       }
+    getSystemSetting(state) {
+      return {
+        showLantern: state.isShowLantern,
+        isDark: state.isDark,
+        seasonMode: state.seasonMode,
+      }
+    },
+    getIsDark(state) {
+      return state.isDark
     },
     getInnerWidth(state) {
       if (state.innerWidth) {
@@ -55,12 +60,16 @@ export const mainStore = defineStore(storeKey, {
       this.innerWidth = value
       this.mobileOpenState = value >= 720 ? false : true
     },
-    setIsShowLantern(value:boolean){
-      this.isShowLantern = value;
+    setIsShowLantern(value: boolean) {
+      this.isShowLantern = value
+    },
+    setIsDark(value: boolean) {
+      console.log(value)
+      this.isDark = value
     },
     // 更改播放状态
     setPlayerState(value: any) {
-        this.musicOpenState = value?false:true;
+      this.musicOpenState = value ? false : true
     },
     // 更改歌词
     setMusicLrc(value: any) {

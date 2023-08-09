@@ -1,15 +1,17 @@
 <template>
     <div class="fabs-container">
-        <CircleItem :isShowTooTip="false" :component="Moon" :iconSize="24" :bgWidth="60" :bgHeight="60"
-            :bgColor="'green'" />
-        <CircleItem :isShowTooTip="false" :component="SunOne" :iconSize="24" :bgWidth="60" :bgHeight="60"
-            :bgColor="'grey'" />
+        <CircleItem :placement="'left'" :tipContent="!isDark ? '黑夜模式' : '白日模式'" :component="DeskLamp" :iconSize="24"
+            :bgWidth="48" :bgHeight="48" :bgColor="'#676767'" :fill="!isDark ? '#fff' : 'yellow'" @click="switchMode" />
     </div>
 </template>
 <script setup lang="ts">
 import CircleItem from '@/components/CircleItem/index.vue'
-import { ref, reactive } from "vue"
-import { Moon, SunOne } from '@icon-park/vue-next'
+import { mainStore } from '@/store';
+import { Moon, SunOne, Tips, DeskLamp } from '@icon-park/vue-next'
+import { ref } from 'vue';
+const store = mainStore()
+const isDark = ref(store.getIsDark)
+const switchMode = () => store.setIsDark(!isDark.value)
 </script>
 <style lang="scss" scoped>
 .fabs-container {

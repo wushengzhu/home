@@ -3,42 +3,19 @@
     <el-tooltip effect="dark" :content="tipContent" :placement="placement">
       <div class="circle circle-card" :style="dynamicStyle">
         <!-- 头像 -->
-        <el-avatar
-          v-if="imgSrc"
-          :is="component"
-          :size="'large'"
-          :src="imgSrc"
-          class="img"
-        >
+        <el-avatar v-if="imgSrc" :is="component" :size="'large'" :src="imgSrc" class="img">
         </el-avatar>
-        <component
-          v-else
-          :is="component"
-          :theme="theme"
-          :size="iconSize"
-          :fill="fill"
-        ></component>
+        <component v-else :is="component" :theme="theme" :size="iconSize" :fill="fill"></component>
       </div>
     </el-tooltip>
   </template>
   <template v-else>
     <div class="circle circle-card" :style="dynamicStyle">
       <!-- 头像 -->
-      <el-avatar
-        v-if="imgSrc"
-        :is="component"
-        :size="'large'"
-        :src="imgSrc"
-        class="img"
-      >
+      <el-avatar v-if="imgSrc" :is="component" :size="'large'" :src="imgSrc" class="img">
       </el-avatar>
-      <component
-        v-else
-        :is="component"
-        :theme="theme"
-        :size="iconSize"
-        :fill="fill"
-      ></component>
+      <component v-else :is="component" :theme="theme" :size="iconSize" :fill="fill">
+      </component>
     </div>
   </template>
 </template>
@@ -90,8 +67,7 @@ const props = defineProps({
 });
 
 const dynamicStyle = ref(
-  `--width: ${props.bgWidth}px; --height: ${props.bgHeight}px;--background:${
-    props.bgColor
+  `--width: ${props.bgWidth}px; --height: ${props.bgHeight}px;--background:${props.bgColor
   };--borderRadius:${parseInt(props.bgWidth / 2 + "")}px`
 );
 </script>
@@ -100,6 +76,7 @@ const dynamicStyle = ref(
   width: 100%;
   height: 100%;
 }
+
 .circle {
   display: flex;
   justify-content: center;
@@ -126,5 +103,10 @@ const dynamicStyle = ref(
   &:active {
     transform: scale(0.98);
   }
+}
+
+svg {
+  width: 100%;
+  height: 100%;
 }
 </style>

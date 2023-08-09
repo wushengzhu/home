@@ -4,13 +4,7 @@
       <!-- <Weather /> -->
       <DateTime />
     </div>
-    <hamburger-button
-      class="hg-btn"
-      theme="outline"
-      size="32"
-      fill="#fff"
-      @click="showSetting()"
-    />
+    <hamburger-button class="hg-btn" theme="outline" size="32" fill="#fff" @click="showSetting()" />
   </header>
   <HomeModal ref="modalRef" />
   <Lantern v-show="showLantern" />
@@ -41,8 +35,13 @@ const showSetting = () => {
   padding-top: 12px;
   padding-left: 12px;
   padding-right: 12px;
+  // position: absolute;
+  // width: 100%;
+  // box-sizing: border-box;
+
   .hg-btn {
     cursor: pointer;
+    z-index: 10;
   }
 }
 </style>
