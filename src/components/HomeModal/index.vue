@@ -3,7 +3,7 @@
         <div class="modal-container" @click="close">
             <Transition name="zoom">
                 <div class="list" @click.stop>
-                    <close-one class="close" theme="filled" size="28" fill="#ffffff60" @click="close" />
+                    <close-one class="close" theme="filled" size="28" fill="#ffffff60" @click="close" v-show="showClose" />
                     <div class="modal-content">
                         <slot></slot>
                     </div>
@@ -17,6 +17,20 @@ import { CloseOne } from '@icon-park/vue-next';
 import { ref } from 'vue';
 
 const isShow = ref(false)
+const props = defineProps({
+    showClose: {
+        type: Boolean,
+        default: true,
+    },
+    width: {
+        type: Number,
+        default: 640,
+    },
+    height: {
+        type: Number,
+        default: 600,
+    }
+})
 
 const open = () => isShow.value = true;
 const close = () => isShow.value = false;
