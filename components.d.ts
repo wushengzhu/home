@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Background: typeof import('./src/components/Background/index.vue')['default']
+    CartoonButton: typeof import('./src/components/CartoonButton/index.vue')['default']
     CircleItem: typeof import('./src/components/CircleItem/index.vue')['default']
     DateTime: typeof import('./src/components/DateTime/index.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']

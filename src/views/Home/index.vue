@@ -15,6 +15,9 @@
         <Hitokoto />
         <MusicTool />
       </div>
+      <div class="btn-area">
+        <CartoonButton width="200" height="60" size="24" />
+      </div>
     </div>
   </div>
 </template>
@@ -22,6 +25,7 @@
 import Hitokoto from '@/components/Hitokoto/index.vue'
 import MusicTool from '@/components/MusicTool/index.vue'
 import CircleItem from '@/components/CircleItem/index.vue'
+import CartoonButton from '@/components/CartoonButton/index.vue'
 import { Tool, GithubOne, PictureAlbum, Bookshelf, Log, Notes } from '@icon-park/vue-next';
 import { ref } from 'vue';
 
@@ -95,6 +99,10 @@ const penName = ref(import.meta.env.VITE_HOME_PEN_NAME)
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .btn-area {
+    margin-top: 100px;
   }
 }
 </style>
