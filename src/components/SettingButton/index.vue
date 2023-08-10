@@ -33,7 +33,7 @@ const props = defineProps({
     font-size: 1rem;
     width: 100%;
     color: #333;
-    background-color: #eee;
+    // background-color: #eee;
     font-size: 1rem;
     font-family: "Space Grotesk", sans-serif;
     position: relative;
@@ -49,7 +49,7 @@ const props = defineProps({
 
 .wrapper {
     width: 100%;
-    // border-radius: 12px;
+    border-radius: 12px;
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;

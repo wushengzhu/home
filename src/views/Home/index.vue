@@ -33,7 +33,7 @@ const penName = ref(import.meta.env.VITE_HOME_PEN_NAME)
 </script>
 <style lang="scss" scoped>
 .home-container {
-  height: 80vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;

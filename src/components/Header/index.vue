@@ -51,7 +51,7 @@ const settings = reactive([
 
   .hg-btn {
     cursor: pointer;
-    z-index: 10;
+    z-index: 1;
   }
 }
 </style>
