@@ -38,6 +38,7 @@ const props = defineProps({
     font-family: "Space Grotesk", sans-serif;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 @media (max-width: 992px) {
@@ -48,7 +49,7 @@ const props = defineProps({
 
 
 .wrapper {
-    width: 100%;
+    // width: 100%;
     border-radius: 12px;
     padding: 0.5rem;
     display: flex;
@@ -59,6 +60,14 @@ const props = defineProps({
     background-color: rgba(255, 255, 255, 0.3);
     z-index: 1;
     margin-bottom: 0.2rem;
+}
+
+.wrapper:hover {
+    transform: scale(1.01);
+}
+
+.wrapper:active {
+    transform: scale(0.98);
 }
 
 input#checkbox {

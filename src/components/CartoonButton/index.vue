@@ -106,7 +106,7 @@ const props = defineProps({
 .button::before {
     content: '';
     position: absolute;
-    z-index: 2;
+    // z-index: 1;
     top: 0;
     right: 20px;
     bottom: 0;
@@ -122,7 +122,7 @@ const props = defineProps({
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 1;
+    // z-index: 1;
     width: 100%;
     height: 100%;
     border-radius: 40px;
@@ -149,7 +149,7 @@ const props = defineProps({
 
 .button__text {
     position: relative;
-    z-index: 3;
+    z-index: 1;
     font-size: var(--fontSize);
     letter-spacing: 4px;
     color: var(--base_color);
@@ -180,7 +180,7 @@ const props = defineProps({
 
 .character__face {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     top: 15px;
     left: 0;
     right: 0;

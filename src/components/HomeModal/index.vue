@@ -49,7 +49,7 @@ defineExpose({
     height: 100%;
     background-color: #00000080;
     backdrop-filter: blur(20px);
-    z-index: 1;
+    z-index: 2;
 
     .list {
         position: absolute;
