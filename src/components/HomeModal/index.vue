@@ -2,12 +2,13 @@
     <Transition name="fade" v-if="isShow">
         <div class="modal-container" @click="close">
             <Transition name="zoom">
-                <div class="list" @click.stop>
+                <div class="modal-body" @click.stop :style="setBodyStyle" v-if="showBody">
                     <close-one class="close" theme="filled" size="28" fill="#ffffff60" @click="close" v-show="showClose" />
                     <div class="modal-content">
                         <slot></slot>
                     </div>
                 </div>
+                <slot v-else></slot>
             </Transition>
         </div>
     </Transition>
@@ -18,6 +19,10 @@ import { ref } from 'vue';
 
 const isShow = ref(false)
 const props = defineProps({
+    showBody: {
+        type: Boolean,
+        default: true,
+    },
     showClose: {
         type: Boolean,
         default: true,
@@ -32,6 +37,7 @@ const props = defineProps({
     }
 })
 
+const setBodyStyle = ref(`--top:${Math.round(props.height / 2)}px;--left:${Math.round(props.width / 2)}px;--width:${props.width}px;--height:${props.height}px;`)
 const open = () => isShow.value = true;
 const close = () => isShow.value = false;
 defineExpose({
@@ -49,17 +55,17 @@ defineExpose({
     height: 100%;
     background-color: #00000080;
     backdrop-filter: blur(20px);
-    z-index: 2;
+    z-index: 10;
 
-    .list {
+    .modal-body {
         position: absolute;
         // display: flex;
         // align-items: center;
         // justify-content: center;
-        top: calc(50% - 300px);
-        left: calc(50% - 320px);
-        width: 640px;
-        height: 600px;
+        top: calc(50% - var(--top));
+        left: calc(50% - var(--left));
+        width: var(--width);
+        height: var(--height);
         background-color: #ffffff66;
         border-radius: 6px;
         z-index: 999;

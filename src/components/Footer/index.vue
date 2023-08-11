@@ -60,7 +60,7 @@ footer {
   backdrop-filter: blur(10px);
   background: rgb(0 0 0 / 25%);
   color: #fff;
-  z-index: 0;
+  z-index: 1;
   animation: fade;
   -webkit-animation: fade 0.5s;
 

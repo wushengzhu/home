@@ -5,31 +5,58 @@
         <div class="ml-ms fontface">{{ penName }}</div>
       </div>
       <div class="person-web">
-        <CircleItem :component="Tool" tipContent="个人工具" />
-        <CircleItem :component="Notes" tipContent="个人博客" />
-        <CircleItem :imgSrc="'/images/logo.jpg'" tipContent="个人简历" />
-        <CircleItem :component="PictureAlbum" tipContent="个人相册" />
-        <CircleItem :component="Bookshelf" tipContent="个人书籍" />
+        <template v-for="item of homePage">
+          <CircleItem :component="item.component" :imgSrc="item.imgSrc" :tipContent="item.tipContent"
+            @click="openModal(item.pageType)" />
+        </template>
       </div>
       <div class="tool-card">
         <Hitokoto />
         <MusicTool />
       </div>
       <div class="btn-area">
-        <CartoonButton width="200" height="60" size="24" />
+        <CartoonButton :width="200" :height="60" :size="24" />
       </div>
     </div>
   </div>
+  <HomeModal :showBody="false" :showClose="false" ref="modalRef">
+    <div class="tools">
+      <component :is="curComponent" />
+    </div>
+    <CircleItem :component="CloseOne" fill="rgba(45, 143, 189, 0.685)" />
+  </HomeModal>
 </template>
 <script setup lang="ts">
 import Hitokoto from '@/components/Hitokoto/index.vue'
 import MusicTool from '@/components/MusicTool/index.vue'
+import HomeModal from '@/components/HomeModal/index.vue'
 import CircleItem from '@/components/CircleItem/index.vue'
 import CartoonButton from '@/components/CartoonButton/index.vue'
-import { Tool, GithubOne, PictureAlbum, Bookshelf, Log, Notes } from '@icon-park/vue-next';
-import { ref } from 'vue';
+import CustomTool from '@/views/CustomTool/index.vue'
+import PersonAlbum from '@/views/PersonAlbum/index.vue'
+import PersonBlog from '@/views/PersonBlog/index.vue'
+import PersonResume from '@/views/PersonResume/index.vue'
+import BookShelf from '@/views/BookShelf/index.vue'
+import { ref, shallowRef } from 'vue';
+import { homePage } from '@/utils/contants';
+import { CloseOne } from '@icon-park/vue-next'
 
 const penName = ref(import.meta.env.VITE_HOME_PEN_NAME)
+const pageComponents = {
+  'tool': CustomTool,
+  'blog': PersonBlog,
+  'resume': PersonResume,
+  'album': PersonAlbum,
+  'book': BookShelf,
+}
+const modalRef = ref();
+const curComponent = shallowRef() // shallowRef是浅层响应式数据，它只会将传入的对象的第一层属性转换为响应式数据，而不会递归地将嵌套对象的属性都转换为响应式数据。
+const openModal = (type: homeTools) => {
+  curComponent.value = pageComponents[type];
+  if (modalRef.value) {
+    modalRef.value.open();
+  }
+}
 </script>
 <style lang="scss" scoped>
 .home-container {
@@ -104,5 +131,14 @@ const penName = ref(import.meta.env.VITE_HOME_PEN_NAME)
   .btn-area {
     margin-top: 100px;
   }
+}
+
+.tools {
+  padding: 100px 200px;
+  // box-sizing: border-box;
+}
+
+.close {
+  z-index: 2;
 }
 </style>

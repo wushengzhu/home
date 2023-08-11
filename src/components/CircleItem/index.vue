@@ -1,23 +1,25 @@
 <template>
-  <template v-if="isShowTooTip">
-    <el-tooltip effect="dark" :content="tipContent" :placement="placement">
+  <div>
+    <template v-if="isShowTooTip">
+      <el-tooltip effect="dark" :content="tipContent" :placement="placement">
+        <div class="circle circle-card" :style="dynamicStyle">
+          <!-- 头像 -->
+          <el-avatar v-if="imgSrc" :is="component" :size="'large'" :src="imgSrc" class="img">
+          </el-avatar>
+          <component v-else :is="component" :theme="theme" :size="iconSize" :fill="fill"></component>
+        </div>
+      </el-tooltip>
+    </template>
+    <template v-else>
       <div class="circle circle-card" :style="dynamicStyle">
         <!-- 头像 -->
         <el-avatar v-if="imgSrc" :is="component" :size="'large'" :src="imgSrc" class="img">
         </el-avatar>
-        <component v-else :is="component" :theme="theme" :size="iconSize" :fill="fill"></component>
+        <component v-else :is="component" :theme="theme" :size="iconSize" :fill="fill">
+        </component>
       </div>
-    </el-tooltip>
-  </template>
-  <template v-else>
-    <div class="circle circle-card" :style="dynamicStyle">
-      <!-- 头像 -->
-      <el-avatar v-if="imgSrc" :is="component" :size="'large'" :src="imgSrc" class="img">
-      </el-avatar>
-      <component v-else :is="component" :theme="theme" :size="iconSize" :fill="fill">
-      </component>
-    </div>
-  </template>
+    </template>
+  </div>
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
@@ -45,7 +47,7 @@ const props = defineProps({
     default: "top"
   },
   imgSrc: {
-    type: String,
+    type: String || null,
     default: null
   },
   isShowTooTip: {

@@ -12,6 +12,8 @@ declare module 'vue' {
     CircleItem: typeof import('./src/components/CircleItem/index.vue')['default']
     DateTime: typeof import('./src/components/DateTime/index.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElCarousel: typeof import('element-plus/es')['ElCarousel']
+    ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElSlider: typeof import('element-plus/es')['ElSlider']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     FabsBtn: typeof import('./src/components/FabsBtn/index.vue')['default']
