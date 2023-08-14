@@ -23,7 +23,6 @@
     <div class="tools">
       <component :is="curComponent" />
     </div>
-    <CircleItem :component="CloseOne" fill="rgba(45, 143, 189, 0.685)" />
   </HomeModal>
 </template>
 <script setup lang="ts">

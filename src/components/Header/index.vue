@@ -8,7 +8,7 @@
   </header>
   <HomeModal ref="modalRef">
     <template v-for="item of settings">
-      <SettingButton :btnText="item.text" :isChecked="item.value" />
+      <SettingButton :btnText="item.text" v-model:isChecked="item.value" />
     </template>
   </HomeModal>
   <Lantern v-show="showLantern" />
@@ -32,7 +32,7 @@ const showSetting = () => {
 };
 const settings = reactive([
   { text: '暗黑模式', value: false },
-  { text: '显示灯笼', value: false },
+  { text: '显示灯笼', value: true },
   { text: '季节模式', value: false },
 ])
 </script>

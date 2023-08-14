@@ -1,6 +1,8 @@
 <template>
     <Transition name="fade" v-if="isShow">
-        <div class="modal-container" @click="close">
+        <div class="modal-container">
+            <CircleItem :component="Left" :bg-color="'rgba(45, 143, 189, 0.685)'" :isShowTooTip="false" :icon-size="32"
+                :bg-width="60" :bg-height="60" class="l-btn" @click="leftNext()" />
             <Transition name="zoom">
                 <div class="modal-body" @click.stop :style="setBodyStyle" v-if="showBody">
                     <close-one class="close" theme="filled" size="28" fill="#ffffff60" @click="close" v-show="showClose" />
@@ -10,15 +12,28 @@
                 </div>
                 <slot v-else></slot>
             </Transition>
+            <CircleItem :component="Close" :isShowTooTip="false" :icon-size="24" :bg-width="60" :bg-height="60"
+                class="bottom-close" @click="close()" />
+            <CircleItem :component="Right" :bg-color="'rgba(45, 143, 189, 0.685)'" :isShowTooTip="false" :icon-size="32"
+                :bg-width="60" :bg-height="60" class="r-btn" @click="rightNext()" />
         </div>
     </Transition>
 </template>
 <script setup lang="ts">
-import { CloseOne } from '@icon-park/vue-next';
+import { CloseOne, Close, Left, Right } from '@icon-park/vue-next';
+import CircleItem from '@/components/CircleItem/index.vue'
 import { ref } from 'vue';
 
 const isShow = ref(false)
 const props = defineProps({
+    showBClose: {
+        type: Boolean,
+        default: true,
+    },
+    showLRNext: {
+        type: Boolean,
+        default: true,
+    },
     showBody: {
         type: Boolean,
         default: true,
@@ -40,7 +55,15 @@ const props = defineProps({
 const setBodyStyle = ref(`--top:${Math.round(props.height / 2)}px;--left:${Math.round(props.width / 2)}px;--width:${props.width}px;--height:${props.height}px;`)
 const open = () => isShow.value = true;
 const close = () => isShow.value = false;
+const leftNext = () => {
+
+}
+const rightNext = () => {
+
+}
 defineExpose({
+    leftNext,
+    rightNext,
     open,
     close
 })
@@ -101,6 +124,28 @@ defineExpose({
             overflow-x: hidden;
             box-sizing: border-box;
         }
+    }
+
+    .bottom-close {
+        position: absolute;
+        left: 50%;
+        bottom: 80px;
+    }
+
+    .l-btn,
+    .r-btn {
+        position: absolute;
+        z-index: 2;
+    }
+
+    .l-btn {
+        left: 100px;
+        top: 50%;
+    }
+
+    .r-btn {
+        right: 100px;
+        top: 50%;
     }
 }
 

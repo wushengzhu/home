@@ -22,6 +22,6 @@ const switchMode = () => store.setIsDark(!isDark.value)
     position: fixed;
     right: 70px;
     bottom: 200px;
-    z-index: -1;
+    z-index: 2;
 }
 </style>

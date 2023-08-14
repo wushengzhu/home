@@ -2,7 +2,8 @@
     <div class="btn-container">
         <div class="wrapper">
             <div class="text">{{ btnText }}</div>
-            <input id="checkbox" type="checkbox" :checked="isChecked" />
+            <input id="checkbox" type="checkbox" :checked="isChecked"
+                @input="emit('update:isChecked', $event.target.value)" />
             <label class="button" for="checkbox">
                 <div class="dot"></div>
             </label>
@@ -21,6 +22,7 @@ const props = defineProps({
         default: false
     }
 })
+const emit = defineEmits(['update:isChecked'])
 </script>
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap");
