@@ -15,6 +15,7 @@ declare module 'vue' {
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElSlider: typeof import('element-plus/es')['ElSlider']
+    ElTag: typeof import('element-plus/es')['ElTag']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     FabsBtn: typeof import('./src/components/FabsBtn/index.vue')['default']
     FallLeave: typeof import('./src/components/Season/FallLeave.vue')['default']

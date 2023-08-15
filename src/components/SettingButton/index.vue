@@ -3,7 +3,7 @@
         <div class="wrapper">
             <div class="text">{{ btnText }}</div>
             <input id="checkbox" type="checkbox" :checked="isChecked"
-                @input="emit('update:isChecked', $event.target.value)" />
+                @input="emit('update:isChecked', $event?.target?.value)" />
             <label class="button" for="checkbox">
                 <div class="dot"></div>
             </label>

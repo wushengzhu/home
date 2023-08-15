@@ -70,7 +70,7 @@ const props = defineProps({
 
 const dynamicStyle = ref(
   `--width: ${props.bgWidth}px; --height: ${props.bgHeight}px;--background:${props.bgColor
-  };--borderRadius:${parseInt(props.bgWidth / 2 + "")}px`
+  };--borderRadius:${parseInt(props.bgWidth / 2 + "")}px;--iconSize:${props.iconSize}px`
 );
 </script>
 <style lang="scss" scoped>
@@ -110,5 +110,12 @@ const dynamicStyle = ref(
 svg {
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+}
+
+// 使svg外层元素与svg宽高一致性，方便居中处理
+span {
+  width: var(--iconSize);
+  height: var(--iconSize);
 }
 </style>

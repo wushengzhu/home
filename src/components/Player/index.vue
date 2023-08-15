@@ -1,22 +1,7 @@
 <template>
-  <aplayer
-    showLrc
-    ref="player"
-    v-if="playList[0]"
-    :music="playList[playIndex]"
-    :list="playList"
-    :autoplay="autoplay"
-    :theme="theme"
-    :repeat="repeat"
-    :shuffle="shuffle"
-    :listMaxHeight="listMaxHeight"
-    :listFolded="listFolded"
-    :volume="volume"
-    @play="onPlay"
-    @pause="onPause"
-    @timeupdate="onTimeUp"
-    @onSelectSong="onSelectSong"
-  />
+  <aplayer showLrc ref="player" v-if="playList[0]" :music="playList[playIndex]" :list="playList" :autoplay="autoplay"
+    :theme="theme" :repeat="repeat" :shuffle="shuffle" :listMaxHeight="listMaxHeight" :listFolded="listFolded"
+    :volume="volume" @play="onPlay" @pause="onPause" @timeupdate="onTimeUp" @onSelectSong="onSelectSong" />
 </template>
 
 <script setup lang="ts">
@@ -213,7 +198,7 @@ defineExpose({ playToggle, changeVolume, changeSong });
 
 <style lang="scss" scoped>
 .aplayer {
-  width: 80%;
+  width: 100%;
   background: transparent;
   border-radius: 6px;
   font-family: "HarmonyOS_Regular", sans-serif !important;
@@ -247,18 +232,14 @@ defineExpose({ playToggle, changeVolume, changeSong });
         text-align: left;
         margin: 4px 0 6px 6px;
         height: 100%;
-        mask: linear-gradient(
-          #fff 15%,
-          #fff 85%,
-          hsla(0deg, 0%, 100%, 0.6) 90%,
-          hsla(0deg, 0%, 100%, 0)
-        );
-        -webkit-mask: linear-gradient(
-          #fff 15%,
-          #fff 85%,
-          hsla(0deg, 0%, 100%, 0.6) 90%,
-          hsla(0deg, 0%, 100%, 0)
-        );
+        mask: linear-gradient(#fff 15%,
+            #fff 85%,
+            hsla(0deg, 0%, 100%, 0.6) 90%,
+            hsla(0deg, 0%, 100%, 0));
+        -webkit-mask: linear-gradient(#fff 15%,
+            #fff 85%,
+            hsla(0deg, 0%, 100%, 0.6) 90%,
+            hsla(0deg, 0%, 100%, 0));
 
         &::before,
         &::after {

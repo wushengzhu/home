@@ -118,6 +118,7 @@ defineExpose({
         .modal-content {
             position: absolute;
             width: 100%;
+            height: calc(50vh - 50px);
             top: 50px;
             padding: 20px 30px;
             overflow-y: auto;

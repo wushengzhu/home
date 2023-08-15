@@ -7,7 +7,7 @@ import {
   Notes,
 } from '@icon-park/vue-next'
 
-export const homePage: Array<CircleItemType> = [
+export const HomePage: Array<CircleItemType> = [
   {
     component: Tool,
     tipContent: '个人工具',
@@ -33,4 +33,24 @@ export const homePage: Array<CircleItemType> = [
     tipContent: '个人书架',
     pageType: 'book',
   },
+]
+
+export const SystemInitValue: Array<SystemType> = [
+  { type: 'dark', text: '暗黑模式', value: false },
+  { type: 'lantern', text: '显示灯笼', value: true },
+  { type: 'season', text: '季节模式', value: false },
+  { type: 'homebtn', text: '点此看看', value: false },
+  { type: 'dark', text: '暗黑模式', value: false },
+  { type: 'lantern', text: '显示灯笼', value: true },
+  { type: 'season', text: '季节模式', value: false },
+  { type: 'homebtn', text: '点此看看', value: false },
+  { type: 'dark', text: '暗黑模式', value: false },
+  { type: 'lantern', text: '显示灯笼', value: true },
+  { type: 'season', text: '季节模式', value: false },
+  { type: 'homebtn', text: '点此看看', value: false },
+  { type: 'homebtn', text: '点此看看', value: false },
+  { type: 'dark', text: '暗黑模式', value: false },
+  { type: 'lantern', text: '显示灯笼', value: true },
+  { type: 'season', text: '季节模式', value: false },
+  { type: 'homebtn', text: '点此看看', value: false },
 ]

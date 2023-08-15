@@ -1,13 +1,18 @@
 <template>
   <div class="tool-container" @click.stop>
     <template v-for="item of tools">
-      <div class="tool-card cards">
+      <a class="tool-card cards" :href="item.link" target="_blank">
         <h4 class="tool-title">{{ item.name }}</h4>
         <div class="tool-detail">
           <span>描述：</span>
           <span>{{ item.detail }}</span>
         </div>
-      </div>
+        <div class="tool-tags">
+          <el-tag v-for="jtem in item.keywords?.split(',')" :key="jtem" type="success" effect="dark">
+            {{ jtem }}
+          </el-tag>
+        </div>
+      </a>
     </template>
   </div>
 </template>
@@ -25,6 +30,12 @@ import tools from "@/assets/tools.json"
   flex-wrap: wrap;
   cursor: pointer;
 
+  a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+  }
+
   .tool-card {
     width: 200px;
     height: 100px;
@@ -41,11 +52,15 @@ import tools from "@/assets/tools.json"
   }
 
   .tool-detail {
-    margin-top: 10px;
+    margin-top: 5px;
     color: #fff;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+
+  .tool-tag {
+    margin-top: 5px;
   }
 }
 </style>

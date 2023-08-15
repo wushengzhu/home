@@ -25,3 +25,9 @@ interface CircleItemType {
   bgColor?: string
   pageType: homeTools
 }
+
+interface SystemType {
+  text: string
+  type: string
+  value: boolean
+}

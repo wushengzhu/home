@@ -7,9 +7,12 @@
     <hamburger-button class="hg-btn" theme="outline" size="32" fill="#fff" @click="showSetting()" />
   </header>
   <HomeModal ref="modalRef">
-    <template v-for="item of settings">
-      <SettingButton :btnText="item.text" v-model:isChecked="item.value" />
-    </template>
+    <div class="settings">
+      <template v-for="item of settings" :key="item.text">
+        <SettingButton :btnText="item.text" v-model:isChecked="item.value"
+          @click.prevent="clickSetting(item.type, !item.value)" />
+      </template>
+    </div>
   </HomeModal>
   <Lantern v-show="showLantern" />
 </template>
@@ -21,6 +24,7 @@ import HomeModal from "@/components/HomeModal/index.vue";
 import DateTime from "@/components/DateTime/index.vue";
 import { ref, reactive } from "vue";
 import { mainStore } from "@/store";
+import { SystemInitValue } from "@/utils/contants";
 
 const store = mainStore();
 const { showLantern } = store.getSystemSetting;
@@ -30,11 +34,14 @@ const showSetting = () => {
     modalRef.value.open();
   }
 };
-const settings = reactive([
-  { text: '暗黑模式', value: false },
-  { text: '显示灯笼', value: true },
-  { text: '季节模式', value: false },
-])
+const clickSetting = (type: string, val: boolean) => {
+  settings.forEach((item: SystemType) => {
+    if (item.type === type) {
+      item.value = val;
+    }
+  })
+}
+const settings = reactive(SystemInitValue)
 </script>
 <style lang="scss" scoped>
 .header-container {
@@ -52,6 +59,12 @@ const settings = reactive([
   .hg-btn {
     cursor: pointer;
     z-index: 1;
+  }
+
+  .settings {
+    height: 50vh;
+    overflow-y: auto;
+    box-sizing: border-box;
   }
 }
 </style>

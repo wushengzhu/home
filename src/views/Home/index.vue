@@ -5,7 +5,7 @@
         <div class="ml-ms fontface">{{ penName }}</div>
       </div>
       <div class="person-web">
-        <template v-for="item of homePage">
+        <template v-for="item of HomePage">
           <CircleItem :component="item.component" :imgSrc="item.imgSrc" :tipContent="item.tipContent"
             @click="openModal(item.pageType)" />
         </template>
@@ -37,7 +37,7 @@ import PersonBlog from '@/views/PersonBlog/index.vue'
 import PersonResume from '@/views/PersonResume/index.vue'
 import BookShelf from '@/views/BookShelf/index.vue'
 import { ref, shallowRef } from 'vue';
-import { homePage } from '@/utils/contants';
+import { HomePage } from '@/utils/contants';
 import { CloseOne } from '@icon-park/vue-next'
 
 const penName = ref(import.meta.env.VITE_HOME_PEN_NAME)
