@@ -10,11 +10,12 @@
       </div>
     </template>
     <img class="light-bg" :src="props.bgc" v-else />
+    <!-- <StarSky /> -->
   </div>
 </template>
 <script setup lang="ts">
 import { mainStore } from "@/store";
-
+import StarSky from '@/components/StarSky/index.vue'
 const store = mainStore();
 interface Props {
   bgc?: string;
@@ -60,8 +61,11 @@ const setStarStyle = () =>
   backface-visibility: hidden;
 }
 
+// 斜流星样式
 .dark-bg {
-  background-color: #03061a;
+  // background-color: #03061a;
+  background: -webkit-gradient(linear, left top, left bottom, from(#16161d), color-stop(#1f1f3a), to(#3b2f4a));
+  background: linear-gradient(#16161d, #1f1f3a, #3b2f4a);
   overflow: hidden;
 }
 
