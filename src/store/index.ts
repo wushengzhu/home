@@ -6,11 +6,17 @@ export const mainStore = defineStore(storeKey, {
   state: () => {
     return {
       innerWidth: null, // 当前窗口宽度
-      pcBackGround: '', // pc端背景
-      mobileBgc: '', // 移动端背景
-      isShowLantern: false, // 春节模式，灯笼是否显示
-      seasonMode: 'snow' as SeasonMode, // 季节模式
-      // themeMode: 'light' as ThemeType, // 主题模式：白天、黑夜
+      systemSettings: {
+        showHomeBtn: true,
+        showSingleStar: false,
+        showLantern: false,
+        showTimeAndWeather: true,
+        showDarkMode: true,
+        seasonMode: 'default',
+        musicSource: 'tencent',
+        pcBgc: '/images/pc/1.webp',
+        mobileBgc: '/images/mobile/1.webp',
+      } as SystemSettings,
       isDark: false, // 主题模式：白天、黑夜,默认白天
       themeTextColor: '#fff',
       siteStartShow: true, // 建站日期显示
@@ -39,11 +45,7 @@ export const mainStore = defineStore(storeKey, {
       }
     },
     getSystemSetting(state) {
-      return {
-        showLantern: state.isShowLantern,
-        isDark: state.isDark,
-        seasonMode: state.seasonMode,
-      }
+      return state.systemSettings as SystemSettings
     },
     getIsDark(state) {
       return state.isDark
@@ -60,11 +62,14 @@ export const mainStore = defineStore(storeKey, {
       this.innerWidth = value
       this.mobileOpenState = value >= 720 ? false : true
     },
-    setIsShowLantern(value: boolean) {
-      this.isShowLantern = value
+    setSystemSetting(value: SystemSettings) {
+      this.systemSettings = Object.assign(
+        {},
+        { ...this.systemSettings },
+        { ...value }
+      )
     },
     setIsDark(value: boolean) {
-      console.log(value)
       this.isDark = value
     },
     // 更改播放状态

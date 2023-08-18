@@ -8,13 +8,20 @@
   </header>
   <HomeModal ref="modalRef">
     <div class="settings">
-      <template v-for="item of settings" :key="item.text">
-        <SettingButton :btnText="item.text" v-model:isChecked="item.value"
-          @click.prevent="clickSetting(item.type, !item.value)" />
+      <template v-for="item of SystemValue" :key="item.attribute">
+        <SettingButton :btnText="item.text" :btnType="item?.type" v-if="item?.type && item?.type === 'radio'">
+          <el-radio-group v-if="item?.radioArr" v-model="systemSettings[item.attribute]">
+            <el-radio v-for="jtem of item?.radioArr" :key="jtem.value" :label="jtem.value"
+              @click.prevent="clickSetting(jtem.value, item.attribute)">{{ jtem.text }}</el-radio>
+          </el-radio-group>
+        </SettingButton>
+        <SettingButton :btnText="item.text" :btnType="item?.type" v-model:systemValue="systemSettings[item.attribute]"
+          @click.prevent="clickSetting(!systemSettings[item.attribute], item.attribute)" v-else>
+        </SettingButton>
       </template>
     </div>
   </HomeModal>
-  <Lantern v-show="showLantern" />
+  <Lantern v-show="systemSettings.showLantern" />
 </template>
 <script setup lang="ts">
 import { HamburgerButton } from "@icon-park/vue-next";
@@ -24,37 +31,37 @@ import HomeModal from "@/components/HomeModal/index.vue";
 import DateTime from "@/components/DateTime/index.vue";
 import { ref, reactive } from "vue";
 import { mainStore } from "@/store";
-import { SystemInitValue } from "@/utils/contants";
+import { SystemValue } from "@/utils/contants"
+import { watch } from "vue";
 
 const store = mainStore();
-const { showLantern } = store.getSystemSetting;
 const modalRef = ref();
+let systemSettings = reactive<SystemSettings>({
+  ...store.getSystemSetting
+})
+
 const showSetting = () => {
   if (modalRef.value) {
     modalRef.value.open();
   }
 };
-const clickSetting = (type: string, val: boolean) => {
-  settings.forEach((item: SystemType) => {
-    if (item.type === type) {
-      item.value = val;
-    }
-  })
+
+watch(store.$state.systemSettings, (val: SystemSettings) => {
+  systemSettings = val;
+})
+
+const clickSetting = (val: any, type: string) => {
+  systemSettings[type] = val;
 }
-const settings = reactive(SystemInitValue)
 </script>
 <style lang="scss" scoped>
 .header-container {
-  // height: 42px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 12px;
   padding-left: 12px;
   padding-right: 12px;
-  // position: absolute;
-  // width: 100%;
-  // box-sizing: border-box;
 
   .hg-btn {
     cursor: pointer;

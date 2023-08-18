@@ -21,22 +21,25 @@ const fullYear = new Date().getFullYear();
         Copyright&nbsp;&copy;
         <!-- <span v-if="siteStartDate?.length >= 4" class="site-start">
             {{ siteStartDate.substring(0, 4) }} -->
+        2023
         -
         <!-- </span> -->
         {{ fullYear }}
         <!-- <a :href="SiteUrl">{{ SiteAnthor }}</a> -->
       </span>
+      &#124;
       <!-- 以下信息请不要修改哦 -->
       <span class="hidden">
-        &amp;&nbsp;Made&nbsp;by
+        Made&nbsp;by
         <a :href="config.github" target="_blank">
           {{ config.author }}
         </a>
       </span>
       <!-- 站点备案 -->
-      <!-- <a href="https://beian.miit.gov.cn" target="_blank">
-                &amp;
-            </a> -->
+      &#124;
+      <a href="https://beian.miit.gov.cn" target="_blank">
+        粤ICP备2023094742号-1
+      </a>
     </div>
     <div class="lrc" v-show="store.musicOpenState">
       <music-one theme="filled" size="18" fill="#efefef" />

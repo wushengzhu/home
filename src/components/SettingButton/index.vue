@@ -2,27 +2,35 @@
     <div class="btn-container">
         <div class="wrapper">
             <div class="text">{{ btnText }}</div>
-            <input id="checkbox" type="checkbox" :checked="isChecked"
-                @input="emit('update:isChecked', $event?.target?.value)" />
-            <label class="button" for="checkbox">
-                <div class="dot"></div>
-            </label>
+            <template v-if="btnType === 'input'">
+                <input id="checkbox" type="checkbox" :checked="systemValue"
+                    @input="emit('update:systemValue', $event?.target?.value)" />
+                <label class="button" for="checkbox">
+                    <div class="dot"></div>
+                </label>
+            </template>
+            <template v-else-if="btnType === 'radio'">
+                <slot></slot>
+            </template>
         </div>
     </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from 'vue';
+
+
 const props = defineProps({
     btnText: {
         type: String,
         default: '点击'
     },
-    isChecked: {
-        type: Boolean,
-        default: false
-    }
+    systemValue: {}, // 值未确定
+    btnType: {
+        type: String,
+        default: 'input'
+    },
 })
-const emit = defineEmits(['update:isChecked'])
+const emit = defineEmits(['update:systemValue'])
 </script>
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap");

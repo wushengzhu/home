@@ -2,7 +2,7 @@
     <Transition name="fade" v-if="isShow">
         <div class="modal-container">
             <CircleItem :component="Left" :bg-color="'rgba(45, 143, 189, 0.685)'" :isShowTooTip="false" :icon-size="32"
-                :bg-width="60" :bg-height="60" class="l-btn" @click="leftNext()" />
+                :bg-width="60" :bg-height="60" class="l-btn" @click="leftNext()" v-if="showLRNext" />
             <Transition name="zoom">
                 <div class="modal-body" @click.stop :style="setBodyStyle" v-if="showBody">
                     <close-one class="close" theme="filled" size="28" fill="#ffffff60" @click="close" v-show="showClose" />
@@ -12,10 +12,11 @@
                 </div>
                 <slot v-else></slot>
             </Transition>
-            <CircleItem :component="Close" :isShowTooTip="false" :icon-size="24" :bg-width="60" :bg-height="60"
-                class="bottom-close" @click="close()" />
             <CircleItem :component="Right" :bg-color="'rgba(45, 143, 189, 0.685)'" :isShowTooTip="false" :icon-size="32"
-                :bg-width="60" :bg-height="60" class="r-btn" @click="rightNext()" />
+                :bg-width="60" :bg-height="60" class="r-btn" @click="rightNext()" v-if="showLRNext" />
+
+            <CircleItem :component="Close" :isShowTooTip="false" :icon-size="24" :bg-width="60" :bg-height="60"
+                class="bottom-close" @click="close()" v-if="showBClose" />
         </div>
     </Transition>
 </template>
@@ -28,11 +29,11 @@ const isShow = ref(false)
 const props = defineProps({
     showBClose: {
         type: Boolean,
-        default: true,
+        default: false,
     },
     showLRNext: {
         type: Boolean,
-        default: true,
+        default: false,
     },
     showBody: {
         type: Boolean,
@@ -105,6 +106,7 @@ defineExpose({
             width: 28px;
             height: 28px;
             display: block;
+            cursor: pointer;
 
             &:hover {
                 transform: scale(1.2);

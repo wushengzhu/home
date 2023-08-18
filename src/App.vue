@@ -64,8 +64,8 @@ onBeforeUnmount(() => {
     <Header />
     <main>
       <!-- 季节模式 -->
-      <component :is="season[seasonMode]" />
-      <Background bgc="/images/bg1-1.webp" />
+      <component v-if="seasonMode !== 'default'" :is="season[seasonMode]" />
+      <Background bgc="/images/pc/1.webp" />
       <Home />
       <FabsBtn />
     </main>
