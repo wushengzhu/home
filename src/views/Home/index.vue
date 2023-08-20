@@ -6,15 +6,19 @@
       </div>
       <div class="person-web">
         <template v-for="item of HomePage">
-          <CircleItem :component="item.component" :imgSrc="item.imgSrc" :tipContent="item.tipContent"
-            @click="openModal(item.pageType)" />
+          <CircleItem
+            :component="item.component"
+            :imgSrc="item.imgSrc"
+            :tipContent="item.tipContent"
+            @click="openModal(item.pageType)"
+          />
         </template>
       </div>
       <div class="tool-card">
         <Hitokoto />
         <MusicTool />
       </div>
-      <div class="btn-area">
+      <div class="btn-area" v-if="store.getSystemSetting.showHomeBtn">
         <CartoonButton :width="200" :height="60" :size="24" />
       </div>
     </div>
@@ -26,36 +30,37 @@
   </HomeModal>
 </template>
 <script setup lang="ts">
-import Hitokoto from '@/components/Hitokoto/index.vue'
-import MusicTool from '@/components/MusicTool/index.vue'
-import HomeModal from '@/components/HomeModal/index.vue'
-import CircleItem from '@/components/CircleItem/index.vue'
-import CartoonButton from '@/components/CartoonButton/index.vue'
-import CustomTool from '@/views/CustomTool/index.vue'
-import PersonAlbum from '@/views/PersonAlbum/index.vue'
-import PersonBlog from '@/views/PersonBlog/index.vue'
-import PersonResume from '@/views/PersonResume/index.vue'
-import BookShelf from '@/views/BookShelf/index.vue'
-import { ref, shallowRef } from 'vue';
-import { HomePage } from '@/utils/contants';
-import { CloseOne } from '@icon-park/vue-next'
+import Hitokoto from "@/components/Hitokoto/index.vue";
+import MusicTool from "@/components/MusicTool/index.vue";
+import HomeModal from "@/components/HomeModal/index.vue";
+import CircleItem from "@/components/CircleItem/index.vue";
+import CartoonButton from "@/components/CartoonButton/index.vue";
+import CustomTool from "@/views/CustomTool/index.vue";
+import PersonAlbum from "@/views/PersonAlbum/index.vue";
+import PersonBlog from "@/views/PersonBlog/index.vue";
+import PersonResume from "@/views/PersonResume/index.vue";
+import BookShelf from "@/views/BookShelf/index.vue";
+import { ref, shallowRef } from "vue";
+import { HomePage } from "@/utils/contants";
+import { mainStore } from "@/store";
 
-const penName = ref(import.meta.env.VITE_HOME_PEN_NAME)
+const penName = ref(import.meta.env.VITE_HOME_PEN_NAME);
+const store = mainStore();
 const pageComponents = {
-  'tool': CustomTool,
-  'blog': PersonBlog,
-  'resume': PersonResume,
-  'album': PersonAlbum,
-  'book': BookShelf,
-}
+  tool: CustomTool,
+  blog: PersonBlog,
+  resume: PersonResume,
+  album: PersonAlbum,
+  book: BookShelf
+};
 const modalRef = ref();
-const curComponent = shallowRef() // shallowRef是浅层响应式数据，它只会将传入的对象的第一层属性转换为响应式数据，而不会递归地将嵌套对象的属性都转换为响应式数据。
+const curComponent = shallowRef(); // shallowRef是浅层响应式数据，它只会将传入的对象的第一层属性转换为响应式数据，而不会递归地将嵌套对象的属性都转换为响应式数据。
 const openModal = (type: homeTools) => {
   curComponent.value = pageComponents[type];
   if (modalRef.value) {
     modalRef.value.open();
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .home-container {
@@ -84,31 +89,29 @@ const openModal = (type: homeTools) => {
       white-space: nowrap; //禁止换行
       overflow: hidden; //隐藏多余的部分
       font-size: 3rem; //字体大小
-      letter-spacing: .15em; //字母间距
-      animation:
-        typing 3.5s steps(30, end) infinite,
-        blink-caret .5s step-end infinite; //光标闪烁
+      letter-spacing: 0.15em; //字母间距
+      animation: typing 3.5s steps(30, end) infinite,
+        blink-caret 0.5s step-end infinite; //光标闪烁
     }
 
     @keyframes typing {
       from {
-        width: 0
+        width: 0;
       }
 
       to {
-        width: calc(100% + .15em)
+        width: calc(100% + 0.15em);
       }
     }
 
     @keyframes blink-caret {
-
       from,
       to {
-        border-color: transparent
+        border-color: transparent;
       }
 
       50% {
-        border-color: #fff
+        border-color: #fff;
       }
     }
   }
