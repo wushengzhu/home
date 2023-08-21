@@ -1,92 +1,35 @@
 <template>
-  <div
-    class="music-container fixed-card"
-    @mouseenter="volumeShow = true"
-    @mouseleave="volumeShow = false"
-  >
+  <div class="music-container fixed-card" @mouseenter="volumeShow = true" @mouseleave="volumeShow = false">
     <div class="music-area">
-      <music-menu
-        theme="outline"
-        size="24"
-        fill="#fff"
-        class="cursor"
-        @click="openMusicList()"
-      />
+      <music-menu theme="outline" size="24" fill="#fff" class="cursor" @click="openMusicList()" />
     </div>
     <div class="music-play">
-      <go-start
-        theme="outline"
-        size="36"
-        fill="#fff"
-        class="cursor"
-        @click="changeMusicIndex(0)"
-      />
-      <play-one
-        theme="filled"
-        size="36"
-        fill="#fff"
-        class="cursor"
-        v-show="!store.playerState"
-        @click="changePlayState"
-      />
-      <pause
-        theme="filled"
-        size="36"
-        fill="#fff"
-        class="cursor"
-        v-show="store.playerState"
-        @click="changePlayState"
-      />
-      <go-end
-        theme="outline"
-        size="36"
-        fill="#fff"
-        class="cursor"
-        @click="changeMusicIndex(1)"
-      />
+      <go-start theme="outline" size="36" fill="#fff" class="cursor" @click="changeMusicIndex(0)" />
+      <play-one theme="filled" size="36" fill="#fff" class="cursor" v-show="!store.musicOpenState"
+        @click="changePlayState" />
+      <pause theme="filled" size="36" fill="#fff" class="cursor" v-show="store.musicOpenState" @click="changePlayState" />
+      <go-end theme="outline" size="36" fill="#fff" class="cursor" @click="changeMusicIndex(1)" />
     </div>
     <div class="music-name" v-show="!volumeShow">
       <span>{{
         store.getPlayerData.name
-          ? store.getPlayerData.name + " - " + store.getPlayerData.artist
-          : "未播放音乐"
+        ? store.getPlayerData.name + " - " + store.getPlayerData.artist
+        : "未播放音乐"
       }}</span>
     </div>
     <div class="music-volume" v-show="volumeShow">
       <div class="volume-icon">
-        <volume-mute
-          theme="filled"
-          size="24"
-          fill="#efefef"
-          v-if="volumeNum == 0"
-        />
-        <volume-small
-          theme="filled"
-          size="24"
-          fill="#efefef"
-          v-else-if="volumeNum > 0 && volumeNum < 0.7"
-        />
+        <volume-mute theme="filled" size="24" fill="#efefef" v-if="volumeNum == 0" />
+        <volume-small theme="filled" size="24" fill="#efefef" v-else-if="volumeNum > 0 && volumeNum < 0.7" />
         <volume-notice theme="filled" size="24" fill="#efefef" v-else />
       </div>
-      <el-slider
-        v-model="volumeNum"
-        :show-tooltip="false"
-        :min="0"
-        :max="1"
-        :step="0.01"
-      />
+      <el-slider v-model="volumeNum" :show-tooltip="false" :min="0" :max="1" :step="0.01" />
     </div>
   </div>
   <!-- 音乐列表弹窗 -->
   <HomeModal ref="modalRef">
-    <Player
-      :songServer="playerData.server"
-      :songType="playerData.type"
-      :songId="playerData.id"
-      :volume="volumeNum"
-      :shuffle="true"
-      ref="playerRef"
-    />
+    <Player :songServer="playerData.server" :songType="playerData.type" :songId="playerData.id" :volume="volumeNum"
+      :shuffle="true" ref="playerRef" />
   </HomeModal>
 </template>
 <script setup lang="ts">

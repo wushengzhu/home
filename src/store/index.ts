@@ -12,6 +12,7 @@ export const mainStore = defineStore(storeKey, {
         showLantern: false,
         showTimeAndWeather: true,
         showDarkMode: true,
+        silentMode: false,
         seasonMode: 'default',
         musicSource: 'tencent',
         pcBgc: '/images/pc/1.webp',

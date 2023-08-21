@@ -51,6 +51,7 @@ export const SystemValue: Array<SystemValueType> = [
   { text: '显示点此看看', attribute: 'showHomeBtn' },
   { text: '显示时间天气', attribute: 'showTimeAndWeather' },
   { text: '开启斜流星', attribute: 'showSingleStar' },
+  { text: '开启默哀模式', attribute: 'silentMode' },
   {
     text: '季节模式',
     attribute: 'seasonMode',

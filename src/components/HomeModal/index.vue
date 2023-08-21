@@ -79,7 +79,7 @@ defineExpose({
     height: 100%;
     background-color: #00000080;
     backdrop-filter: blur(20px);
-    z-index: 10;
+    z-index: 100;
 
     .modal-body {
         position: absolute;

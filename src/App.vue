@@ -8,7 +8,7 @@ import Fog from "@/components/Season/Fog.vue";
 import Rain from "@/components/Season/Rain.vue";
 import FabsBtn from "@/components/FabsBtn/index.vue";
 import Footer from "@/components/Footer/index.vue";
-import { onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { onBeforeUnmount, onMounted } from "vue";
 import { checkDays, helloInit } from "@/utils/getTime";
 import { mainStore } from "./store";
 
@@ -35,9 +35,11 @@ onMounted(() => {
     // loadingBox.classList.add("loaded");
     // 欢迎提示
     helloInit();
-    // 默哀模式
     checkDays();
   });
+
+  // checkDays();
+
   // 屏蔽右键
   // document.oncontextmenu = () => {
   //   ElMessage({
@@ -63,10 +65,7 @@ onBeforeUnmount(() => {
     <Header />
     <main>
       <!-- 季节模式 -->
-      <component
-        v-if="store.getSystemSetting.seasonMode !== 'default'"
-        :is="season[store.getSystemSetting.seasonMode]"
-      />
+      <component v-if="store.getSystemSetting.seasonMode !== 'default'" :is="season[store.getSystemSetting.seasonMode]" />
       <Background bgc="/images/pc/1.webp" />
       <Home />
       <FabsBtn v-if="store.getSystemSetting.showDarkMode" />
