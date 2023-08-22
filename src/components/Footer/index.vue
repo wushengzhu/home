@@ -1,17 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { MusicOne } from "@icon-park/vue-next";
 import config from "@/../package.json";
 import { mainStore } from "@/store";
+import { ref } from 'vue'
 
 const store = mainStore();
 const fullYear = new Date().getFullYear();
-
-//   // 加载配置数据
-//   const siteStartDate = ref(import.meta.env.VITE_SITE_START);
-//   const siteIcp = ref(import.meta.env.VITE_SITE_ICP);
-//   const SiteAnthor = ref(import.meta.env.VITE_SITE_ANTHOR);
-//   const SiteUrl = ref(import.meta.env.VITE_SITE_URL);
+const filing = ref(import.meta.env.VITE_FILINGS)
 </script>
 
 <template>
@@ -19,13 +14,9 @@ const fullYear = new Date().getFullYear();
     <div class="power" v-show="!store.musicOpenState">
       <span>
         Copyright&nbsp;&copy;
-        <!-- <span v-if="siteStartDate?.length >= 4" class="site-start">
-            {{ siteStartDate.substring(0, 4) }} -->
         2023
         -
-        <!-- </span> -->
         {{ fullYear }}
-        <!-- <a :href="SiteUrl">{{ SiteAnthor }}</a> -->
       </span>
       &#124;
       <!-- 以下信息请不要修改哦 -->
@@ -38,7 +29,7 @@ const fullYear = new Date().getFullYear();
       <!-- 站点备案 -->
       &#124;
       <a href="https://beian.miit.gov.cn" target="_blank">
-        粤ICP备2023094742号-1
+        {{ filing }}
       </a>
     </div>
     <div class="lrc" v-show="store.musicOpenState">
