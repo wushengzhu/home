@@ -48,3 +48,31 @@ interface SystemValueType {
   radioArr?: array
   btnType?: ButtonType
 }
+
+/**
+ * c开头为公历各属性值
+ * l开头为农历各属性值 数值
+ * I开头为农历各属性值 中文值
+ * gz开头为天干地支纪年
+ */
+interface CalendarConverter {
+  Animal: string // 生肖
+  IDayCn: string // 农历日
+  IMonthCn: string // 农历月
+  Term: any
+  astro: string // 星座
+  cDay: number // 公历日
+  cMonth: number // 公历月
+  cYear: number // 公历年
+  gzDay: string //
+  gzMonth: string
+  gzYear: string
+  isLeap: boolean
+  isTerm: boolean
+  isToday: boolean
+  lDay: number
+  lMonth: number
+  lYear: number
+  nWeek: number
+  ncWeek: string
+}

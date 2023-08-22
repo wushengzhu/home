@@ -1,38 +1,27 @@
 [
     {
       "icon": "Blog",
-      "name": "掘金",
-      "link": "https://blog.imsyy.top/"
+      "name": "掘金社区",
+      "penName":"路灯下的光",
+      "info":"拥有丰富的项目实战经验、授课经验以及学员管理、 教学管理经验，经历过很多大项目",
+      "avatar":"https://p26-passport.byteacctimg.com/img/user-avatar/e2d48d743919b73c5da76ed8ad022670~180x180.awebp",
+      "link": "https://juejin.cn/user/2098283918929047"
     },
     {
       "icon": "Blog",
-      "name": "知乎",
-      "link": "https://pan.imsyy.top/"
+      "name": "知乎社区",
+      "penName":"酒坊小生",
+      "info":"拥有丰富的项目实战经验、授课经验以及学员管理、 教学管理经验，经历过很多大项目",
+      "avatar":"https://pic1.zhimg.com/v2-ff2c3d9043d06335e644986963e47116_l.jpg?source=5a24d060",
+      "link": "https://www.zhihu.com/people/xian-feng-gu-ying"
     },
     {
-      "icon": "CompactDisc",
-      "name": "音乐",
-      "link": "https://music.imsyy.top/"
-    },
-    {
-      "icon": "Compass",
-      "name": "语雀",
-      "link": "https://nav.imsyy.top/"
-    },
-    {
-      "icon": "Tool",
-      "name": "工具站点",
-      "link": "https://web.imsyy.top/"
-    },
-    {
-      "icon": "Compass",
-      "name": "面试专栏",
-      "link": "https://nav.imsyy.top/"
-    },
-    {
-      "icon": "Fire",
-      "name": "今日热榜",
-      "link": "https://hot.imsyy.top/"
+      "icon": "Blog",
+      "name": "前端面试专栏",
+      "penName":"路灯下的光",
+      "info":"拥有丰富的项目实战经验、授课经验以及学员管理、 教学管理经验，经历过很多大项目",
+      "avatar":"https://pic1.zhimg.com/v2-ff2c3d9043d06335e644986963e47116_l.jpg?source=5a24d060",
+      "link": "https://www.zhihu.com/people/xian-feng-gu-ying"
     }
   ]
   

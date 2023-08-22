@@ -9,7 +9,7 @@ import Rain from "@/components/Season/Rain.vue";
 import FabsBtn from "@/components/FabsBtn/index.vue";
 import Footer from "@/components/Footer/index.vue";
 import { onBeforeUnmount, onMounted } from "vue";
-import { checkDays, helloInit } from "@/utils/getTime";
+import { checkDays, helloInit, getLunarTime } from "@/utils/getTime";
 import { mainStore } from "./store";
 
 const store = mainStore();
@@ -36,6 +36,7 @@ onMounted(() => {
     // 欢迎提示
     helloInit();
     checkDays();
+    getLunarTime();
   });
 
   // checkDays();

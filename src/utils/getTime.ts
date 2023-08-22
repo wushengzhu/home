@@ -1,35 +1,53 @@
 import { h } from 'vue'
 import { SpaCandle } from '@icon-park/vue-next'
+import calendar from 'js-calendar-converter'
+
+/**
+ * 获取农历时间
+ */
+export const getLunarTime = () => {
+  let curTime = new Date()
+  /** 公历年月日转农历数据 返回json */
+  let lunarTime: CalendarConverter = calendar.solar2lunar(
+    curTime.getFullYear(),
+    curTime.getMonth() + 1,
+    curTime.getDate()
+  )
+  // let solarTime = calendar.lunar2solar(
+  //   2023,
+  //   12,
+  //   30
+  // ) /** 农历年月日转公历年月日 */
+  return lunarTime
+}
 
 // 时钟
 export const getCurrentTime = () => {
-  let time = new Date()
-  let year = time.getFullYear()
-  let month =
-    time.getMonth() + 1 < 10 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1
-  let day = time.getDate() < 10 ? '0' + time.getDate() : time.getDate()
-  let hour = time.getHours() < 10 ? '0' + time.getHours() : time.getHours()
+  let curTime = new Date()
+
+  let lunarTime: CalendarConverter = calendar.solar2lunar(
+    curTime.getFullYear(),
+    curTime.getMonth() + 1,
+    curTime.getDate()
+  )
+  let hour =
+    curTime.getHours() < 10 ? '0' + curTime.getHours() : curTime.getHours()
   let minute =
-    time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes()
+    curTime.getMinutes() < 10
+      ? '0' + curTime.getMinutes()
+      : curTime.getMinutes()
   let second =
-    time.getSeconds() < 10 ? '0' + time.getSeconds() : time.getSeconds()
-  let weekday = [
-    '星期日',
-    '星期一',
-    '星期二',
-    '星期三',
-    '星期四',
-    '星期五',
-    '星期六',
-  ]
+    curTime.getSeconds() < 10
+      ? '0' + curTime.getSeconds()
+      : curTime.getSeconds()
   let currentTime = {
-    year,
-    month,
-    day,
+    year: lunarTime.cYear,
+    month: lunarTime.cMonth,
+    day: lunarTime.cDay,
     hour,
     minute,
     second,
-    weekday: weekday[time.getDay()],
+    weekday: lunarTime.ncWeek,
   }
   return currentTime
 }

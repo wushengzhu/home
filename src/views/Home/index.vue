@@ -6,12 +6,8 @@
       </div>
       <div class="person-web">
         <template v-for="item of HomePage">
-          <CircleItem
-            :component="item.component"
-            :imgSrc="item.imgSrc"
-            :tipContent="item.tipContent"
-            @click="openModal(item.pageType)"
-          />
+          <CircleItem :component="item.component" :imgSrc="item.imgSrc" :tipContent="item.tipContent"
+            @click="openModal(item.pageType)" />
         </template>
       </div>
       <div class="tool-card">
@@ -23,7 +19,7 @@
       </div>
     </div>
   </div>
-  <HomeModal :showBody="false" :showClose="false" ref="modalRef">
+  <HomeModal :showBody="false" :showClose="false" :show-b-close="true" ref="modalRef">
     <div class="tools">
       <component :is="curComponent" />
     </div>
@@ -105,6 +101,7 @@ const openModal = (type: homeTools) => {
     }
 
     @keyframes blink-caret {
+
       from,
       to {
         border-color: transparent;
