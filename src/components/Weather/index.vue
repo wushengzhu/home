@@ -28,14 +28,14 @@ const mainKey = import.meta.env.VITE_WEATHER_KEY;
 // 天气数据
 const weatherData = reactive({
   adCode: {
-    city: null, // 城市
-    adcode: null // 城市编码
+    city: '', // 城市
+    adcode: '' // 城市编码
   },
   weather: {
-    weather: null, // 天气现象
-    temperature: null, // 实时气温
-    winddirection: null, // 风向描述
-    windpower: null // 风力级别
+    weather: '', // 天气现象
+    temperature: '', // 实时气温
+    winddirection: '', // 风向描述
+    windpower: '' // 风力级别
   }
 });
 
@@ -70,7 +70,7 @@ const getWeatherData = () => {
           adcode: res.adcode
         };
         // 获取天气信息
-        getWeather(mainKey, weatherData.adCode.adcode)
+        getWeather(mainKey, weatherData.adCode.adcode as any)
           .then((res) => {
             weatherData.weather = {
               weather: res.lives[0].weather,
@@ -92,7 +92,7 @@ const getWeatherData = () => {
 };
 
 // 报错信息
-const onError = (message) => {
+const onError = (message: any) => {
   ElMessage({
     message,
     icon: h(Error, {

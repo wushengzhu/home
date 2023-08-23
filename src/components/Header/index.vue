@@ -4,44 +4,21 @@
       <!-- <Weather /> -->
       <DateTime />
     </div>
-    <hamburger-button
-      class="hg-btn"
-      theme="outline"
-      size="32"
-      fill="#fff"
-      @click="showSetting()"
-    />
+    <hamburger-button class="hg-btn" theme="outline" size="32" fill="#fff" @click="showSetting()" />
   </header>
   <HomeModal ref="modalRef">
     <div class="settings">
       <template v-for="item of SystemValue" :key="item.attribute">
-        <SettingButton
-          :btnText="item.text"
-          :btnType="item?.type"
-          v-if="item?.type && item?.type === 'radio'"
-        >
-          <el-radio-group
-            v-if="item?.radioArr"
-            v-model="systemSettings[item.attribute]"
-          >
-            <el-radio
-              v-for="jtem of item?.radioArr"
-              :key="jtem.value"
-              :label="jtem.value"
-              @click.prevent="clickSetting(jtem.value, item.attribute)"
-              >{{ jtem.text }}</el-radio
-            >
+        <SettingButton :btnText="item.text" :btnType="item?.type" v-if="item?.type && item?.type === 'radio'">
+          <el-radio-group v-if="item?.radioArr" v-model="systemSettings[item.attribute]">
+            <el-radio v-for="jtem of item?.radioArr" :key="jtem.value" :label="jtem.value"
+              @click.prevent="clickSetting(jtem.value, item.attribute)">{{ jtem.text }}</el-radio>
           </el-radio-group>
         </SettingButton>
-        <SettingButton
-          :btnText="item.text"
-          :btnType="item?.type"
-          v-model:systemValue="systemSettings[item.attribute]"
+        <SettingButton :btnText="item.text" :btnType="item?.type" v-model:systemValue="systemSettings[item.attribute]"
           @click.prevent="
             clickSetting(!systemSettings[item.attribute], item.attribute)
-          "
-          v-else
-        >
+            " v-else>
         </SettingButton>
       </template>
     </div>
@@ -61,7 +38,7 @@ import { watch } from "vue";
 
 const store = mainStore();
 const modalRef = ref();
-let systemSettings = reactive<SystemSettings>({
+let systemSettings = reactive<ObjectType>({
   ...store.getSystemSetting
 });
 

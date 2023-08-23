@@ -15,10 +15,10 @@ import { mainStore } from "@/store";
 const store = mainStore();
 
 // 获取播放器 DOM
-const player = ref(null);
+const player = ref<any>(null);
 
 // 歌曲播放列表
-const playList = ref([]);
+const playList = ref<any>([]);
 const playerLrc = ref("");
 
 // 歌曲播放项
@@ -158,7 +158,7 @@ const onTimeUp = () => {
     playerLrc.value = playerRef.getElementsByClassName(
       "aplayer-lrc-current"
     )[0].innerHTML;
-    store.setPlayerLrc(playerLrc.value);
+    store.setMusicLrc(playerLrc.value);
   }
 };
 
@@ -168,17 +168,17 @@ const playToggle = () => {
 };
 
 // 切换音量事件
-const changeVolume = (value) => {
+const changeVolume = (value: any) => {
   player.value.audio.volume = value;
 };
 
-const onSelectSong = (val) => {
+const onSelectSong = (val: any) => {
   console.log(val);
 };
 
 // 切换上下曲
-const changeSong = (type) => {
-  playIndex.value = player.value.playIndex;
+const changeSong = (type: any) => {
+  playIndex.value = player.value ? player.value.playIndex : null;
   playIndex.value += type ? 1 : -1;
   // 判断是否处于最后/第一首
   if (playIndex.value < 0) {

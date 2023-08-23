@@ -1,3 +1,10 @@
+declare module 'js-calendar-converter'
+declare module 'vue3-aplayer'
+
+interface ObjectType {
+  [key: string]: any
+}
+
 interface Window {
   $openList: any
   $message: any

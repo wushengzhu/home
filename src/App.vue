@@ -13,11 +13,12 @@ import { checkDays, helloInit, getLunarTime } from "@/utils/getTime";
 import { mainStore } from "./store";
 
 const store = mainStore();
-const season = {
-  rain: Rain,
-  fog: Fog,
-  snow: Snow,
-  leaves: FallLeave
+const { seasonMode, showDarkMode } = store.getSystemSetting
+const season: ObjectType = {
+  'rain': Rain,
+  'fog': Fog,
+  'snow': Snow,
+  'leaves': FallLeave
 };
 // 页面宽度
 const getWidth = () => {
@@ -66,10 +67,10 @@ onBeforeUnmount(() => {
     <Header />
     <main>
       <!-- 季节模式 -->
-      <component v-if="store.getSystemSetting.seasonMode !== 'default'" :is="season[store.getSystemSetting.seasonMode]" />
+      <component v-if="seasonMode && seasonMode !== 'default'" :is="season[seasonMode]" />
       <Background bgc="/images/pc/1.webp" />
       <Home />
-      <FabsBtn v-if="store.getSystemSetting.showDarkMode" />
+      <FabsBtn v-if="showDarkMode" />
     </main>
     <Footer />
   </div>

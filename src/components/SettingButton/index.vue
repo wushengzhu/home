@@ -3,8 +3,8 @@
         <div class="wrapper">
             <div class="text">{{ btnText }}</div>
             <template v-if="btnType === 'input'">
-                <input id="checkbox" type="checkbox" :checked="systemValue"
-                    @input="emit('update:systemValue', $event?.target?.value)" />
+                <input id="checkbox" type="checkbox" :checked="(systemValue as any)"
+                    @input="emit('update:systemValue', ($event.target as HTMLInputElement).value)" />
                 <label class="button" for="checkbox">
                     <div class="dot"></div>
                 </label>
