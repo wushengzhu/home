@@ -8,22 +8,29 @@ import Fog from "@/components/Season/Fog.vue";
 import Rain from "@/components/Season/Rain.vue";
 import FabsBtn from "@/components/FabsBtn/index.vue";
 import Footer from "@/components/Footer/index.vue";
-import { onBeforeUnmount, onMounted } from "vue";
+import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { checkDays, helloInit, getLunarTime } from "@/utils/getTime";
 import { mainStore } from "./store";
 
 const store = mainStore();
-const { seasonMode, showDarkMode } = store.getSystemSetting
+const { seasonMode, showDarkMode } = store.getSystemSetting;
 const season: ObjectType = {
-  'rain': Rain,
-  'fog': Fog,
-  'snow': Snow,
-  'leaves': FallLeave
+  rain: Rain,
+  fog: Fog,
+  snow: Snow,
+  leaves: FallLeave
 };
+const mode = ref(seasonMode);
 // 页面宽度
 const getWidth = () => {
   store.setInnerWidth(window.innerWidth);
 };
+watch(
+  () => store.getSystemSetting,
+  (val: SystemSettings) => {
+    mode.value = val.seasonMode;
+  }
+);
 
 onMounted(() => {
   // 加载完成事件
@@ -67,7 +74,7 @@ onBeforeUnmount(() => {
     <Header />
     <main>
       <!-- 季节模式 -->
-      <component v-if="seasonMode && seasonMode !== 'default'" :is="season[seasonMode]" />
+      <component v-if="mode && mode !== 'default'" :is="season[mode]" />
       <Background bgc="/images/pc/1.webp" />
       <Home />
       <FabsBtn v-if="showDarkMode" />
