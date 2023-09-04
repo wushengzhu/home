@@ -1,4 +1,4 @@
-<p align="center">基于Vue3实现的静态个人主页</p>
+<h1 align="center">基于Vue3实现的静态个人主页</h1>
 
 ## 引入字体并压缩
 
