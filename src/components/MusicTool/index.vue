@@ -5,9 +5,10 @@
     </div>
     <div class="music-play">
       <go-start theme="outline" size="36" fill="#fff" class="cursor" @click="changeMusicIndex(0)" />
-      <play-one theme="filled" size="36" fill="#fff" class="cursor" v-show="!store.musicOpenState"
-        @click="changePlayState" />
-      <pause theme="filled" size="36" fill="#fff" class="cursor" v-show="store.musicOpenState" @click="changePlayState" />
+      <div @click="changePlayState">
+        <play-one theme="filled" size="36" fill="#fff" class="cursor" v-show="!store.musicOpenState" />
+        <pause theme="filled" size="36" fill="#fff" class="cursor" v-show="store.musicOpenState" />
+      </div>
       <go-end theme="outline" size="36" fill="#fff" class="cursor" @click="changeMusicIndex(1)" />
     </div>
     <div class="music-name" v-show="!volumeShow">
@@ -29,7 +30,7 @@
   <!-- 音乐列表弹窗 -->
   <HomeModal ref="modalRef">
     <Player :songServer="playerData.server" :songType="playerData.type" :songId="playerData.id" :volume="volumeNum"
-      :shuffle="true" ref="playerRef" />
+      :shuffle="true" ref="playerRef" v-show="musicListShow" />
   </HomeModal>
 </template>
 <script setup lang="ts">
@@ -172,7 +173,7 @@ watch(
   height: 100%;
   background-color: #00000080;
   backdrop-filter: blur(20px);
-  z-index: 1;
+  z-index: 100;
 
   .list {
     position: absolute;

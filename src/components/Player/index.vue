@@ -164,6 +164,7 @@ const onTimeUp = () => {
 
 // 切换播放暂停事件
 const playToggle = () => {
+  console.log(player.value)
   player.value.toggle();
 };
 

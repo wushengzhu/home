@@ -1,15 +1,7 @@
 <template>
   <div class="fabs-container" @click="switchMode" v-if="showDarkBtn">
-    <CircleItem
-      :placement="'left'"
-      :tipContent="!isDark ? '黑夜模式' : '白日模式'"
-      :component="DeskLamp"
-      :iconSize="24"
-      :bgWidth="48"
-      :bgHeight="48"
-      :bgColor="'#676767'"
-      :fill="!isDark ? '#fff' : 'yellow'"
-    />
+    <CircleItem :placement="'left'" :tipContent="!isDark ? '黑夜模式' : '白日模式'" :component="DeskLamp" :iconSize="24"
+      :bgWidth="48" :bgHeight="48" :bgColor="'#676767'" :fill="!isDark ? '#fff' : 'yellow'" />
   </div>
 </template>
 <script setup lang="ts">
@@ -34,6 +26,6 @@ const switchMode = () => store.setIsDark(!isDark.value);
   position: fixed;
   right: 70px;
   bottom: 200px;
-  z-index: 2;
+  z-index: 1;
 }
 </style>

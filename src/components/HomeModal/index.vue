@@ -1,5 +1,5 @@
 <template>
-    <Transition name="fade" v-if="isShow">
+    <Transition name="fade" v-show="isShow">
         <div class="modal-container">
             <CircleItem :component="Left" :bg-color="'rgba(45, 143, 189, 0.685)'" :isShowTooTip="false" :icon-size="32"
                 :bg-width="60" :bg-height="60" class="l-btn" @click="leftNext()" v-if="showLRNext" />
@@ -62,6 +62,7 @@ const leftNext = () => {
 const rightNext = () => {
 
 }
+
 defineExpose({
     leftNext,
     rightNext,
@@ -79,7 +80,7 @@ defineExpose({
     height: 100%;
     background-color: #00000080;
     backdrop-filter: blur(20px);
-    z-index: 100;
+    z-index: 1000;
 
     .modal-body {
         position: absolute;
@@ -120,8 +121,8 @@ defineExpose({
         .modal-content {
             position: absolute;
             width: 100%;
-            height: calc(50vh - 50px);
-            top: 50px;
+            // height: calc(50vh - 50px);
+            top: 32px;
             padding: 20px 30px;
             overflow-y: auto;
             overflow-x: hidden;
