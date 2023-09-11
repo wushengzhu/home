@@ -33,6 +33,7 @@ interface CircleItemType {
   bgHeight?: number
   bgColor?: string
   pageType: homeTools
+  canMobile?: boolean
 }
 
 interface SystemSettings {

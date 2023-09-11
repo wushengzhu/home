@@ -1,5 +1,5 @@
 <template>
-  <div class="saying-container cards">
+  <div class="cards" :class="store.mobileOpenState ? 'saying-mobile-container' : 'saying-container'">
     <!-- <div class="refresh">
       <refresh
         theme="outline"
@@ -18,7 +18,9 @@ import { h, onMounted, reactive } from "vue";
 import { getHitokoto } from "@/api";
 import debounce from "@/utils/debounce.ts";
 import { Error } from "@icon-park/vue-next";
+import { mainStore } from "@/store";
 
+const store = mainStore()
 // 一言数据
 const hitokotoData = reactive({
   text: "这里应该显示一句话",
@@ -57,6 +59,27 @@ onMounted(() => {
 });
 </script>
 <style lang="scss" scoped>
+.saying-mobile-container {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 10px;
+  width: 85%;
+  height: 100px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  .saying-text {
+    margin-top: 5px;
+  }
+
+  .saying-from {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+  }
+}
+
 .saying-container {
   font-size: 1.1rem;
   font-weight: bold;

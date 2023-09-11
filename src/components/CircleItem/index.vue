@@ -23,6 +23,9 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
+import { mainStore } from "@/store";
+
+const store = mainStore()
 
 const props = defineProps({
   component: {}, // 组件
@@ -65,7 +68,7 @@ const props = defineProps({
   bgColor: {
     type: String,
     default: "rgba(0, 0, 0, 0.2509803922)"
-  }
+  },
 });
 
 const dynamicStyle = ref(

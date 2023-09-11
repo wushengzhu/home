@@ -4,7 +4,8 @@
       <!-- <Weather /> -->
       <DateTime />
     </div>
-    <hamburger-button class="hg-btn" theme="outline" size="32" fill="#fff" @click="showSetting()" />
+    <hamburger-button class="hg-btn" theme="outline" size="32" fill="#fff" @click="showSetting()"
+      v-if="!store.mobileOpenState" />
   </header>
   <HomeModal ref="modalRef">
     <div class="settings">

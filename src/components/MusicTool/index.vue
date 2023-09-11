@@ -1,5 +1,6 @@
 <template>
-  <div class="music-container fixed-card" @mouseenter="volumeShow = true" @mouseleave="volumeShow = false">
+  <div class="fixed-card" :class="store.mobileOpenState ? 'music-mobile-container' : 'music-container'"
+    @mouseenter="volumeShow = true" @mouseleave="volumeShow = false">
     <div class="music-area">
       <music-menu theme="outline" size="24" fill="#fff" class="cursor" @click="openMusicList()" />
     </div>
@@ -100,6 +101,70 @@ watch(
 );
 </script>
 <style lang="scss" scoped>
+.music-mobile-container {
+  width: 85%;
+  height: 100px;
+  margin: 5px auto;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 5px;
+
+  .music-area {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .music-play {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .music-name {
+    display: flex;
+    justify-content: center;
+  }
+
+  .music-volume {
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    animation: fade;
+    box-sizing: border-box;
+    -webkit-animation: fade 0.3s;
+
+    .volume-icon {
+      margin-right: 12px;
+
+      span {
+        width: 24px;
+        height: 24px;
+        display: block;
+      }
+    }
+
+    :deep(*) {
+      transition: none;
+    }
+
+    :deep(.el-slider__button) {
+      transition: 0.3s;
+    }
+
+    .el-slider {
+      margin-right: 12px;
+      --el-slider-main-bg-color: #efefef;
+      --el-slider-runway-bg-color: #ffffff40;
+      --el-slider-button-size: 16px;
+    }
+  }
+
+  .cursor {
+    cursor: pointer;
+  }
+}
+
 .music-container {
   width: 50%;
   height: 120px;

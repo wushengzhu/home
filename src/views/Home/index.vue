@@ -1,13 +1,15 @@
 <template>
-  <div class="home-container">
+  <div :class="{ 'home-container': !store.mobileOpenState, 'home-mobile-container': store.mobileOpenState, }">
     <div class="person-container">
       <div class="person-title">
-        <div class="ml-ms fontface">{{ penName }}</div>
+        <div class="ml-ms">{{ penName }}</div>
       </div>
       <div class="person-web">
         <template v-for="item of HomePage">
           <CircleItem :component="item.component" :imgSrc="item.imgSrc" :tipContent="item.tipContent"
-            @click="openModal(item.pageType)" />
+            @click="openModal(item.pageType)" class="ml-ms mr-ms" v-if="!store.mobileOpenState" />
+          <CardItem :component="item.component" :iconText="item.tipContent"
+            v-if="store.mobileOpenState && item.canMobile" />
         </template>
       </div>
       <div class="tool-card">
@@ -15,7 +17,8 @@
         <MusicTool />
       </div>
       <div class="btn-area" v-if="store.getSystemSetting.showHomeBtn">
-        <CartoonButton :width="200" :height="60" :size="24" />
+        <CartoonButton :width="200" :height="60" :size="24" v-if="!store.mobileOpenState" />
+        <el-button type="warning" round size="large" v-if="store.mobileOpenState">点我看看</el-button>
       </div>
     </div>
   </div>
@@ -30,6 +33,7 @@ import Hitokoto from "@/components/Hitokoto/index.vue";
 import MusicTool from "@/components/MusicTool/index.vue";
 import HomeModal from "@/components/HomeModal/index.vue";
 import CircleItem from "@/components/CircleItem/index.vue";
+import CardItem from "@/components/CardItem/index.vue";
 import CartoonButton from "@/components/CartoonButton/index.vue";
 import CustomTool from "@/views/CustomTool/index.vue";
 import PersonAlbum from "@/views/PersonAlbum/index.vue";
@@ -50,7 +54,10 @@ const pageComponents = {
   book: BookShelf
 };
 const modalRef = ref();
-const curComponent = shallowRef(); // shallowRef是浅层响应式数据，它只会将传入的对象的第一层属性转换为响应式数据，而不会递归地将嵌套对象的属性都转换为响应式数据。
+// shallowRef是浅层响应式数据，
+// 它只会将传入的对象的第一层属性转换为响应式数据，
+// 而不会递归地将嵌套对象的属性都转换为响应式数据。
+const curComponent = shallowRef();
 const openModal = (type: homeTools) => {
   curComponent.value = pageComponents[type];
   if (modalRef.value) {
@@ -59,6 +66,68 @@ const openModal = (type: homeTools) => {
 };
 </script>
 <style lang="scss" scoped>
+.home-mobile-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .person-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .person-title {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #fff;
+      // border-right: .15em solid #fff; //右边框
+      white-space: nowrap; //禁止换行
+      overflow: hidden; //隐藏多余的部分
+      font-size: 1.5rem; //字体大小
+      letter-spacing: 0.15em; //字母间距
+      animation: typing 3.5s steps(30, end) infinite,
+        blink-caret 0.5s step-end infinite; //光标闪烁
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: calc(100% + 0.15em);
+      }
+    }
+
+    @keyframes blink-caret {
+
+      from,
+      to {
+        border-color: transparent;
+      }
+
+      50% {
+        border-color: #fff;
+      }
+    }
+  }
+
+  .person-web {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-area {
+    margin-top: 50px;
+    font-weight: 700;
+  }
+}
+
 .home-container {
   height: 100%;
   width: 100%;
@@ -68,7 +137,8 @@ const openModal = (type: homeTools) => {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 
   .person-container {
     display: flex;
@@ -77,7 +147,6 @@ const openModal = (type: homeTools) => {
     align-items: center;
 
     .person-title {
-      font-family: "qtbf";
       text-align: center;
       margin-bottom: 30px;
       color: #fff;
@@ -114,7 +183,8 @@ const openModal = (type: homeTools) => {
   }
 
   .person-web {
-    width: 36vw;
+    // width: 36vw;
+    width: 100%;
     display: flex;
     justify-content: space-between;
   }

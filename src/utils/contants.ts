@@ -5,26 +5,31 @@ export const HomePage: Array<CircleItemType> = [
     component: Tool,
     tipContent: '个人工具',
     pageType: 'tool',
+    canMobile: true,
   },
   {
     component: Notes,
     tipContent: '个人博客',
     pageType: 'blog',
+    canMobile: true,
   },
   {
     imgSrc: '/images/logo.jpg',
     tipContent: '个人简历',
     pageType: 'resume',
+    canMobile: false,
   },
   {
     component: PictureAlbum,
     tipContent: '个人相册',
     pageType: 'album',
+    canMobile: true,
   },
   {
     component: Bookshelf,
     tipContent: '个人书架',
     pageType: 'book',
+    canMobile: true,
   },
 ]
 
