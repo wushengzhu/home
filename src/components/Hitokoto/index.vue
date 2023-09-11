@@ -60,12 +60,12 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 .saying-mobile-container {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   color: #fff;
   padding: 10px;
   width: 85%;
-  height: 100px;
+  height: 90px;
   margin: 0 auto;
   box-sizing: border-box;
 

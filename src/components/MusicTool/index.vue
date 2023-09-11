@@ -106,7 +106,7 @@ watch(
   height: 100px;
   margin: 5px auto;
   box-sizing: border-box;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   padding: 5px;
 

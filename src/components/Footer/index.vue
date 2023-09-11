@@ -14,20 +14,24 @@ const filing = ref(import.meta.env.VITE_FILINGS)
     <div class="power" v-show="!store.musicOpenState">
       <span>
         Copyright&nbsp;&copy;
-        2023
-        -
+        <template v-if="!store.mobileOpenState">
+          2023
+          -
+        </template>
         {{ fullYear }}
       </span>
       &#124;
-      <!-- 以下信息请不要修改哦 -->
-      <span class="hidden">
-        Made&nbsp;by
-        <a :href="config.github" target="_blank">
-          {{ config.author }}
-        </a>
-      </span>
+      <template v-if="!store.mobileOpenState">
+        <!-- 以下信息请不要修改哦 -->
+        <span class="hidden">
+          Made&nbsp;by
+          <a :href="config.github" target="_blank">
+            {{ config.author }}
+          </a>
+        </span>
+        &#124;
+      </template>
       <!-- 站点备案 -->
-      &#124;
       <a href="https://beian.miit.gov.cn" target="_blank">
         {{ filing }}
       </a>

@@ -18,7 +18,7 @@
       </div>
       <div class="btn-area" v-if="store.getSystemSetting.showHomeBtn">
         <CartoonButton :width="200" :height="60" :size="24" v-if="!store.mobileOpenState" />
-        <el-button type="warning" round size="large" v-if="store.mobileOpenState">点我看看</el-button>
+        <el-button class="el-btn" round size="large" v-if="store.mobileOpenState">点我看看</el-button>
       </div>
     </div>
   </div>
@@ -125,6 +125,14 @@ const openModal = (type: homeTools) => {
   .btn-area {
     margin-top: 50px;
     font-weight: 700;
+
+    .el-btn {
+      background-color: #f4cf47;
+      border: 0px;
+      width: 150px;
+      letter-spacing: 1px;
+      color: #000;
+    }
   }
 }
 
