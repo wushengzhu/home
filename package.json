@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "bash": "bash deploy.sh"
   },
   "dependencies": {
     "@icon-park/vue-next": "^1.4.2",

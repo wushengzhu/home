@@ -31,9 +31,9 @@ export default ({ mode }) =>
         },
       }),
     ],
-    build: {
-      outDir: 'docs', // 默认dist
-    },
+    // build: {
+    //   outDir: 'docs', // 默认dist
+    // },
     resolve: {
       alias: [
         {
