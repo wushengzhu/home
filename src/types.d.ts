@@ -27,7 +27,7 @@ interface CircleItemType {
   fill?: string
   tipContent?: string
   placement?: string
-  imgSrc?: string | ''
+  src?: string | ''
   isShowTooTip?: boolean
   bgWidth?: number
   bgHeight?: number

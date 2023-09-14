@@ -1,43 +1,193 @@
 [
-    {
-      "icon": "Blog",
-      "name": "学习git命令网站",
-      "link": "https://learngitbranching.js.org/?locale=zh_CN",
-      "detail":"学习git命令网站",
-      "keywords":"git"
-    },
-    {
-      "icon": "",
-      "name": "自学sql网",
-      "link": "http://xuesql.cn/",
-      "detail":"自学sql网",
-      "keywords":"sql"
-    },
-    {
-      "icon": "CompactDisc",
-      "name": "猴子都能懂的git入门",
-      "link": "https://backlog.com/git-tutorial/cn/",
-      "detail":"学习git命令网站",
-      "keywords":"git"
-    },
-    {
-      "icon": "IT Tools",
-      "name": "IT Tools",
-      "link": "https://it-tools.tech/",
-      "detail":"IT Tools",
-      "keywords":"tool"
-    },
-    {
-      "icon": "Tool",
-      "name": "新工具网",
-      "link": "https://www.xintool.com/",
-      "keywords":"tool"
-    },
-    {
-      "icon": "Tool",
-      "name": "新工具网",
-      "link": "https://www.xintool.com/",
-      "keywords":"tool"
-    }
-  ]
-  
+  {
+    "name": "前端文档",
+    "type": "frontend",
+    "children": [
+      {
+        "icon": "https://avatars.githubusercontent.com/u/6128107?s=200&v=4",
+        "name": "Vue",
+        "link": "https://cn.vuejs.org/",
+        "detail": "前端框架",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "https://nodejs.cn/logo/react.png",
+        "name": "React",
+        "link": "https://react.docschina.org/",
+        "detail": "前端框架",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "https://angular.cn/assets/images/logos/angular/angular.svg",
+        "name": "Angular",
+        "link": "https://angular.cn/docs",
+        "detail": "前端框架",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "Blog",
+        "name": "Javascript",
+        "link": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "https://nodejs.cn/logo/ts.png",
+        "name": "Typescript",
+        "link": "https://ts.nodejs.cn/",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "https://nodejs.cn/logo/rx.png",
+        "name": "RxJs",
+        "link": "https://cn.rx.js.org/",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "Blog",
+        "name": "ECMAScript6",
+        "link": "https://es6.ruanyifeng.com/",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "https://img.nodejs.cn/logo.svg",
+        "name": "Nodejs",
+        "link": "https://nodejs.cn/learn",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "",
+        "name": "Nestjs",
+        "link": "https://es6.ruanyifeng.com/",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "Blog",
+        "name": "Webpack",
+        "link": "",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "Blog",
+        "name": "Gulp",
+        "link": "",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "Blog",
+        "name": "Vite",
+        "link": "",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "https://electron.nodejs.cn/assets/img/logo.svg",
+        "name": "Electron",
+        "link": "https://electron.nodejs.cn/docs/latest/",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
+      },
+      {
+        "icon": "https://i0.hdslb.com/bfs/face/b696cdc6fefb892007500cfd2b53c66cf4728e2b.jpg@96w.webp",
+        "name": "Flutter",
+        "link": "https://flutter.cn/docs",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
+      }
+    ]
+  },
+  {
+    "name": "后端文档",
+    "type": "backend",
+    "children":[
+
+    ]
+  },
+  {
+    "name": "通用工具",
+    "type": "tool",
+    "children":[
+      {
+        "icon": "Blog",
+        "name": "",
+        "link": "https://learngitbranching.js.org/?locale=zh_CN",
+        "detail": "",
+        "type": "Study",
+        "keywords": "git"
+      },
+      {
+        "icon": "",
+        "name": "自学sql网",
+        "link": "http://xuesql.cn/",
+        "detail": "自学sql网",
+        "type": "Study",
+        "keywords": "sql"
+      },
+      {
+        "icon": "CompactDisc",
+        "name": "猴子都能懂的git入门",
+        "link": "https://backlog.com/git-tutorial/cn/",
+        "detail": "",
+        "type": "Study",
+        "keywords": "git"
+      },
+      {
+        "icon": "IT Tools",
+        "name": "IT Tools",
+        "link": "https://it-tools.tech/",
+        "detail": "IT Tools",
+        "type": "Tool",
+        "keywords": "tool"
+      },
+      {
+        "icon": "Tool",
+        "name": "新工具网",
+        "link": "https://www.xintool.com/",
+        "type": "Tool",
+        "keywords": "tool"
+      },
+      {
+        "icon": "Tool",
+        "name": "新工具网",
+        "link": "https://www.xintool.com/",
+        "type": "Tool",
+        "keywords": "tool"
+      }
+    ]
+  },
+  {
+    "name": "文档记录",
+    "type": "word",
+    "children":[
+      
+    ]
+  },
+  {
+    "name": "考试网站",
+    "type": "exam",
+    "children":[
+      
+    ]
+  }
+]

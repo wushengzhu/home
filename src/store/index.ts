@@ -62,6 +62,9 @@ export const mainStore = defineStore(storeKey, {
     setInnerWidth(value: any) {
       this.innerWidth = value
       this.mobileOpenState = value >= 720 ? false : true
+      if (value) {
+        this.systemSettings.seasonMode = 'snow'
+      }
     },
     setSystemSetting(value: SystemSettings) {
       this.systemSettings = Object.assign(
@@ -91,6 +94,6 @@ export const mainStore = defineStore(storeKey, {
   persist: {
     key: 'data',
     storage: window.localStorage, // 设置存储类型
-    paths: ['mobileOpenState'],
+    paths: ['seasonMode'],
   },
 })

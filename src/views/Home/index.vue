@@ -1,13 +1,13 @@
 <template>
-  <div :class="{ 'home-container': !store.mobileOpenState, 'home-mobile-container': store.mobileOpenState, }">
+  <div :class="{ 'home-container': !store.mobileOpenState, 'home-mobile-container': store.mobileOpenState }">
     <div class="person-container">
       <div class="person-title">
         <div class="ml-ms">{{ penName }}</div>
       </div>
       <div class="person-web">
         <template v-for="item of HomePage">
-          <CircleItem :component="item.component" :imgSrc="item.imgSrc" :tipContent="item.tipContent"
-            @click="openModal(item.pageType)" class="ml-ms mr-ms" v-if="!store.mobileOpenState" />
+          <CircleItem :component="item.component" :src="item.src" :tipContent="item.tipContent"
+            @click="openModal(item.pageType)" class="ml-ml mr-ml" v-if="!store.mobileOpenState" />
           <CardItem :component="item.component" :iconText="item.tipContent"
             v-if="store.mobileOpenState && item.canMobile" />
         </template>
@@ -18,14 +18,12 @@
       </div>
       <div class="btn-area" v-if="store.getSystemSetting.showHomeBtn">
         <CartoonButton :width="200" :height="60" :size="24" v-if="!store.mobileOpenState" />
-        <el-button class="el-btn" round size="large" v-if="store.mobileOpenState">点我看看</el-button>
+        <CartoonButton :is-show-cartoon="false" :width="150" :height="48" :size="20" v-if="store.mobileOpenState" />
       </div>
     </div>
   </div>
   <HomeModal :showBody="false" :showClose="false" :show-b-close="true" ref="modalRef">
-    <div class="tools">
-      <component :is="curComponent" />
-    </div>
+    <component :is="curComponent" />
   </HomeModal>
 </template>
 <script setup lang="ts">

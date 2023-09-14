@@ -62,9 +62,10 @@ onMounted(() => {
 
 // 监听当前页面宽度
 window.addEventListener("resize", getWidth);
-
+window.addEventListener("load", getWidth);
 onBeforeUnmount(() => {
   window.removeEventListener("resize", getWidth);
+  window.removeEventListener("load", getWidth);
 });
 </script>
 

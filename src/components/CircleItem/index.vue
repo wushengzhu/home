@@ -4,7 +4,7 @@
       <el-tooltip effect="dark" :content="tipContent" :placement="placement">
         <div class="circle circle-card" :style="dynamicStyle">
           <!-- 头像 -->
-          <el-avatar v-if="imgSrc" :is="component" :size="'large'" :src="imgSrc" class="img">
+          <el-avatar v-if="src" :is="component" :size="'large'" :src="src" class="img">
           </el-avatar>
           <component v-else :is="component" :theme="theme" :size="iconSize" :fill="fill"></component>
         </div>
@@ -13,7 +13,7 @@
     <template v-else>
       <div class="circle circle-card" :style="dynamicStyle">
         <!-- 头像 -->
-        <el-avatar v-if="imgSrc" :is="component" :size="'large'" :src="imgSrc" class="img">
+        <el-avatar v-if="src" :is="component" :size="'large'" :src="src" class="img">
         </el-avatar>
         <component v-else :is="component" :theme="theme" :size="iconSize" :fill="fill">
         </component>
@@ -49,7 +49,7 @@ const props = defineProps({
     type: String,
     default: "top"
   },
-  imgSrc: {
+  src: {
     type: String || null,
     default: null
   },

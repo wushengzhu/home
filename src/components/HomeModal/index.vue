@@ -84,11 +84,9 @@ defineExpose({
 
     .modal-body {
         position: absolute;
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
         top: calc(50% - var(--top));
         left: calc(50% - var(--left));
+        margin: 0 auto;
         width: var(--width);
         height: var(--height);
         background-color: #ffffff66;
@@ -133,6 +131,7 @@ defineExpose({
     .bottom-close {
         position: absolute;
         left: 50%;
+        transform: translate(-50%);
         bottom: 80px;
     }
 

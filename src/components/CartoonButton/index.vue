@@ -5,7 +5,7 @@
             <div class="button__wrapper">
                 <span class="button__text">{{ buttonText }}</span>
             </div>
-            <div class="characterBox">
+            <div class="characterBox" v-if="isShowCartoon">
                 <div class="character wakeup">
                     <div class="character__face"></div>
                     <div class="charactor__face2" v-if="buttonType !== 'yb-btn'"></div>
@@ -26,10 +26,17 @@
     </div>
 </template>
 <script setup lang="ts">
-
+import { watch } from 'vue';
+import { mainStore } from '@/store';
+import { reactive } from 'vue';
+const store = mainStore();
 type btnType = 'yb-btn' | 'bb-btn' | 'kb-btn'
 
 const props = defineProps({
+    isShowCartoon: {
+        type: Boolean,
+        default: true
+    },
     buttonType: {
         type: String,
         default: 'yb-btn'
@@ -51,6 +58,20 @@ const props = defineProps({
         default: 32
     }
 })
+const arrow = reactive({
+    bgc: 'var(--base_color)'
+})
+watch(
+    () => store.mobileOpenState,
+    (val) => {
+        if (val) {
+            arrow.bgc = 'none'
+        } else {
+            arrow.bgc = 'var(--base_color)'
+        }
+    }
+);
+
 </script>
 <style lang="scss" scoped>
 .yb-btn {
@@ -103,6 +124,7 @@ const props = defineProps({
     font-family: 'Fredoka One', cursive;
 }
 
+// 箭头样式
 .button::before {
     content: '';
     position: absolute;
@@ -113,7 +135,7 @@ const props = defineProps({
     margin: auto 0;
     width: 24px;
     height: 24px;
-    background: var(--base_color);
+    background: v-bind('arrow.bgc');
     transition: all ease .2s;
 }
 

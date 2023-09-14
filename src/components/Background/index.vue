@@ -3,14 +3,14 @@
     <template v-if="store.getIsDark">
       <div class="dark-bg">
         <div class="star comet"></div>
-        <template v-for="(item, i) in 150">
+        <template v-for="(item, i) in 560">
           <div :class="{ 'star': true, 'star--big': i % 20 == 0, 'star--medium': i % 9 == 0 }" :style="setStarStyle()">
           </div>
         </template>
+        <!-- <StarSky /> -->
       </div>
     </template>
     <img class="light-bg" :src="props.bgc" v-else />
-    <!-- <StarSky /> -->
   </div>
 </template>
 <script setup lang="ts">
@@ -37,8 +37,9 @@ const setStarStyle = () =>
 .bg-container,
 .light-bg,
 .dark-bg {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .bg-container {
