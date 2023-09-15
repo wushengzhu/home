@@ -1,24 +1,38 @@
-# 以下以一个构建vue项目的yml文件为例子
-name: deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main # 这里只配置了main分支，所以只有推送main分支才会触发以下任务
+      - main # 可以根据您的主分支的名称进行更改
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
-      - run: node -v
-      - run: npm install
-      - run: npm run build
-      - name: Deploy # 部署
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
-        with:
-          branch: gh-pages # 部署后提交到那个分支
-          folder: docs # 这里填打包好的目录名称
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        run: |
+          git config --global user.email "ws_zhu@foxmail.com"
+          git config --global user.name "GitHub Actions"
+          echo "node_modules" >> .gitignore
+          git checkout --orphan gh-pages
+          mv dist/* .
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          git branch -D main
+          git branch -m main
+          git push -f origin main:gh-pages
