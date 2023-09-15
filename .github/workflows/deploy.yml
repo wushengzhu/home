@@ -30,7 +30,7 @@ jobs:
           git config --global user.name "wushengzhu"
           echo "node_modules" >> .gitignore
           git checkout --orphan gh-pages
-          mv dist/* .
+          mv docs/* .
           git add .
           git commit -m "Deploy to GitHub Pages"
           git branch -D main
