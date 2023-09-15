@@ -11,6 +11,7 @@ import Footer from "@/components/Footer/index.vue";
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { checkDays, helloInit, getLunarTime } from "@/utils/getTime";
 import { mainStore } from "./store";
+import pcBgc from '@/assets/images/pc/1.webp';
 
 const store = mainStore();
 const { seasonMode, showDarkMode } = store.getSystemSetting;
@@ -75,7 +76,7 @@ onBeforeUnmount(() => {
     <main>
       <!-- 季节模式 -->
       <component v-if="mode && mode !== 'default'" :is="season[mode]" />
-      <Background bgc="/images/pc/1.webp" />
+      <Background :bgc="pcBgc" />
       <Home />
       <FabsBtn v-if="showDarkMode" />
     </main>
