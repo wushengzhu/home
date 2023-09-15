@@ -27,7 +27,7 @@ jobs:
       - name: Deploy to GitHub Pages
         run: |
           git config --global user.email "ws_zhu@foxmail.com"
-          git config --global user.name "GitHub Actions"
+          git config --global user.name "wushengzhu"
           echo "node_modules" >> .gitignore
           git checkout --orphan gh-pages
           mv dist/* .
