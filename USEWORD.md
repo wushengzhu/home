@@ -70,7 +70,11 @@ npm install font-spider -g
   ```
   pnpm bash
   ```
-
+## 配置域名
+- github的settings中pages添加域名验证
+  - 根据生成的相关信息到域名解析创建一个TXT记录
+  - 创建一个CNAME记录，把wushengzhu.github.io，添加进记录值
+- 在仓库的settings中的域名添加已经验证的域名
 ## 静态文件读取
 
 - 图片资源放在 public/images 下：虽然方便，但是如果部署到 github-pages 下代码访问不到的，除非是服务器部署
