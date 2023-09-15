@@ -20,7 +20,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import blogs from '@/assets/blogs.json'
+import blogs from '@/assets/json/blogs.json'
 import CircleItem from "@/components/CircleItem/index.vue"
 
 const blogItem = (i: number, j: number) => blogs[j - 1 + (i - 1) * 4]

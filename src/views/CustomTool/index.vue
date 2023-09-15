@@ -42,7 +42,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import tools from "@/assets/tools.json"
+import tools from "@/assets/json/tools.json"
 import { Tool, HamburgerButton } from "@icon-park/vue-next"
 import Scrollbar from "@/components/Scrollbar/index.vue"
 import { ref } from "vue";

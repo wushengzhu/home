@@ -14,7 +14,7 @@ export const HomePage: Array<CircleItemType> = [
     canMobile: true,
   },
   {
-    src: '/images/logo.jpg',
+    src: '@/assets/images/logo.jpg',
     tipContent: '个人简历',
     pageType: 'resume',
     canMobile: false,
