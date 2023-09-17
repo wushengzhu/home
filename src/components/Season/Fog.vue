@@ -22,7 +22,7 @@
 }
 
 .fog-img-first {
-  background: url("@/assets/images/fog-1.png") repeat-x;
+  background: url("/images/fog-1.png") repeat-x;
   background-size: contain;
   background-position: center;
   -webkit-animation: marquee 60s linear infinite;
@@ -30,7 +30,7 @@
 }
 
 .fog-img-second {
-  background: url("@/assets/images/fog-2.png") repeat-x;
+  background: url("/images/fog-2.png") repeat-x;
   background-size: contain;
   background-position: center;
   -webkit-animation: marquee 40s linear infinite;

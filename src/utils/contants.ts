@@ -1,5 +1,4 @@
 import { Tool, PictureAlbum, Bookshelf, Notes } from '@icon-park/vue-next'
-import logo from '@/assets/images/logo.jpg'
 
 export const HomePage: Array<CircleItemType> = [
   {
@@ -15,7 +14,7 @@ export const HomePage: Array<CircleItemType> = [
     canMobile: true,
   },
   {
-    src: logo,
+    src: '/images/logo.jpg',
     tipContent: '个人简历',
     pageType: 'resume',
     canMobile: false,
