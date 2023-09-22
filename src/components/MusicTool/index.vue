@@ -77,7 +77,7 @@ const changePlayState = () => {
 
 // 音乐上下曲
 const changeMusicIndex = (type: number) => {
-  playerRef.value.changeMUSIC(type);
+  playerRef.value.changeSong(type);
 };
 
 onMounted(() => {
