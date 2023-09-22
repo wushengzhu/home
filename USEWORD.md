@@ -75,15 +75,6 @@ npm install font-spider -g
   - 根据生成的相关信息到域名解析创建一个TXT记录
   - 创建一个CNAME记录，把wushengzhu.github.io，添加进记录值
 - 在仓库的settings中的域名添加已经验证的域名
-## 静态文件读取
-
-- 图片资源放在 public/images 下：虽然方便，但是如果部署到 github-pages 下代码访问不到的，除非是服务器部署
-  > 由于部署 github-page 时，地址是部署为 github 仓库名下的，这个基地址为 home，读取的是 src 下文件，暂时没有想出办法解决这个问题
-- 图片资源放在 src/assets/images 下：需要使用以变量形式引入，如：
-  ```
-  import pcBgc from '@/assets/images/pc/1.webp';
-  ```
-  > 注意地，最好不要使用相对路径，因为如果图片是通过组件传参形式出现的话，可能会有些问题
 
 ## 提交规范
 
