@@ -28,7 +28,12 @@ const getWidth = () => {
 watch(
   () => store.getSystemSetting,
   (val: SystemSettings) => {
-    mode.value = val.seasonMode;
+    if (store.mobileOpenState) {
+      mode.value = val.seasonMode;
+    }
+    // } else {
+    //   mode.value = 'snow';
+    // }
   }
 );
 
@@ -71,7 +76,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="app-container">
-    <Header />
+    <Header v-if="!store.mobileOpenState" />
     <main>
       <!-- 季节模式 -->
       <component v-if="mode && mode !== 'default'" :is="season[mode]" />

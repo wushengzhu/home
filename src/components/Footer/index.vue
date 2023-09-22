@@ -20,7 +20,8 @@ const filing = ref(import.meta.env.VITE_FILINGS)
         </template>
         {{ fullYear }}
       </span>
-      &#124;
+      &nbsp;
+      <!-- &#124; -->
       <template v-if="!store.mobileOpenState">
         <!-- 以下信息请不要修改哦 -->
         <span class="hidden">
@@ -29,7 +30,8 @@ const filing = ref(import.meta.env.VITE_FILINGS)
             {{ config.author }}
           </a>
         </span>
-        &#124;
+        &nbsp;
+        <!-- &#124; -->
       </template>
       <!-- 站点备案 -->
       <a href="https://beian.miit.gov.cn" target="_blank">

@@ -15,7 +15,7 @@ const snowList = ref([
 @import url("./style/snow.scss");
 
 .snow-container {
-  height: 100vh;
+  // height: 100vh;
   // background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
   // filter: drop-shadow(0 0 10px white);

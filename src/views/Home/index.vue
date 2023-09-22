@@ -1,30 +1,41 @@
 <template>
-  <div :class="{ 'home-container': !store.mobileOpenState, 'home-mobile-container': store.mobileOpenState }">
-    <div class="person-container">
+  <!-- :class="{ 'home-container': !store.mobileOpenState, 'home-mobile-container': store.mobileOpenState }" -->
+  <template v-if="!store.mobileOpenState">
+    <div class="home-container">
+      <div class="person-container">
+        <div class="person-title one">
+          {{ penName }}
+        </div>
+        <div class="person-web">
+          <template v-for="item of HomePage">
+            <CircleItem :component="item.component" :src="item.src" :tipContent="item.tipContent"
+              @click="openModal(item.pageType)" class="ml-ml mr-ml" v-if="!store.mobileOpenState" />
+            <CardItem :component="item.component" :iconText="item.tipContent"
+              v-if="store.mobileOpenState && item.canMobile" />
+          </template>
+        </div>
+        <div class="tool-card">
+          <Hitokoto />
+          <MusicTool />
+        </div>
+        <div class="btn-area" v-if="store.getSystemSetting.showHomeBtn">
+          <CartoonButton :width="200" :height="60" :size="24" v-if="!store.mobileOpenState" />
+          <CartoonButton :is-show-cartoon="false" :width="150" :height="48" :size="20" v-if="store.mobileOpenState" />
+        </div>
+      </div>
+    </div>
+    <HomeModal :showBody="false" :showClose="false" :show-b-close="true" ref="modalRef">
+      <component :is="curComponent" />
+    </HomeModal>
+  </template>
+  <template v-else>
+    <div class="home-mobile-container">
+      <CircleItem :src="'/images/logo.jpg'" />
       <div class="person-title one">
         {{ penName }}
       </div>
-      <div class="person-web">
-        <template v-for="item of HomePage">
-          <CircleItem :component="item.component" :src="item.src" :tipContent="item.tipContent"
-            @click="openModal(item.pageType)" class="ml-ml mr-ml" v-if="!store.mobileOpenState" />
-          <CardItem :component="item.component" :iconText="item.tipContent"
-            v-if="store.mobileOpenState && item.canMobile" />
-        </template>
-      </div>
-      <div class="tool-card">
-        <Hitokoto />
-        <MusicTool />
-      </div>
-      <div class="btn-area" v-if="store.getSystemSetting.showHomeBtn">
-        <CartoonButton :width="200" :height="60" :size="24" v-if="!store.mobileOpenState" />
-        <CartoonButton :is-show-cartoon="false" :width="150" :height="48" :size="20" v-if="store.mobileOpenState" />
-      </div>
     </div>
-  </div>
-  <HomeModal :showBody="false" :showClose="false" :show-b-close="true" ref="modalRef">
-    <component :is="curComponent" />
-  </HomeModal>
+  </template>
 </template>
 <script setup lang="ts">
 import Hitokoto from "@/components/Hitokoto/index.vue";
@@ -65,100 +76,87 @@ const openModal = (type: homeTools) => {
 </script>
 <style lang="scss" scoped>
 .home-mobile-container {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  .person-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+  .person-title {
     position: relative;
-
-    .person-title {
-      position: relative;
-      text-align: center;
-      margin-bottom: 10px;
-      width: 0;
-      color: #fff;
-      border-right: .15em solid #fff; //右边框
-      white-space: nowrap; //禁止换行
-      overflow: hidden; //隐藏多余的部分
-      font-size: 1.5rem; //字体大小
-      letter-spacing: 0.15em; //字母间距
-      animation: typing 3.5s steps(5, end) infinite,
-        blink-caret 0.5s step-end infinite; //光标闪烁
-    }
-
-    @keyframes typing {
-      from {
-        width: 0;
-      }
-
-      to {
-        width: 5em; //  //  单位em,表示一个字体的宽度
-      }
-    }
-
-    @keyframes blink-caret {
-
-      from,
-      to {
-        border-color: transparent;
-      }
-
-      50% {
-        border-color: #fff;
-      }
-    }
-
-    // .person-title::after {
-    //   content: "";
-    //   width: 2px;
-    //   position: absolute;
-    //   right: 0px;
-    //   height: 32px;
-    //   border-right: 10px solid #fff;
-    //   animation: showInfinite 0.5s infinite both;
-    //   z-index: 100;
-    // }
-
-    // .one {
-    //   animation-delay: 0s;
-    // }
-
-    // @keyframes showInfinite {
-    //   0% {
-    //     opacity: 1;
-    //   }
-
-    //   100% {
-    //     opacity: 0;
-    //   }
-    // }
-  }
-
-  .person-web {
+    text-align: center;
+    margin-top: 10px;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    color: #fff;
+    // border-right: .15em solid #fff; //右边框
+    white-space: nowrap; //禁止换行
+    overflow: hidden; //隐藏多余的部分
+    font-size: 1.5rem; //字体大小
+    letter-spacing: 0.15em; //字母间距
+    animation: typing 3.5s steps(13, end) infinite,
+      blink-caret 0.5s step-end infinite; //光标闪烁
   }
 
-  .btn-area {
-    margin-top: 50px;
-    font-weight: 700;
-
-    .el-btn {
-      background-color: #f4cf47;
-      border: 0px;
-      width: 150px;
-      letter-spacing: 1px;
-      color: #000;
+  @keyframes typing {
+    from {
+      width: 0;
     }
+
+    to {
+      width: 5em; //  //  单位em,表示一个字体的宽度
+    }
+  }
+
+  @keyframes blink-caret {
+
+    from,
+    to {
+      border-color: transparent;
+    }
+
+    50% {
+      border-color: #fff;
+    }
+  }
+
+  // .person-title::after {
+  //   content: "";
+  //   width: 2px;
+  //   position: absolute;
+  //   right: 0px;
+  //   height: 32px;
+  //   border-right: 10px solid #fff;
+  //   animation: showInfinite 0.5s infinite both;
+  //   z-index: 100;
+  // }
+
+  // .one {
+  //   animation-delay: 0s;
+  // }
+
+  // @keyframes showInfinite {
+  //   0% {
+  //     opacity: 1;
+  //   }
+
+  //   100% {
+  //     opacity: 0;
+  //   }
+  // }
+}
+
+.btn-area {
+  margin-top: 50px;
+  font-weight: 700;
+
+  .el-btn {
+    background-color: #f4cf47;
+    border: 0px;
+    width: 150px;
+    letter-spacing: 1px;
+    color: #000;
   }
 }
 
