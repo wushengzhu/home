@@ -1,8 +1,8 @@
 <template>
   <div :class="{ 'home-container': !store.mobileOpenState, 'home-mobile-container': store.mobileOpenState }">
     <div class="person-container">
-      <div class="person-title">
-        <div class="ml-ms">{{ penName }}</div>
+      <div class="person-title one">
+        {{ penName }}
       </div>
       <div class="person-web">
         <template v-for="item of HomePage">
@@ -76,17 +76,20 @@ const openModal = (type: homeTools) => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     .person-title {
+      position: relative;
       text-align: center;
       margin-bottom: 10px;
+      width: 0;
       color: #fff;
-      // border-right: .15em solid #fff; //右边框
+      border-right: .15em solid #fff; //右边框
       white-space: nowrap; //禁止换行
       overflow: hidden; //隐藏多余的部分
       font-size: 1.5rem; //字体大小
       letter-spacing: 0.15em; //字母间距
-      animation: typing 3.5s steps(30, end) infinite,
+      animation: typing 3.5s steps(5, end) infinite,
         blink-caret 0.5s step-end infinite; //光标闪烁
     }
 
@@ -96,7 +99,7 @@ const openModal = (type: homeTools) => {
       }
 
       to {
-        width: calc(100% + 0.15em);
+        width: 5em; //  //  单位em,表示一个字体的宽度
       }
     }
 
@@ -111,6 +114,31 @@ const openModal = (type: homeTools) => {
         border-color: #fff;
       }
     }
+
+    // .person-title::after {
+    //   content: "";
+    //   width: 2px;
+    //   position: absolute;
+    //   right: 0px;
+    //   height: 32px;
+    //   border-right: 10px solid #fff;
+    //   animation: showInfinite 0.5s infinite both;
+    //   z-index: 100;
+    // }
+
+    // .one {
+    //   animation-delay: 0s;
+    // }
+
+    // @keyframes showInfinite {
+    //   0% {
+    //     opacity: 1;
+    //   }
+
+    //   100% {
+    //     opacity: 0;
+    //   }
+    // }
   }
 
   .person-web {
@@ -155,14 +183,18 @@ const openModal = (type: homeTools) => {
     .person-title {
       text-align: center;
       margin-bottom: 30px;
-      color: #fff;
-      // border-right: .15em solid #fff; //右边框
       white-space: nowrap; //禁止换行
       overflow: hidden; //隐藏多余的部分
       font-size: 3rem; //字体大小
       letter-spacing: 0.15em; //字母间距
       animation: typing 3.5s steps(30, end) infinite,
         blink-caret 0.5s step-end infinite; //光标闪烁
+    }
+
+    .typed-cursor {
+      opacity: 1;
+      -webkit-animation: blink 0.7s infinite;
+      animation: blink 0.7s infinite;
     }
 
     @keyframes typing {

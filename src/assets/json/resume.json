@@ -1,0 +1,69 @@
+{
+    "penName": "路灯下的光",
+    "signature": "竹杖芒鞋轻胜马，谁怕？一蓑烟雨任凭生！",
+    "avatar": "/images/logo.jpg",
+    "education":"本科",
+    "native":"广东茂名",
+    "interest": [
+        {
+            "icon": "🎱",
+            "name": "桌球"
+        },
+        {
+            "icon": "🏸",
+            "name": "羽毛球"
+        },
+        {
+            "icon": "📷",
+            "name": "摄影"
+        },
+        {
+            "icon": "⛺",
+            "name": "户外"
+        },
+        {
+            "icon": "🏃‍",
+            "name": "跑步"
+        },
+        {
+            "icon": "📚",
+            "name": "微读"
+        },
+        {
+            "icon": "🎸",
+            "name": "吉他"
+        }
+    ],
+    "skill": "",
+    "detail": "",
+    "contact":[
+        {
+            "name": "Github",
+            "icon": "github",
+            "tip": "去 Github 看看",
+            "value":"",
+            "url": "https://github.com/wushengzhu"
+        },
+        {
+            "name": "WeiXin",
+            "icon": "weixin",
+            "tip": "(゜-゜)つロ 干杯 ~",
+            "value":"",
+            "url": ""
+        },
+        {
+            "name": "QQ",
+            "icon": "qq",
+            "tip": "有什么事吗",
+            "value":"",
+            "url": "https://res.abeim.cn/api/qq/?qq=1539250352"
+        },
+        {
+            "name": "Email",
+            "icon": "email",
+            "tip": "来封 Email ~",
+            "value": "ws_zhu@foxmail.com",
+            "url": "https://wx.mail.qq.com/?cancel_login=true&from=get_ticket_fail"
+        }
+    ]
+}

@@ -28,7 +28,7 @@
         "keywords": ""
       },
       {
-        "icon": "Blog",
+        "icon": "",
         "name": "Javascript",
         "link": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript",
         "detail": "",
@@ -52,7 +52,7 @@
         "keywords": ""
       },
       {
-        "icon": "Blog",
+        "icon": "",
         "name": "ECMAScript6",
         "link": "https://es6.ruanyifeng.com/",
         "detail": "",
@@ -68,7 +68,7 @@
         "keywords": ""
       },
       {
-        "icon": "",
+        "icon": "https://nodejs.cn/logo/nest.png",
         "name": "Nestjs",
         "link": "https://es6.ruanyifeng.com/",
         "detail": "",
@@ -76,25 +76,25 @@
         "keywords": ""
       },
       {
-        "icon": "Blog",
+        "icon": "https://www.webpackjs.com/icon-square-small-slack.9281492bb267314634b4.png",
         "name": "Webpack",
-        "link": "",
+        "link": "https://www.webpackjs.com/concepts/",
         "detail": "",
         "type": "FrontEnd",
         "keywords": ""
       },
       {
-        "icon": "Blog",
+        "icon": "https://nodejs.cn/logo/gulp.png",
         "name": "Gulp",
-        "link": "",
+        "link": "https://gulpjs.com/docs/en/getting-started/quick-start/",
         "detail": "",
         "type": "FrontEnd",
         "keywords": ""
       },
       {
-        "icon": "Blog",
+        "icon": "https://cn.vitejs.dev/logo.svg",
         "name": "Vite",
-        "link": "",
+        "link": "https://cn.vitejs.dev/guide/",
         "detail": "",
         "type": "FrontEnd",
         "keywords": ""
@@ -129,7 +129,7 @@
     "type": "tool",
     "children":[
       {
-        "icon": "Blog",
+        "icon": "",
         "name": "",
         "link": "https://learngitbranching.js.org/?locale=zh_CN",
         "detail": "",

@@ -25,8 +25,9 @@
       </div>
       <Scrollbar>
         <div style="height: 200px;"></div>
-        <template v-for="item of tools">
-          <div class="left-menu-item">
+        <template v-for="item of tools" :key="item.type">
+          <div :class="{ 'left-menu-item': true, 'left-menu-item-active': selected == item.type }"
+            @click="getRelatedTool(item.type)">
             <tool theme="outline" size="22" fill="#000" />
             <a class="ml-ms">{{ item.name }}</a>
           </div>
@@ -37,7 +38,19 @@
       <div class="right-content-head">
         <hamburger-button theme="outline" size="24" fill="#000" class="hbg-btn" @click.stop="setIsCollapse()" />
       </div>
-      <div class="right-content-area"></div>
+      <div class="right-content-area">
+        <template v-for="item of tempT" :key="item.type">
+          <div class="tool-item-container">
+            <a class="tool-item" :href="item.link" target="_blank">
+              <div class="tool-item-title">{{ item.name }}</div>
+              <div class="tool-item-content">{{ item.detail }}</div>
+              <img class="tool-item-icon" v-if="item?.icon" :src="item.icon" />
+              <tool class="tool-item-icon" style="display: flex;justify-content: center;align-items: center;"
+                theme="outline" size="32" fill="#000" v-else />
+            </a>
+          </div>
+        </template>
+      </div>
     </div>
   </div>
 </template>
@@ -47,12 +60,87 @@ import { Tool, HamburgerButton } from "@icon-park/vue-next"
 import Scrollbar from "@/components/Scrollbar/index.vue"
 import { ref } from "vue";
 
+const tempT = ref<any>([]);
 const isCollapse = ref(false);
+const selected = ref("frontend")
 const setIsCollapse = () => isCollapse.value = !isCollapse.value;
+const getRelatedTool = (type: string) => {
+  let temp = tools.filter(item => item.type === type);
+  tempT.value = temp[0].children;
+  selected.value = type;
+} 
 </script>
 <style lang="scss" scoped>
 ::-webkit-scrollbar {
   position: relative;
+}
+
+.tool-item-container {
+  width: 220px;
+  height: 110px;
+  position: relative;
+  padding: 10px 10px;
+  box-sizing: border-box;
+}
+
+.tool-item {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 2px;
+  box-sizing: border-box;
+  box-shadow: 1px 0 9px 1px rgb(0 0 0 / 20%);
+
+  &:hover {
+    border: 2px solid orange;
+  }
+
+  &-title {
+    width: 100%;
+    height: 50%;
+    background-color: #409eff;
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  &-content {
+    width: 100%;
+    height: 50%;
+    background-color: #c6e2ff;
+    color: grey;
+    font-size: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  &-icon {
+    position: absolute;
+    display: block;
+    width: 48px;
+    height: 48px;
+    background-color: #fff;
+    border-radius: 10%;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+  }
+}
+
+.right-content-area {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .tool-container {
@@ -76,7 +164,13 @@ const setIsCollapse = () => isCollapse.value = !isCollapse.value;
     background-color: #fff;
     // overflow: hidden;
     overflow-y: auto;
-    transition: all .3s;
+    // transition: all .3s ease-in-out;
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
 
     .left-menu-head {
       position: absolute;
@@ -102,6 +196,28 @@ const setIsCollapse = () => isCollapse.value = !isCollapse.value;
       }
     }
 
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* 淡入动画：从透明到非透明的状态转化 */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+
     .left-menu-item {
       width: 100%;
       height: 64px;
@@ -122,6 +238,10 @@ const setIsCollapse = () => isCollapse.value = !isCollapse.value;
       &:hover {
         cursor: pointer;
         background-color: #c6e2ff;
+      }
+
+      &-active {
+        background-color: #409eff;
       }
     }
   }
