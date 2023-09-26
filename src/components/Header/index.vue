@@ -32,10 +32,9 @@ import Lantern from "@/components/Lantern/index.vue";
 import SettingButton from "@/components/SettingButton/index.vue";
 import HomeModal from "@/components/HomeModal/index.vue";
 import DateTime from "@/components/DateTime/index.vue";
-import { ref, reactive } from "vue";
+import { ref, reactive, watch } from "vue";
 import { mainStore } from "@/store";
 import { SystemValue } from "@/utils/contants";
-import { watch } from "vue";
 
 const store = mainStore();
 const modalRef = ref();

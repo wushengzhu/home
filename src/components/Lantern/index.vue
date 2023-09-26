@@ -22,15 +22,12 @@ import { ref } from "vue";
 const textValues = ref(["新", "年", "快", "乐"]);
 </script>
 <style lang="scss" scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 .lantern-box {
   position: fixed;
   pointer-events: none;
+  z-index: 10;
 }
+
 .lantern-light {
   position: relative;
   width: 120px;
@@ -41,6 +38,7 @@ const textValues = ref(["新", "年", "快", "乐"]);
   box-shadow: -5px 5px 50px 4px #fa6c00;
   animation: swing 3s infinite ease-in-out;
 }
+
 .lantern-light::before,
 .lantern-light::after {
   content: "";
@@ -48,27 +46,28 @@ const textValues = ref(["新", "年", "快", "乐"]);
   border: 1px solid #dc8f03;
   width: 60px;
   height: 12px;
-  background: linear-gradient(
-    to right,
-    #dc8f03,
-    #ffa500,
-    #dc8f03,
-    #ffa500,
-    #dc8f03
-  );
+  background: linear-gradient(to right,
+      #dc8f03,
+      #ffa500,
+      #dc8f03,
+      #ffa500,
+      #dc8f03);
   margin-left: 20px;
   left: 10px;
 }
+
 .lantern-light::before {
   top: -7px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
+
 .lantern-light::after {
   bottom: -7px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
 .lantern-line {
   width: 2px;
   height: 50px;
@@ -77,6 +76,7 @@ const textValues = ref(["新", "年", "快", "乐"]);
   top: -50px;
   left: 60px;
 }
+
 .lantern-circle,
 .lantern-rect {
   height: 90px;
@@ -84,20 +84,24 @@ const textValues = ref(["新", "年", "快", "乐"]);
   border: 2px solid #dc8f03;
   background-color: rgba(216, 0, 15, 0.1);
 }
+
 .lantern-circle {
   width: 100px;
   margin: 12px 8px 8px 10px;
 }
+
 .lantern-rect {
   margin: -2px 8px 8px 26px;
   width: 45px;
 }
+
 .lantern-text {
   font: bold 2rem / 85px "Franklin Gothic Medium", "Arial Narrow", Arial,
     sans-serif;
   text-align: center;
   color: #dc8f03;
 }
+
 .lantern-tassel-top {
   width: 5px;
   height: 20px;
@@ -107,12 +111,14 @@ const textValues = ref(["新", "年", "快", "乐"]);
   margin: -5px 0 0 59px;
   animation: swing 3s infinite ease-in-out;
 }
+
 .lantern-tassel-middle,
 .lantern-tassel-bottom {
   position: absolute;
   width: 10px;
   left: -2px;
 }
+
 .lantern-tassel-middle {
   border-radius: 50%;
   top: 14px;
@@ -120,6 +126,7 @@ const textValues = ref(["新", "年", "快", "乐"]);
   background-color: #dc8f03;
   z-index: 2;
 }
+
 .lantern-tassel-bottom {
   background-color: #ffa500;
   border-bottom-left-radius: 5px;
@@ -127,31 +134,37 @@ const textValues = ref(["新", "年", "快", "乐"]);
   top: 18px;
   z-index: 1;
 }
+
 @keyframes swing {
   0% {
     transform: rotate(-10deg);
   }
+
   50% {
     transform: rotate(10deg);
   }
+
   100% {
     transform: rotate(-10deg);
   }
 }
+
 .lantern-container .lantern-box:first-child {
   left: 10px;
   top: -30px;
 }
+
 .lantern-container .lantern-box:nth-child(2) {
   left: 160px;
   top: -25px;
 }
+
 .lantern-container .lantern-box:nth-child(3) {
   right: 160px;
   top: -28px;
 }
+
 .lantern-container .lantern-box:last-child {
   right: 10px;
   top: -26px;
-}
-</style>
+}</style>

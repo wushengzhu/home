@@ -2,8 +2,8 @@
     "penName": "路灯下的光",
     "signature": "竹杖芒鞋轻胜马，谁怕？一蓑烟雨任凭生！",
     "avatar": "/images/logo.jpg",
-    "education":"本科",
-    "native":"广东茂名",
+    "education": "本科",
+    "native": "广东茂名",
     "interest": [
         {
             "icon": "🎱",
@@ -34,28 +34,29 @@
             "name": "吉他"
         }
     ],
-    "skill": "",
-    "detail": "",
-    "contact":[
+    "skill": "<ul>\n\t<li style=\"margin-left: 28px; text-align: left;\"><span style=\"font-size:12pt\"><span style=\"font-family:&quot;Times New Roman&quot;\"><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">熟练使用</span><span style=\"font-family:微软雅黑\">Element-Plus、Ant-Design、NG-ZORRO等UI组件，对图表Echart、Viser有</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">相关实践</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">经验。</span></span></span></span></span></span></li>\n\t<li style=\"margin-left: 28px; text-align: left;\"><span style=\"font-size:12pt\"><span style=\"font-family:&quot;Times New Roman&quot;\"><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">能从</span><span style=\"font-family:微软雅黑\">0到1使用Angular、Vue、React三大框架进行项目开发</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">并有相关实践经验</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">，了解</span><span style=\"font-family:微软雅黑\">Vue的setup编译、响应式、nextTick等相关api基本原理，掌握</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span>Vue3</span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">、</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span>React的hooks封装。</span></span></span></span></span></li>\n\t<li style=\"margin-left: 28px; text-align: left;\"><span style=\"font-size:12pt\"><span style=\"font-family:&quot;Times New Roman&quot;\"><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">熟练运用</span><span style=\"font-family:微软雅黑\">Angular、Vue进行组件封装、模块化开发，熟悉Vue</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span>3</span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">组合式开发并兼容</span><span style=\"font-family:微软雅黑\">Vue</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span>2</span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">。</span></span></span></span></span></span></li>\n\t<li style=\"margin-left: 28px; text-align: left;\"><span style=\"font-size:12pt\"><span style=\"font-family:&quot;Times New Roman&quot;\"><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">能基于</span><span style=\"font-family:微软雅黑\">UI组件对三大框架进行不同业务的二次封装，如后台管理的列表组件、字典组件、附件组件等封装。</span></span></span></span></span></span></li>\n\t<li style=\"margin-left: 28px; text-align: left;\"><span style=\"font-size:12pt\"><span style=\"font-family:&quot;Times New Roman&quot;\"><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">能从</span><span style=\"font-family:微软雅黑\">0到1搭建qiankun微应用，可以</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">灵活基于</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">三大</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">框架搭建，</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">了解基座与微应用之间的构建联系的基本原理，熟悉微应用资源代理，提高页面资源加载性能。</span></span></span></span>&nbsp;</span></span></li>\n\t<li style=\"margin-left: 28px; text-align: left;\"><span style=\"font-size:12pt\"><span style=\"font-family:&quot;Times New Roman&quot;\"><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span ><span style=\"font-family:微软雅黑\">对</span><span style=\"font-family:微软雅黑\">Vue、React框架的构建工具webpack、vite有</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span ><span style=\"font-family:微软雅黑\">相关实践经验</span></span></span></span><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span ><span style=\"font-family:微软雅黑\">，掌握基本配置，熟悉项目体积构建优化。</span></span></span></span></span></span></li>\n\t<li style=\"margin-left: 28px; text-align: left;\"><span style=\"font-size:12pt\"><span style=\"font-family:&quot;Times New Roman&quot;\"><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span ><span style=\"font-family:微软雅黑\">对</span><span style=\"font-family:微软雅黑\">JavaScript、TypeScript、</span></span></span></span><span style=\"font-size:10.0000pt\"><span><span style=\"font-family:微软雅黑\"><span>Reactive Extensions for JavaScript</span></span></span></span><span style=\"font-size:10.0000pt\"><span><span style=\"font-family:微软雅黑\"><span><span style=\"font-family:微软雅黑\">熟悉运用，在项目实际开发中，能根据业务对组件封装熟练使用Typescript，能熟练结合Angular使用Rxjs对异步操作进行数据流处理。</span></span></span></span></span></span></span></li>\n\t<li style=\"margin-left: 28px; text-align: left;\"><span style=\"font-size:12pt\"><span style=\"font-family:&quot;Times New Roman&quot;\"><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span ><span style=\"font-family:微软雅黑\">熟悉</span><span style=\"font-family:微软雅黑\">nodejs结合前端的后端交互，能基于nodejs进行业务接口开发，灵活运用mongoDB增删查改等基本操作函数，对嵌套数据表、附件上传、阿里短信服务、jwt等业务接口开发有一定经验。</span></span></span></span></span></span></li>\n\t<li style=\"margin-left: 28px; text-align: left;\"><span style=\"font-size:12pt\"><span style=\"font-family:&quot;Times New Roman&quot;\"><span style=\"font-size:10.0000pt\"><span style=\"font-family:微软雅黑\"><span ><span style=\"font-family:微软雅黑\">熟悉团队项目开发流程，注重项目代码规范化管理，能很好配合后端完成项目开发。</span></span></span></span></span></span></li>\n</ul>\n",
+    "info": "<p>&nbsp; &nbsp; &nbsp; &nbsp;在这平淡的有近百亿可爱人儿的大世界，我若风驰电掣路过的汽车，尾随尘土飞扬，然微微落下的微尘，于这大千世界属实微不足道。<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我之平凡普通，没有帅壮诱人的身姿，也没有惊艳众人的美脸，就一车来车往人来人往中的大众脸，如果你喜欢看脸下菜，大可不必看下去，因为我不符合你的要求（如果有冒犯到，小弟在此抱歉），没有闻名家乡内外的高学历，没有家财万贯的背景，只有暂健的父母，就一普通农村家庭，上有姐下有妹，家中排行第二，是家里的顶梁，家里小有吵闹，但还算幸福，生于这样家庭我不悔也不怨，时怀感恩。我虽没有远大抱负，但也有小小目标，希望在我活着的岁月里，家里人平安喜乐，在父母渐老的岁月，也尽我之孝可让父母快乐度过余生，希望在我余生可以好好陪伴哪个她，不失热爱坚持我之技。细说二十几年，虽说母单，也蛮辛苦，但也不后悔经历的这二十几年，心怀感谢，也怀希望，乐观玩耍，勇于承担，不妄自菲薄，也不好高骛远，只为快乐度过一生，每天诚恳工作，只为碎银几两，心中有标，未来有向。<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我之趣味多多，兴趣好奇特别多，快乐从不来迟，每天工作之余，也时常坚持运动，也敲敲代码，一时的心血来潮也总挡不住笔下文字的记录，也不缺快乐，业余玩玩吉他桌球，羽毛球，读读微读，约约朋友，就很平常地生活，不甘成为平淡闷宅的窝里🐔，只想当一个乐观🐦自由自在。在忙之余看看影片，在闲之余安排安排自己。<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我之情深似海，人敬我一尺，我敬人一丈，人损我一尺，我不会给你好看。即生活待我如魔兽，我当以深情面众人。对友从不吝啬，对亲如手心，心坦荡荡，眼情深深。虽性情中人，但不性情做事，曾读悲悯书籍，深夜偷偷抹眼泪😭，书如活着之类，较之与自身生活经历，由感而发，所以对生活倍感珍惜。<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我之观如正常，虽说好事至今没做多少，但坏事至今也很少干。同理心常有，看不得身边人受苦受伤，时常尽力帮助。对待社会身边所有发生事与物，不胡乱评价，待之以衡，对待身边各种朋友，秉着任何事内心无愧。始终认为生活如💰多当活得舒服，💰少当如乐观辛苦点，只要有手有脚今生当饿不死。始终认为爱情不是刚需，可以是锦上添花，也可以是孤独终老。尊重女性，能理解女性的不易，痛恶暴力男。我国我家还是世界，人生当以家为先，心怀忠诚以爱国，观世界当以审视之。<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我之技渐而进，厨艺尚可，能吃饱能养胃，不怕吃残，只怕难啃，必不让你难受。计算机技术还能入眼，还得继续努力积累。<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;感谢你读完我这篇小碎文！<br>\n（如果有同行点击，请不要攻击，我真顶不住，谢谢；如果你有好的建议，也请你能多多提意见，我将感激不尽，这个主页我会一直维护）</p>\n",
+    "experience":"暂未整理",
+    "contact": [
         {
             "name": "Github",
             "icon": "github",
             "tip": "去 Github 看看",
-            "value":"",
+            "value": "",
             "url": "https://github.com/wushengzhu"
         },
         {
             "name": "WeiXin",
             "icon": "weixin",
             "tip": "(゜-゜)つロ 干杯 ~",
-            "value":"",
+            "value": "",
             "url": ""
         },
         {
             "name": "QQ",
             "icon": "qq",
             "tip": "有什么事吗",
-            "value":"",
+            "value": "",
             "url": "https://res.abeim.cn/api/qq/?qq=1539250352"
         },
         {

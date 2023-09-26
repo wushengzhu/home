@@ -29,14 +29,16 @@
                 </div>
             </div>
             <div class="resume-btn">
-                <el-radio-group v-model="funbtn">
+                <el-radio-group v-model="funbtn" @change="changeRadio">
                     <el-radio-button label="info">介绍</el-radio-button>
                     <el-radio-button label="skill">技能</el-radio-button>
                     <el-radio-button label="experience">经历</el-radio-button>
                 </el-radio-group>
             </div>
         </div>
-        <div class="resume-right"></div>
+        <div class="resume-right">
+            <div class="resume-content" v-html="current"></div>
+        </div>
     </div>
 </template>
 <script setup lang="ts">
@@ -56,7 +58,11 @@ const iconComponents: any = {
     github: Github,
 }
 const funbtn = ref("info")
-const tabClick = () => { }
+const current = ref(resume.info)
+const changeRadio = (ev: any) => {
+    current.value = resume[ev];
+    funbtn.value = ev;
+}
 </script>
 <style lang="scss" scoped>
 .resume-container {
@@ -132,8 +138,23 @@ const tabClick = () => { }
     .resume-right {
         width: 30%;
         height: 60%;
+        box-sizing: border-box;
         background-color: #ffffff66;
         border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .resume-content {
+            width: 90%;
+            height: 90%;
+            padding: 20px;
+            border: 1px solid #fff;
+            border-radius: 8px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
     }
 }
 </style>
