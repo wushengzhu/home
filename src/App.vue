@@ -1,58 +1,58 @@
 <script setup lang="ts">
-import Header from "@/components/Header/index.vue";
-import Home from "@/views/Home/index.vue";
-import Background from "@/components/Background/index.vue";
-import Snow from "@/components/Season/Snow.vue";
-import FallLeave from "@/components/Season/FallLeave.vue";
-import Fog from "@/components/Season/Fog.vue";
-import Rain from "@/components/Season/Rain.vue";
-import FabsBtn from "@/components/FabsBtn/index.vue";
-import Footer from "@/components/Footer/index.vue";
-import { onBeforeUnmount, onMounted, ref, watch } from "vue";
-import { checkDays, helloInit, getLunarTime } from "@/utils/getTime";
-import { mainStore } from "./store";
+import Header from '@/components/Header/index.vue'
+import Home from '@/views/Home/index.vue'
+import Background from '@/components/Background/index.vue'
+import Snow from '@/components/Season/Snow.vue'
+import FallLeave from '@/components/Season/FallLeave.vue'
+import Fog from '@/components/Season/Fog.vue'
+import Rain from '@/components/Season/Rain.vue'
+import FabsBtn from '@/components/FabsBtn/index.vue'
+import Footer from '@/components/Footer/index.vue'
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { checkDays, helloInit, getLunarTime } from '@/utils/getTime'
+import { mainStore } from './store'
 
-const store = mainStore();
-const { seasonMode, showDarkMode } = store.getSystemSetting;
+const store = mainStore()
+const { seasonMode, showDarkMode } = store.getSystemSetting
 const season: ObjectType = {
   rain: Rain,
   fog: Fog,
   snow: Snow,
-  leaves: FallLeave
-};
-const mode = ref(seasonMode);
+  leaves: FallLeave,
+}
+const bgc = ref(store.systemSettings.pcBgc)
+const mode = ref(seasonMode)
 // 页面宽度
 const getWidth = () => {
-  store.setInnerWidth(window.innerWidth);
-};
+  store.setInnerWidth(window.innerWidth)
+}
 watch(
   () => store.getSystemSetting,
   (val: SystemSettings) => {
     if (store.mobileOpenState) {
-      mode.value = val.seasonMode;
+      mode.value = val.seasonMode
+      bgc.value = val.mobileBgc
     }
     // } else {
     //   mode.value = 'snow';
     // }
   }
-);
+)
 
 onMounted(() => {
   // 加载完成事件
-  window.addEventListener("load", () => {
-    console.log("加载完成");
+  window.addEventListener('load', () => {
+    console.log('加载完成')
     // 去除加载标记
-    document.getElementsByTagName("body")[0].className = "";
+    document.getElementsByTagName('body')[0].className = ''
     // 给加载动画添加结束标记
     // const loadingBox = document.getElementById("loading-box") as HTMLElement;
     // loadingBox.classList.add("loaded");
     // 欢迎提示
-    helloInit();
-    checkDays();
-    getLunarTime();
-  });
-
-  // checkDays();
+    helloInit()
+    checkDays()
+    getLunarTime()
+  })
 
   // 屏蔽右键
   // document.oncontextmenu = () => {
@@ -63,15 +63,15 @@ onMounted(() => {
   //   });
   //   return false;
   // };
-});
+})
 
 // 监听当前页面宽度
-window.addEventListener("resize", getWidth);
-window.addEventListener("load", getWidth);
+window.addEventListener('resize', getWidth)
+window.addEventListener('load', getWidth)
 onBeforeUnmount(() => {
-  window.removeEventListener("resize", getWidth);
-  window.removeEventListener("load", getWidth);
-});
+  window.removeEventListener('resize', getWidth)
+  window.removeEventListener('load', getWidth)
+})
 </script>
 
 <template>
@@ -80,9 +80,11 @@ onBeforeUnmount(() => {
     <main>
       <!-- 季节模式 -->
       <component v-if="mode && mode !== 'default'" :is="season[mode]" />
-      <Background :bgc="'/images/pc/1.webp'" />
+      <!-- 背景图 -->
+      <Background :bgc="bgc" />
       <Home />
-      <FabsBtn v-if="showDarkMode" />
+      <!-- 左侧按钮 -->
+      <FabsBtn v-if="showDarkMode && !store.mobileOpenState" />
     </main>
     <Footer />
   </div>

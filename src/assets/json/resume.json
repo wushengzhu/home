@@ -42,29 +42,29 @@
             "name": "Github",
             "icon": "github",
             "tip": "去 Github 看看",
-            "value": "",
-            "url": "https://github.com/wushengzhu"
+            "value": "wushengzhu",
+            "url": "https://github.com/wushengzhu/wushengzhu/issues"
         },
         {
             "name": "WeiXin",
-            "icon": "weixin",
+            "icon": "me",
             "tip": "(゜-゜)つロ 干杯 ~",
-            "value": "",
-            "url": ""
+            "value": "sapper_01",
+            "url": "https://wx.qq.com/"
         },
         {
             "name": "QQ",
             "icon": "qq",
             "tip": "有什么事吗",
-            "value": "",
-            "url": "https://res.abeim.cn/api/qq/?qq=1539250352"
+            "value": "不能给咋滴！",
+            "url": "https://im.qq.com/index/"
         },
         {
             "name": "Email",
             "icon": "email",
             "tip": "来封 Email ~",
             "value": "ws_zhu@foxmail.com",
-            "url": "https://wx.mail.qq.com/?cancel_login=true&from=get_ticket_fail"
+            "url": "https://mail.qq.com/"
         }
     ]
 }
