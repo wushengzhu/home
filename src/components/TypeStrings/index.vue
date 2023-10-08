@@ -5,7 +5,7 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import Typed from 'typed.js' // 打字动画库，也可以包含在常规脚本标记中
+import * as Typed from 'typed.js' // 打字动画库，也可以包含在常规脚本标记中
 
 const props = defineProps({
   fontSize: {

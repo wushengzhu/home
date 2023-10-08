@@ -64,7 +64,7 @@ const iconComponents: any = {
 const funbtn = ref('info')
 const current = ref(resume.info)
 const changeRadio = (ev: any) => {
-  current.value = resume[ev]
+  current.value = (resume as ObjectType)[ev]
   funbtn.value = ev
 }
 </script>
