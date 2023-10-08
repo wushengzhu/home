@@ -1,5 +1,6 @@
 declare module 'js-calendar-converter'
 declare module 'vue3-aplayer'
+declare module 'typed.js'
 
 interface ObjectType {
   [key: string]: any
