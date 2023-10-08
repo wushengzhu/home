@@ -23,6 +23,9 @@ dependencies:
   pinia-plugin-persistedstate:
     specifier: ^3.2.0
     version: registry.npmmirror.com/pinia-plugin-persistedstate@3.2.0(pinia@2.1.6)
+  typed.js:
+    specifier: ^2.0.16
+    version: registry.npmmirror.com/typed.js@2.0.16
   vue:
     specifier: ^3.3.4
     version: registry.npmmirror.com/vue@3.3.4
@@ -2263,6 +2266,12 @@ packages:
     name: tslib
     version: 2.6.1
     dev: true
+
+  registry.npmmirror.com/typed.js@2.0.16:
+    resolution: {integrity: sha512-IBB52GlJiTUOnomwdVVf7lWgC6gScn8md+26zTHj5oJWA+4pSuclHE76rbGI2hnyO+NT+QXdIUHbfjAY5nEtcw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typed.js/-/typed.js-2.0.16.tgz}
+    name: typed.js
+    version: 2.0.16
+    dev: false
 
   registry.npmmirror.com/typescript@5.0.2:
     resolution: {integrity: sha512-wVORMBGO/FAs/++blGNeAVdbNKtIh1rbBL2EyQ1+J9lClJ93KiiKe8PmFIVdXhHcyv44SL9oglmfeSsndo0jRw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typescript/-/typescript-5.0.2.tgz}
