@@ -54,7 +54,7 @@
   <template v-else>
     <div class="home-mobile-container">
       <CircleItem :src="'/images/logo.jpg'" />
-      <TypeStrings :strings="typedText" :typeSpeed="50" />
+      <TypeStrings :strings="typedText" :typeSpeed="50" :fontSize="24" />
     </div>
   </template>
 </template>
@@ -71,7 +71,7 @@ import PersonAlbum from '@/views/PersonAlbum/index.vue'
 import PersonBlog from '@/views/PersonBlog/index.vue'
 import PersonResume from '@/views/PersonResume/index.vue'
 import BookShelf from '@/views/BookShelf/index.vue'
-import { ref, shallowRef, onMounted } from 'vue'
+import { ref, shallowRef, onMounted, watch } from 'vue'
 import { HomePage } from '@/utils/contants'
 import { mainStore } from '@/store'
 
@@ -89,17 +89,24 @@ const modalRef = ref()
 // 它只会将传入的对象的第一层属性转换为响应式数据，
 // 而不会递归地将嵌套对象的属性都转换为响应式数据。
 const curComponent = shallowRef()
-const typedText = ref(
-  store.mobileOpenState
-    ? ["👋I'm wushengzhu", 'Web Designer']
-    : ["👋I'm wushengzhu", "🪄Welcome to wszhu's Home"]
-)
+const typedText = ref(["👋I'm wushengzhu", "🪄Welcome to wszhu's Home"])
 const openModal = (type: homeTools) => {
   curComponent.value = pageComponents[type]
   if (modalRef.value) {
     modalRef.value.open()
   }
 }
+
+watch(
+  () => store.mobileOpenState,
+  (val: boolean) => {
+    if (val) {
+      typedText.value = ["👋I'm wushengzhu", 'Web Designer']
+    } else {
+      typedText.value = ["👋I'm wushengzhu", "🪄Welcome to wszhu's Home"]
+    }
+  }
+)
 </script>
 <style lang="scss" scoped>
 .home-mobile-container {

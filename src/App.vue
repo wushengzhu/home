@@ -27,11 +27,11 @@ const getWidth = () => {
   store.setInnerWidth(window.innerWidth)
 }
 watch(
-  () => store.getSystemSetting,
-  (val: SystemSettings) => {
-    if (store.mobileOpenState) {
-      mode.value = val.seasonMode
-      bgc.value = val.mobileBgc
+  () => [store.getSystemSetting, store.mobileOpenState],
+  (val) => {
+    if (val[1]) {
+      // mode.value = val[0].seasonMode
+      bgc.value = val[0].mobileBgc
     }
     // } else {
     //   mode.value = 'snow';
