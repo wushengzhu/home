@@ -26,18 +26,15 @@ const mode = ref(seasonMode)
 const getWidth = () => {
   store.setInnerWidth(window.innerWidth)
 }
-watch(
-  () => [store.getSystemSetting, store.mobileOpenState],
-  (val) => {
-    if (val[1]) {
-      // mode.value = val[0].seasonMode
-      bgc.value = val[0].mobileBgc
-    }
-    // } else {
-    //   mode.value = 'snow';
-    // }
+watch([() => store.getSystemSetting, () => store.mobileOpenState], (val) => {
+  if (val[1]) {
+    // mode.value = val[0].seasonMode
+    bgc.value = (val[0] as SystemSettings).mobileBgc
   }
-)
+  // } else {
+  //   mode.value = 'snow';
+  // }
+})
 
 onMounted(() => {
   // 加载完成事件
