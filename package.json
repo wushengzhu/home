@@ -6,8 +6,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "dev": "vite --mode development",
+    "build": "vue-tsc && vite build --mode production",
     "preview": "vite preview",
     "bash": "bash deploy.sh"
   },

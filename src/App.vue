@@ -51,15 +51,31 @@ onMounted(() => {
     getLunarTime()
   })
 
-  // 屏蔽右键
-  // document.oncontextmenu = () => {
-  //   ElMessage({
-  //     message: "为了浏览体验，本站禁用右键",
-  //     grouping: true,
-  //     duration: 2000
-  //   });
-  //   return false;
-  // };
+  if (import.meta.env.VITE_NODE_ENV === 'production') {
+    console.log(import.meta.env)
+    // 屏蔽右键
+    document.oncontextmenu = () => {
+      ElMessage({
+        message: '为了浏览体验，本站禁用右键',
+        grouping: true,
+        duration: 2000,
+      })
+      return false
+    }
+    document.addEventListener('keydown', (e) => {
+      // 禁止f12,禁用ctrl+shift+i,禁用shift+f10
+      if (
+        e.code === 'F12' ||
+        (e.ctrlKey && e.shiftKey && e.code === 'KeyI') ||
+        (e.shiftKey && e.code === 'F10')
+      ) {
+        e.preventDefault()
+      }
+    })
+    setInterval(() => {
+      debugger
+    }, 1000)
+  }
 })
 
 // 监听当前页面宽度

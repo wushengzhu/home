@@ -32,6 +32,9 @@ export default ({ mode }) =>
         },
       }),
     ],
+    build: {
+      sourcemap: 'hidden',
+    },
     resolve: {
       alias: [
         {
