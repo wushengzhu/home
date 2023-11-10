@@ -76,7 +76,7 @@ const showSetting = () => {
   modalRef.value.open()
 }
 
-const closeCard = (ev) => {
+const closeCard = (ev: any) => {
   if (ev) {
     modalRef.value.close()
   }

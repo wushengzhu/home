@@ -13,7 +13,7 @@
       :isShowTooTip="false"
       :bgWidth="72"
       :bgHeight="72"
-      iconSize="36"
+      :iconSize="36"
       @click="closeModal()"
     />
     <CircleItem
