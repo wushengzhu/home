@@ -61,7 +61,6 @@ const iconComponents: any = {
   me: Me,
   github: Github,
 }
-const resumeArr = [resume.info,resume.]
 const funbtn = ref('info')
 const current = ref(resume.info)
 const changeRadio = (ev: any) => {
