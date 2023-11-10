@@ -61,6 +61,7 @@ const iconComponents: any = {
   me: Me,
   github: Github,
 }
+const resumeArr = [resume.info,resume.]
 const funbtn = ref('info')
 const current = ref(resume.info)
 const changeRadio = (ev: any) => {
@@ -104,7 +105,8 @@ const changeRadio = (ev: any) => {
 
     .resume-item {
       width: 90%;
-      margin: 0 auto;
+      display: flex;
+      align-items: center;
       margin-top: 20px;
       font-size: 16px;
       font-weight: 600;

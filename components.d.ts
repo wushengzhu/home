@@ -28,6 +28,7 @@ declare module 'vue' {
     Hitokoto: typeof import('./src/components/Hitokoto/index.vue')['default']
     HomeModal: typeof import('./src/components/HomeModal/index.vue')['default']
     Lantern: typeof import('./src/components/Lantern/index.vue')['default']
+    MobileCard: typeof import('./src/components/MobileCard/index.vue')['default']
     MusicTool: typeof import('./src/components/MusicTool/index.vue')['default']
     OceanWave: typeof import('./src/components/OceanWave/index.vue')['default']
     Player: typeof import('./src/components/Player/index.vue')['default']

@@ -89,7 +89,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="app-container">
-    <Header v-if="!store.mobileOpenState" />
+    <Header />
     <main>
       <!-- 季节模式 -->
       <component v-if="mode && mode !== 'default'" :is="season[mode]" />
