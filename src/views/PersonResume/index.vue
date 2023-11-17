@@ -62,10 +62,10 @@ const iconComponents: any = {
   github: Github,
 }
 const funbtn = ref('info')
-const current = ref(resume.my[0].value)
+const current = ref(resume.my[0])
 const changeRadio = (ev: any) => {
   current.value = resume.my.filter((item) => item.key === ev)[0]
-  funbtn.value = ev
+  funbtn.value = ev as string
 }
 </script>
 <style lang="scss" scoped>

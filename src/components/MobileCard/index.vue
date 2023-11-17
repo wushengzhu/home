@@ -32,7 +32,7 @@ import { CloseOne, Close, Left, Right } from '@icon-park/vue-next'
 
 const funbtn = ref('info')
 const current = ref(resume.my[0])
-const changeRadio = (ev: string) => {
+const changeRadio = (ev: any) => {
   current.value = resume.my.filter((item) => item.key === ev)[0]
   funbtn.value = ev
 }
