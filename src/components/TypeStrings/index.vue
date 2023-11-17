@@ -33,7 +33,7 @@ const dynamicStyle = ref(
 onMounted(() => {
   const typed = new Typed('.typed-strings', {
     strings: props?.strings as Array<string>,
-    typeSpeed: props?.typeSpeed, //打字的速度
+    typeSpeed: props.typeSpeed, //打字的速度
     smartBackspace: true, // 开启智能退格 默认false
     backSpeed: 100, //后退速度
     backDelay: 500, //后退延迟
