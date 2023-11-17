@@ -39,9 +39,9 @@
       </div>
       <div class="resume-btn">
         <el-radio-group v-model="funbtn" @change="changeRadio">
-          <el-radio-button label="info">介绍</el-radio-button>
-          <el-radio-button label="skill">技能</el-radio-button>
-          <el-radio-button label="experience">经历</el-radio-button>
+          <el-radio-button v-for="item in resume.my" :label="item.key">
+            {{ item.name }}
+          </el-radio-button>
         </el-radio-group>
       </div>
     </div>
@@ -62,9 +62,9 @@ const iconComponents: any = {
   github: Github,
 }
 const funbtn = ref('info')
-const current = ref(resume.info)
-const changeRadio = (ev: any) => {
-  current.value = (resume as ObjectType)[ev]
+const current = ref(resume.my[0].value)
+const changeRadio = (ev: string) => {
+  current.value = resume.my.filter((item) => item.key === ev)[0]
   funbtn.value = ev
 }
 </script>
