@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="resume-right">
-      <div class="resume-content" v-html="current"></div>
+      <div class="resume-content" v-html="current.value"></div>
     </div>
   </div>
 </template>

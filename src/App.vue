@@ -11,6 +11,7 @@ import Footer from '@/components/Footer/index.vue'
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { checkDays, helloInit, getLunarTime } from '@/utils/getTime'
 import { mainStore } from './store'
+import { Cursor } from '@/utils/cursor'
 
 const store = mainStore()
 const { seasonMode, showDarkMode } = store.getSystemSetting
@@ -37,6 +38,7 @@ watch([() => store.getSystemSetting, () => store.mobileOpenState], (val) => {
 })
 
 onMounted(() => {
+  new Cursor()
   // 加载完成事件
   window.addEventListener('load', () => {
     console.log('加载完成')
@@ -52,7 +54,6 @@ onMounted(() => {
   })
 
   if (import.meta.env.VITE_NODE_ENV === 'production') {
-    console.log(import.meta.env)
     // 屏蔽右键
     document.oncontextmenu = () => {
       ElMessage({

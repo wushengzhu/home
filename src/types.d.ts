@@ -20,6 +20,14 @@ type SeasonMode = 'default' | 'fog' | 'rain' | 'leaves' | 'snow'
 type homeTools = 'tool' | 'blog' | 'resume' | 'album' | 'book'
 type ButtonType = 'select' | 'input' | 'radio'
 type MusicSource = 'default' | 'netease' | 'tencent'
+type AlbumSource = '个人写真' | '景色风光'
+
+interface AlbumType {
+  title: AlbumSource
+  image: string
+  info: string
+  location?: string
+}
 
 interface CircleItemType {
   component?: any // 组件

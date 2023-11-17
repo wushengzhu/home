@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AlbumItem: typeof import('./src/components/AlbumItem/index.vue')['default']
     Background: typeof import('./src/components/Background/index.vue')['default']
     CardItem: typeof import('./src/components/CardItem/index.vue')['default']
     CartoonButton: typeof import('./src/components/CartoonButton/index.vue')['default']
@@ -15,6 +16,7 @@ declare module 'vue' {
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
+    ElImage: typeof import('element-plus/es')['ElImage']
     ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
