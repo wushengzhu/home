@@ -63,7 +63,7 @@ const iconComponents: any = {
 }
 const funbtn = ref('info')
 const current = ref(resume.my[0].value)
-const changeRadio = (ev: string) => {
+const changeRadio = (ev: any) => {
   current.value = resume.my.filter((item) => item.key === ev)[0]
   funbtn.value = ev
 }
