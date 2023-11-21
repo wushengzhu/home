@@ -1,314 +1,186 @@
 <template>
   <div class="tool-container">
-    <aside class="left-menu" v-if="!isCollapse">
-      <div class="left-menu-head">
-        <svg data-v-eddb75f4="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" class="gradient">
-          <defs>
-            <linearGradient id="a" x1="13.74" x2="303.96" y1="183.7" y2="45.59" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#034a93"></stop>
-              <stop offset=".6" stop-color="#127be5"></stop>
-              <stop offset="1" stop-color="#409eff"></stop>
-            </linearGradient>
-          </defs>
-          <!-- 绿色14a058 -->
-          <path fill="#409eff" d="M0 187.5v25s0 37.5 50 50S300 225 300 225v-37.5Z" opacity=".49"></path>
-          <path fill="#409eff" d="M300 237.5S287.5 275 250 275s-128.95-37.5-188.6-75 134.21 0 134.21 0Z" opacity=".49">
-          </path>
-          <path fill="#409eff" d="M0 200v12.5a241.47 241.47 0 0 0 112.5 50c73.6 11.69 130.61-14.86 150-25L300 200Z"
-            opacity=".38"></path>
-          <path fill="url(#a)" d="M0 0v212.5s62.5-12.5 150 25 150 0 150 0V0Z"></path>
-        </svg>
-        <div class="title">
-          <tool theme="outline" size="48" fill="#fff" />
-          <div class="title-text">个人工具</div>
+    <div class="tool-container-head">
+      <div class="head-container">
+        <div class="left-tag">
+          <el-check-tag
+            :checked="selected === 'total'"
+            @change="onChange('total')"
+            class="mr-ms"
+          >
+            全部
+          </el-check-tag>
+          <template v-for="item of tools" :key="item.type">
+            <el-check-tag
+              :checked="selected === item.type"
+              @change="onChange(item.type)"
+              class="mr-ms"
+            >
+              {{ item.name }}
+            </el-check-tag>
+          </template>
+        </div>
+        <div class="right-search">
+          <el-input
+            v-model="searchValue"
+            placeholder="请输入"
+            :suffix-icon="Search"
+          />
         </div>
       </div>
-      <Scrollbar>
-        <div style="height: 200px;"></div>
-        <template v-for="item of tools" :key="item.type">
-          <div :class="{ 'left-menu-item': true, 'left-menu-item-active': selected == item.type }"
-            @click="getRelatedTool(item.type)">
-            <tool theme="outline" size="22" fill="#000" />
-            <a class="ml-ms">{{ item.name }}</a>
-          </div>
-        </template>
-      </Scrollbar>
-    </aside>
-    <div class="right-content">
-      <div class="right-content-head">
-        <hamburger-button theme="outline" size="24" fill="#000" class="hbg-btn" @click.stop="setIsCollapse()" />
-      </div>
-      <div class="right-content-area">
-        <template v-for="item of tempT" :key="item.type">
-          <div class="tool-item-container">
-            <a class="tool-item" :href="item.link" target="_blank">
-              <div class="tool-item-title">{{ item.name }}</div>
-              <div class="tool-item-content">{{ item.detail }}</div>
-              <img class="tool-item-icon" v-if="item?.icon" :src="item.icon" />
-              <tool class="tool-item-icon" style="display: flex;justify-content: center;align-items: center;"
-                theme="outline" size="32" fill="#000" v-else />
-            </a>
-          </div>
-        </template>
+    </div>
+    <div class="tool-container-content">
+      <div class="item-container" v-for="item of tempT">
+        <div class="item-type">{{ item.name }}</div>
+        <el-row :gutter="24">
+          <template v-if="item.children?.length === 0">
+            <el-empty
+              :image-size="50"
+              :description="'暂无数据'"
+              style="margin: 0 auto"
+            />
+          </template>
+          <template v-else>
+            <el-col
+              v-for="jtem of item.children"
+              :span="6"
+              :xs="2"
+              :sm="2"
+              :md="3"
+              :lg="4"
+              :xl="4"
+            >
+              <a :href="jtem.link" target="_blank" class="tool-item">
+                {{ jtem.name }}
+              </a>
+            </el-col>
+          </template>
+        </el-row>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import tools from "@/assets/json/tools.json"
-import { Tool, HamburgerButton } from "@icon-park/vue-next"
-import Scrollbar from "@/components/Scrollbar/index.vue"
-import { ref } from "vue";
+import tools from '@/assets/json/tools.json'
+import { Tool, HamburgerButton } from '@icon-park/vue-next'
+import Scrollbar from '@/components/Scrollbar/index.vue'
+import { Search } from '@element-plus/icons-vue'
+import { ref } from 'vue'
 
-const tempT = ref<any>([]);
-const isCollapse = ref(false);
-const selected = ref("frontend")
-const setIsCollapse = () => isCollapse.value = !isCollapse.value;
-const getRelatedTool = (type: string) => {
-  let temp = tools.filter(item => item.type === type);
-  tempT.value = temp[0].children;
-  selected.value = type;
-} 
+const tempT = ref<any>(tools)
+const searchValue = ref('')
+const selected = ref('total')
+const onChange = (ev) => {
+  selected.value = ev
+  if (ev === 'total') {
+    tempT.value = tools
+  } else {
+    let temp = tools.filter((item) => item.type === ev)
+    tempT.value = temp
+  }
+}
 </script>
 <style lang="scss" scoped>
 ::-webkit-scrollbar {
   position: relative;
 }
 
-.tool-item-container {
-  width: 220px;
-  height: 110px;
+.tool-container {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
   position: relative;
-  padding: 10px 10px;
+  background-color: #f1f5f9;
   box-sizing: border-box;
-}
 
-.tool-item {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: block;
-  overflow: hidden;
-  border-radius: 2px;
-  box-sizing: border-box;
-  box-shadow: 1px 0 9px 1px rgb(0 0 0 / 20%);
-
-  &:hover {
-    border: 2px solid orange;
-  }
-
-  &-title {
+  &-head {
     width: 100%;
-    height: 50%;
-    background-color: #409eff;
-    color: #fff;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 5px;
-    box-sizing: border-box;
+    height: 64px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border-bottom: 0px solid #e5e9f2;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    .head-container {
+      width: 80%;
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+    }
   }
 
   &-content {
-    width: 100%;
-    height: 50%;
-    background-color: #c6e2ff;
-    color: grey;
-    font-size: 1rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 5px;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
     box-sizing: border-box;
-  }
 
-  &-icon {
-    position: absolute;
-    display: block;
-    width: 48px;
-    height: 48px;
-    background-color: #fff;
-    border-radius: 10%;
-    top: 50%;
-    left: 5%;
-    transform: translateY(-50%);
-  }
-}
-
-.right-content-area {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.tool-container {
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  background-color: #f1f5f9;
-  color: #000;
-  overflow: hidden;
-  display: flex;
-  font-size: 20px;
-  box-sizing: border-box;
-
-  .left-menu {
-    width: 200px;
-    height: 100%;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    position: relative;
-    z-index: 1;
-    background-color: #fff;
-    // overflow: hidden;
-    overflow-y: auto;
-    // transition: all .3s ease-in-out;
-    -webkit-animation-duration: 3s;
-    animation-duration: 3s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
-
-    .left-menu-head {
-      position: absolute;
-      display: block;
-      left: 0;
+    .item-container {
       width: 100%;
-      z-index: 10;
-      overflow: hidden;
+      position: relative;
+      top: 100px;
+      // left: 0;
+      // display: flex;
+      // flex-direction: column;
+      min-width: 0;
+      // word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      padding: 24px 20px 4px;
+      margin-bottom: 20px;
+      border: 0 solid rgba(0, 0, 0, 0.125);
+      border-radius: 4px;
+      box-sizing: border-box;
 
-      .title {
+      .item-type {
         position: absolute;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        top: 16px;
+        // width: 36px;
+        // height: 36px;
+        // background-color: #409eff;
+        top: -15px;
+        right: 10px;
+        background-color: #409eff;
         color: #fff;
-        font-weight: bold;
-        font-size: 30px;
-
-        &-text {
-          color: #fff;
-        }
+        padding: 5px 18px;
+        border-radius: 8px;
+        font-size: 1rem;
+        box-shadow: 0 0.5rem 0.625rem #409eff57;
       }
     }
 
-    @-webkit-keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 1;
-      }
-    }
-
-    /* 淡入动画：从透明到非透明的状态转化 */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 1;
-      }
-    }
-
-
-    .left-menu-item {
+    .tool-item {
       width: 100%;
-      height: 64px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      a {
-        color: #000;
-      }
-
-      span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+      height: 48px;
+      line-height: 48px;
+      display: block;
+      margin: 6px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      text-align: center;
+      color: #526484;
+      border-radius: 5px;
+      border: 1px solid #dbdfea;
+      box-sizing: border-box;
+      box-shadow: 0 3px 12px 1px rgba(43, 55, 72, 0.15) !important;
 
       &:hover {
-        cursor: pointer;
-        background-color: #c6e2ff;
-      }
-
-      &-active {
-        background-color: #409eff;
+        color: #409eff;
+        background-color: #d9ecff;
+        font-weight: bold;
       }
     }
   }
-
-  .right-content {
-    width: calc(100% - 200px);
-    height: 100%;
-    position: relative;
-    box-sizing: border-box;
-    transition: all .3s;
-
-    .right-content-head {
-      width: 100%;
-      padding: 10px;
-
-      .hbg-btn {
-        width: 32px;
-        height: 32px;
-        border-radius: 100%;
-        border: 1px solid #409eff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-      }
-    }
-  }
-
-  a {
-    display: block;
-    text-decoration: none;
-    color: #fff;
-  }
-
-  .tool-card {
-    width: 200px;
-    height: 100px;
-    background: rgba(45, 143, 189, 0.685);
-    margin-bottom: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
-  .tool-title {
-    text-align: center;
-  }
-
-  .tool-detail {
-    margin-top: 5px;
-    color: #fff;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-
-  .tool-tag {
-    margin-top: 5px;
-  }
 }
 
-:deep(.el-tabs__item) {
-  color: #fff;
-}
-
-:deep(.el-tabs__item.is-active) {
-  color: var(--el-color-primary);
+:deep(.el-row) {
+  margin-bottom: 20px;
 }
 </style>

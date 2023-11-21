@@ -1,6 +1,6 @@
 [
   {
-    "name": "前端文档",
+    "name": "前端",
     "type": "frontend",
     "children": [
       {
@@ -118,19 +118,19 @@
     ]
   },
   {
-    "name": "后端文档",
+    "name": "后端",
     "type": "backend",
     "children":[
 
     ]
   },
   {
-    "name": "通用工具",
+    "name": "工具",
     "type": "tool",
     "children":[
       {
         "icon": "",
-        "name": "",
+        "name": "Git",
         "link": "https://learngitbranching.js.org/?locale=zh_CN",
         "detail": "",
         "type": "Study",
@@ -177,14 +177,14 @@
     ]
   },
   {
-    "name": "文档记录",
+    "name": "文档",
     "type": "word",
     "children":[
       
     ]
   },
   {
-    "name": "考试网站",
+    "name": "考试",
     "type": "exam",
     "children":[
       
