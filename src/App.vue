@@ -1,3 +1,19 @@
+<template>
+  <div class="app-container">
+    <Header />
+    <main>
+      <!-- 季节模式 -->
+      <component v-if="mode && mode !== 'default'" :is="season[mode]" />
+      <!-- 背景图 -->
+      <Background :bgc="bgc" />
+      <Home />
+      <!-- 左侧按钮 -->
+      <FabsBtn v-if="showDarkMode && !store.mobileOpenState" />
+    </main>
+    <Footer />
+  </div>
+</template>
+
 <script setup lang="ts">
 import Header from '@/components/Header/index.vue'
 import Home from '@/views/Home/index.vue'
@@ -27,15 +43,16 @@ const mode = ref(seasonMode)
 const getWidth = () => {
   store.setInnerWidth(window.innerWidth)
 }
-watch([() => store.getSystemSetting, () => store.mobileOpenState], (val) => {
-  if (val[1]) {
-    // mode.value = val[0].seasonMode
-    bgc.value = (val[0] as SystemSettings).mobileBgc
+watch(
+  [() => store.getSystemSetting.seasonMode, () => store.mobileOpenState],
+  (val) => {
+    if (val[1]) {
+      bgc.value = (val[0] as SystemSettings).mobileBgc
+    } else {
+      mode.value = val[0]
+    }
   }
-  // } else {
-  //   mode.value = 'snow';
-  // }
-})
+)
 
 onMounted(() => {
   new Cursor()
@@ -77,32 +94,16 @@ onMounted(() => {
       debugger
     }, 1000)
   }
+  // 监听当前页面宽度
+  window.addEventListener('resize', getWidth)
+  window.addEventListener('load', getWidth)
 })
 
-// 监听当前页面宽度
-window.addEventListener('resize', getWidth)
-window.addEventListener('load', getWidth)
 onBeforeUnmount(() => {
   window.removeEventListener('resize', getWidth)
   window.removeEventListener('load', getWidth)
 })
 </script>
-
-<template>
-  <div class="app-container">
-    <Header />
-    <main>
-      <!-- 季节模式 -->
-      <component v-if="mode && mode !== 'default'" :is="season[mode]" />
-      <!-- 背景图 -->
-      <Background :bgc="bgc" />
-      <Home />
-      <!-- 左侧按钮 -->
-      <FabsBtn v-if="showDarkMode && !store.mobileOpenState" />
-    </main>
-    <Footer />
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .app-container {
