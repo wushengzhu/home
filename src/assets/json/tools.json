@@ -114,6 +114,14 @@
         "detail": "",
         "type": "FrontEnd",
         "keywords": ""
+      },
+      {
+        "icon": "https://i0.hdslb.com/bfs/face/b696cdc6fefb892007500cfd2b53c66cf4728e2b.jpg@96w.webp",
+        "name": "CDN引入插件链接",
+        "link": "https://cdnjs.com/",
+        "detail": "",
+        "type": "FrontEnd",
+        "keywords": ""
       }
     ]
   },

@@ -112,17 +112,13 @@ const closeModal = () => {
     left: 0;
     display: flex;
     justify-content: center;
-    // background-color: #00000080;
     width: 100%;
     box-sizing: border-box;
-    // height: 28px;
-    // padding: 2px 5px;
   }
 }
 
 .close {
   position: absolute;
-  // top: 8px;
   right: 8px;
   top: 50%;
   transform: translateY(-50%);
@@ -131,15 +127,6 @@ const closeModal = () => {
   display: block;
   cursor: pointer;
 }
-// .card-btn {
-//   width: 82vw;
-//   margin: 0 auto;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   margin-top: 10px;
-// }
-
 ::-webkit-scrollbar {
   width: 0;
   height: 0;

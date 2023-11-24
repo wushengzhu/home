@@ -1,5 +1,3 @@
-import fetchJsonp from 'fetch-jsonp'
-
 /**
  *  获取一言数据
  * @returns

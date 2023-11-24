@@ -1,6 +1,12 @@
 declare module 'js-calendar-converter'
 declare module 'vue3-aplayer'
 declare module 'typed.js'
+declare module 'fetch-jsonp'
+declare function fetchJsonp(params: type): any
+
+declare class Typed {
+  constructor(className: string, object: any) {}
+} // 不安装插件，直接用cdn引入
 
 interface ObjectType {
   [key: string]: any
