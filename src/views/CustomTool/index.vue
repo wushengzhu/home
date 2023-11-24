@@ -70,7 +70,7 @@ import { ref } from 'vue'
 const tempT = ref<any>(tools)
 const searchValue = ref('')
 const selected = ref('total')
-const onChange = (ev:any: any) => {
+const onChange = (ev: any) => {
   selected.value = ev
   if (ev === 'total') {
     tempT.value = tools
