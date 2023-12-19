@@ -71,7 +71,6 @@ onMounted(() => {
     // 欢迎提示
     helloInit()
     checkDays()
-    getLunarTime()
   })
 
   if (import.meta.env.VITE_NODE_ENV === 'production') {
