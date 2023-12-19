@@ -53,7 +53,7 @@
       <MobileCard @close-modal="closeCard" />
     </div>
   </HomeModal>
-  <Lantern v-show="systemSettings.showLantern" />
+  <Lantern v-show="store.getSystemSetting.showLantern" />
 </template>
 <script setup lang="ts">
 import { HamburgerButton } from '@icon-park/vue-next'

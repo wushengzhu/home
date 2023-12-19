@@ -3,7 +3,10 @@
     <Header />
     <main>
       <!-- 季节模式 -->
-      <component v-if="mode && mode !== 'default'" :is="season[mode]" />
+      <component
+        v-if="mode && mode !== 'default' && !store.mobileOpenState"
+        :is="season[mode]"
+      />
       <!-- 背景图 -->
       <Background :bgc="bgc" />
       <Home />
@@ -47,8 +50,9 @@ watch(
   [() => store.getSystemSetting.seasonMode, () => store.mobileOpenState],
   (val) => {
     if (val[1]) {
-      bgc.value = (val[0] as SystemSettings).mobileBgc
+      bgc.value = store.systemSettings.mobileBgc
     } else {
+      bgc.value = store.systemSettings.pcBgc
       mode.value = val[0]
     }
   }

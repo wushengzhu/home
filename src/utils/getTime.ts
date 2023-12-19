@@ -2,23 +2,31 @@ import { h } from 'vue'
 import { SpaCandle } from '@icon-park/vue-next'
 import calendar from 'js-calendar-converter'
 
+type DateType = 'solar2lunar' | 'lunar2solar'
+
 /**
  * 获取农历时间
  */
-export const getLunarTime = () => {
-  let curTime = new Date()
+export const getLunarTime = (type: DateType, date?: any) => {
+  let curTime = date ? date : new Date()
   /** 公历年月日转农历数据 返回json */
   let lunarTime: CalendarConverter = calendar.solar2lunar(
     curTime.getFullYear(),
     curTime.getMonth() + 1,
     curTime.getDate()
   )
-  // let solarTime = calendar.lunar2solar(
-  //   2023,
-  //   12,
-  //   30
-  // ) /** 农历年月日转公历年月日 */
-  return lunarTime
+
+  /** 农历年月日转公历年月日 */
+  let solarTime = calendar.lunar2solar(
+    curTime.getFullYear(),
+    curTime.getMonth() + 1,
+    curTime.getDate()
+  )
+  if (type === 'solar2lunar') {
+    return lunarTime
+  } else {
+    return solarTime
+  }
 }
 
 // 时钟

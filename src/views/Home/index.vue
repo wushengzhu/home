@@ -112,10 +112,14 @@ watch(
 .home-mobile-container {
   height: 100vh;
   width: 100%;
+  position: relative;
+  margin-top: -50px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   .person-title {
     width: 100%;

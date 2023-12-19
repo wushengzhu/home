@@ -17,9 +17,18 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, reactive } from 'vue'
+import { getLunarTime } from '@/utils/getTime'
 
-const textValues = ref(["新", "年", "快", "乐"]);
+const textValues = ref(['新', '年', '快', '乐'])
+const getTextChange = (timeObjs = getLunarTime('solar2lunar')) => {
+  if (timeObjs && timeObjs.date.includes('1-1')) {
+    textValues.value = ['元', '旦', '快', '乐']
+  }
+  if (timeObjs && timeObjs.lunarDate.includes('1-1')) {
+    textValues.value = ['新', '年', '快', '乐']
+  }
+}
 </script>
 <style lang="scss" scoped>
 .lantern-box {
@@ -41,17 +50,19 @@ const textValues = ref(["新", "年", "快", "乐"]);
 
 .lantern-light::before,
 .lantern-light::after {
-  content: "";
+  content: '';
   position: absolute;
   border: 1px solid #dc8f03;
   width: 60px;
   height: 12px;
-  background: linear-gradient(to right,
-      #dc8f03,
-      #ffa500,
-      #dc8f03,
-      #ffa500,
-      #dc8f03);
+  background: linear-gradient(
+    to right,
+    #dc8f03,
+    #ffa500,
+    #dc8f03,
+    #ffa500,
+    #dc8f03
+  );
   margin-left: 20px;
   left: 10px;
 }
@@ -96,7 +107,7 @@ const textValues = ref(["新", "年", "快", "乐"]);
 }
 
 .lantern-text {
-  font: bold 2rem / 85px "Franklin Gothic Medium", "Arial Narrow", Arial,
+  font: bold 2rem / 85px 'Franklin Gothic Medium', 'Arial Narrow', Arial,
     sans-serif;
   text-align: center;
   color: #dc8f03;
@@ -167,4 +178,5 @@ const textValues = ref(["新", "年", "快", "乐"]);
 .lantern-container .lantern-box:last-child {
   right: 10px;
   top: -26px;
-}</style>
+}
+</style>
