@@ -22,7 +22,7 @@
     "vue3-aplayer": "^1.7.3"
   },
   "devDependencies": {
-    "@types/node": "^20.4.8",
+    "@types/node": "20.4.8",
     "@vitejs/plugin-vue": "^4.2.3",
     "rollup-plugin-visualizer": "^5.9.2",
     "sass": "^1.64.2",
@@ -32,7 +32,6 @@
     "vite": "^4.4.5",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.0",
-    "vite-plugin-imagemin": "^0.6.1",
     "vue-tsc": "^1.8.5"
   }
 }
