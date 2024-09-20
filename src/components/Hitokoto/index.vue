@@ -81,7 +81,7 @@ onMounted(() => {
 }
 
 .saying-container {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   color: #fff;
   padding: 10px;

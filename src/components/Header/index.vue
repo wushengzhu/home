@@ -8,13 +8,26 @@
       <DateTime />
     </div>
     <div style="width: 50vw" v-if="store.mobileOpenState"></div>
-    <hamburger-button
-      class="hg-btn"
-      theme="outline"
-      size="32"
-      fill="#fff"
-      @click="showSetting()"
-    />
+    <div class="btn-area">
+      <template  v-if="!store.mobileOpenState">
+        <aiming class="hg-btn" theme="outline" size="28" fill="#fff" @click="toggleFullScreen()" v-if="isFullScreen" />
+        <full-screen
+          class="hg-btn"
+          theme="outline"
+          size="28"
+          fill="#fff"
+          @click="toggleFullScreen()"
+          v-else
+        />        
+      </template>
+      <hamburger-button
+        class="hg-btn ml-ms"
+        theme="outline"
+        size="28"
+        fill="#fff"
+        @click="showSetting()"
+      />      
+    </div>
   </header>
   <HomeModal ref="modalRef" :showBody="!store.mobileOpenState">
     <div class="settings" v-if="!store.mobileOpenState">
@@ -56,40 +69,43 @@
   <Lantern v-show="store.getSystemSetting.showLantern" />
 </template>
 <script setup lang="ts">
-import { HamburgerButton } from '@icon-park/vue-next'
-import Lantern from '@/components/Lantern/index.vue'
-import MobileCard from '@/components/MobileCard/index.vue'
-import SettingButton from '@/components/SettingButton/index.vue'
-import HomeModal from '@/components/HomeModal/index.vue'
-import DateTime from '@/components/DateTime/index.vue'
-import { ref, reactive, watch } from 'vue'
-import { mainStore } from '@/store'
-import { SystemValue } from '@/utils/contants'
+import { HamburgerButton, FullScreen, Aiming } from "@icon-park/vue-next";
+import Lantern from "@/components/Lantern/index.vue";
+import MobileCard from "@/components/MobileCard/index.vue";
+import SettingButton from "@/components/SettingButton/index.vue";
+import HomeModal from "@/components/HomeModal/index.vue";
+import DateTime from "@/components/DateTime/index.vue";
+import { ref, reactive, watch } from "vue";
+import { mainStore } from "@/store";
+import { SystemValue } from "@/utils/contants";
+import useFullScreen from "@/hooks/useFullScreen";
 
-const store = mainStore()
-const modalRef = ref()
+const { isFullScreen, toggleFullScreen } = useFullScreen();
+
+const store = mainStore();
+const modalRef = ref();
 let systemSettings = reactive<ObjectType>({
   ...store.getSystemSetting,
-})
+});
 
 const showSetting = () => {
-  modalRef.value.open()
-}
+  modalRef.value.open();
+};
 
 const closeCard = (ev: any) => {
   if (ev) {
-    modalRef.value.close()
+    modalRef.value.close();
   }
-}
+};
 
 watch(store.$state.systemSettings, (val: SystemSettings) => {
-  systemSettings = val
-})
+  systemSettings = val;
+});
 
 const clickSetting = (val: any, type: string) => {
-  systemSettings[type] = val
-  store.setSystemSetting({ ...systemSettings })
-}
+  systemSettings[type] = val;
+  store.setSystemSetting({ ...systemSettings });
+};
 </script>
 <style lang="scss" scoped>
 .header-container {
@@ -99,7 +115,11 @@ const clickSetting = (val: any, type: string) => {
   padding-top: 12px;
   padding-left: 12px;
   padding-right: 12px;
-
+  
+  .btn-area{
+    // width: 100%;
+    z-index: 100;
+  }
   .hg-btn {
     cursor: pointer;
     z-index: 12;
